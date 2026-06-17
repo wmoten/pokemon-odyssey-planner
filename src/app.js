@@ -373,6 +373,7 @@ function renderFilters() {
 }
 
 function renderSummary() {
+  if (!elements.summary) return;
   const withRoles = state.pokemon.filter((mon) => mon.roles.length).length;
   const early = state.pokemon.filter((mon) => ["Starter", "Early"].includes(mon.availability.phase)).length;
   elements.summary.innerHTML = `
