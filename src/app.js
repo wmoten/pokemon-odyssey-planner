@@ -1,4 +1,4 @@
-const DATA_URL = "src/data/pokemon-odyssey-data.json?v=wonder-trade-filter-v3";
+const DATA_URL = "src/data/pokemon-odyssey-data.json?v=variant-sprites-v1";
 
 const TYPE_COLORS = {
   Normal: "#7f8792",
@@ -135,6 +135,7 @@ function slugName(mon) {
 }
 
 function spriteUrl(mon) {
+  if (mon.sprite?.path) return mon.sprite.path;
   return `https://img.pokemondb.net/sprites/home/normal/${slugName(mon)}.png`;
 }
 
@@ -439,8 +440,9 @@ function pokemonCard(mon) {
 }
 
 function spriteFrame(mon) {
+  const frameClass = `sprite-frame${mon.sprite?.path ? " local-sprite" : ""}`;
   return `
-    <span class="sprite-frame">
+    <span class="${frameClass}">
       <img src="${spriteUrl(mon)}" alt="${escapeHtml(mon.displayName)} sprite" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
       <span class="sprite-fallback">${escapeHtml(mon.displayName[0] || "?")}</span>
     </span>

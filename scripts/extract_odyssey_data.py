@@ -12,10 +12,12 @@ import unicodedata
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import defaultdict
 from datetime import datetime
+from io import BytesIO
 from pathlib import Path
 
 import openpyxl
 from pypdf import PdfReader
+from PIL import Image
 
 try:
     import pdfplumber
@@ -44,6 +46,8 @@ TEAMBUILDING_PDF = Path(os.environ.get(
 ))
 
 OUT_JSON = ROOT / "src" / "data" / "pokemon-odyssey-data.json"
+SPRITE_ASSET_DIR = ROOT / "src" / "assets" / "sprites"
+SPRITE_ASSET_PREFIX = "src/assets/sprites"
 STANDARD_ABILITY_CACHE = ROOT / "scripts" / "pokeapi-ability-definitions-cache.json"
 POKEAPI_ABILITY_INDEX = "https://pokeapi.co/api/v2/ability?limit=10000"
 HTTP_HEADERS = {"User-Agent": "pokemon-odyssey-team-planner/1.0"}
@@ -431,6 +435,7 @@ def ensure_pokemon(pokemon: dict, raw_name: str, source: str = "") -> dict:
             "statDelta": None,
             "baseTotal": None,
             "vanillaTotal": None,
+            "sprite": None,
             "gameDexId": None,
             "family": [],
             "directEncounters": [],
@@ -547,6 +552,63 @@ def parse_stats_and_learnsets(wb, pokemon: dict) -> list[list[str]]:
                 if mon["baseTotal"] is not None and mon["vanillaTotal"] is not None:
                     mon["statDelta"]["total"] = mon["baseTotal"] - mon["vanillaTotal"]
     return family_groups
+
+
+def image_anchor_cell(image) -> tuple[int, int] | None:
+    anchor = getattr(image, "anchor", None)
+    marker = getattr(anchor, "_from", None)
+    if not marker:
+        return None
+    return marker.row + 1, marker.col + 1
+
+
+def write_clean_png(image_data: bytes, path: Path) -> None:
+    with Image.open(BytesIO(image_data)) as image:
+        clean_image = image.convert("RGBA") if image.mode not in {"RGB", "RGBA"} else image.copy()
+    clean_image.save(path, format="PNG", optimize=True)
+
+
+def parse_etrian_variant_sprites(wb, pokemon: dict) -> tuple[int, list[str]]:
+    if "Etrian Variants" not in wb.sheetnames:
+        return 0, []
+
+    SPRITE_ASSET_DIR.mkdir(parents=True, exist_ok=True)
+    for old_asset in SPRITE_ASSET_DIR.glob("*.png"):
+        old_asset.unlink()
+
+    ws = wb["Etrian Variants"]
+    extracted = 0
+    unmatched: list[str] = []
+    seen: set[str] = set()
+
+    for image in getattr(ws, "_images", []):
+        anchor = image_anchor_cell(image)
+        if not anchor:
+            continue
+        row, col = anchor
+        if clean_space(as_text(ws.cell(row, 1).value)).upper() != "NORMAL":
+            continue
+        raw_name = clean_space(as_text(ws.cell(row - 1, col).value))
+        if not raw_name:
+            continue
+        key = resolve_pokemon_key(name_key(raw_name), pokemon)
+        if not key:
+            unmatched.append(raw_name)
+            continue
+        if key in seen:
+            continue
+        seen.add(key)
+        asset_path = SPRITE_ASSET_DIR / f"{key}.png"
+        write_clean_png(image._data(), asset_path)
+        pokemon[key]["sprite"] = {
+            "source": "Etrian Variants",
+            "kind": "normal",
+            "path": f"{SPRITE_ASSET_PREFIX}/{key}.png",
+            "sourceName": raw_name,
+        }
+        extracted += 1
+
+    return extracted, unmatched
 
 
 def parse_ability_definitions(wb) -> list[dict]:
@@ -1305,6 +1367,7 @@ def main() -> None:
     stats_wb = openpyxl.load_workbook(STATS_XLSX, data_only=True, read_only=False)
     parse_pokedex(stats_wb, pokemon)
     family_groups = parse_stats_and_learnsets(stats_wb, pokemon)
+    sprite_count, unmatched_sprites = parse_etrian_variant_sprites(stats_wb, pokemon)
     odyssey_ability_definitions = parse_ability_definitions(stats_wb)
     standard_ability_definitions = fetch_standard_ability_definitions(
         ability_names_from_pokemon(pokemon),
@@ -1347,7 +1410,9 @@ def main() -> None:
                 "Guide availability tags come from the teambuilding PDF and may override encounter timing when earlier.",
                 "Exact story/boss details are kept in source records but summarized in the UI by default.",
                 "Ability tooltips use Odyssey's new/buffed ability sheet first, with standard ability text cached from PokeAPI.",
+                "Etrian Variant portrait art uses NORMAL embedded workbook sprites when a matching Pokemon exists.",
             ],
+            "spriteAssets": sprite_count,
         },
         "pokemon": finalize_pokemon(pokemon),
         "encounters": sorted(encounters, key=sort_encounter),
@@ -1372,6 +1437,9 @@ def main() -> None:
     print(f"Encounters: {len(encounters)}")
     print(f"Guide entries: {len(guide_entries)}")
     print(f"Ability definitions: {len(ability_definitions)}")
+    print(f"Etrian Variant sprites: {sprite_count}")
+    if unmatched_sprites:
+        print(f"Unmatched Etrian Variant sprites: {', '.join(unmatched_sprites)}")
 
 
 if __name__ == "__main__":

@@ -18,6 +18,8 @@ python3 scripts/extract_odyssey_data.py
 
 The generator reads the v4.1.1 spreadsheets and teambuilding PDF from `~/Downloads` by default. Override paths with `ODYSSEY_STATS_XLSX`, `ODYSSEY_WILD_XLSX`, `ODYSSEY_LEVELS_XLSX`, and `ODYSSEY_TEAMBUILDING_PDF`.
 
+Source spreadsheets, PDFs, and local environment files are ignored by git. The committed data bundle and generated sprite assets are the public, static artifacts used by the site.
+
 ## Deploy
 
 This is a static site. It can be hosted from the repository root with GitHub Pages.

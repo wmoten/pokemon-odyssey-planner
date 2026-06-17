@@ -12,8 +12,10 @@
       "Availability uses the earliest parsed direct encounter for the Pokemon or its evolution family.",
       "Guide availability tags come from the teambuilding PDF and may override encounter timing when earlier.",
       "Exact story/boss details are kept in source records but summarized in the UI by default.",
-      "Ability tooltips use Odyssey's new/buffed ability sheet first, with standard ability text cached from PokeAPI."
-    ]
+      "Ability tooltips use Odyssey's new/buffed ability sheet first, with standard ability text cached from PokeAPI.",
+      "Etrian Variant portrait art uses NORMAL embedded workbook sprites when a matching Pokemon exists."
+    ],
+    "spriteAssets": 100
   },
   "pokemon": [
     {
@@ -116,6 +118,7 @@
       },
       "baseTotal": 318,
       "vanillaTotal": 318,
+      "sprite": null,
       "gameDexId": "001",
       "family": [
         "bulbasaur",
@@ -323,6 +326,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "002",
       "family": [
         "bulbasaur",
@@ -509,6 +513,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "003",
       "family": [
         "bulbasaur",
@@ -668,6 +673,7 @@
       },
       "baseTotal": 309,
       "vanillaTotal": 309,
+      "sprite": null,
       "gameDexId": "004",
       "family": [
         "charmander",
@@ -866,6 +872,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "005",
       "family": [
         "charmander",
@@ -1052,6 +1059,7 @@
       },
       "baseTotal": 534,
       "vanillaTotal": 534,
+      "sprite": null,
       "gameDexId": "006",
       "family": [
         "charmander",
@@ -1207,6 +1215,7 @@
       },
       "baseTotal": 314,
       "vanillaTotal": 314,
+      "sprite": null,
       "gameDexId": "007",
       "family": [
         "squirtle",
@@ -1417,6 +1426,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "008",
       "family": [
         "squirtle",
@@ -1606,6 +1616,7 @@
       },
       "baseTotal": 530,
       "vanillaTotal": 530,
+      "sprite": null,
       "gameDexId": "009",
       "family": [
         "squirtle",
@@ -1733,6 +1744,7 @@
       },
       "baseTotal": 195,
       "vanillaTotal": 195,
+      "sprite": null,
       "gameDexId": "010",
       "family": [
         "caterpie",
@@ -1882,6 +1894,7 @@
       },
       "baseTotal": 205,
       "vanillaTotal": 205,
+      "sprite": null,
       "gameDexId": "011",
       "family": [
         "caterpie",
@@ -2068,6 +2081,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 385,
+      "sprite": null,
       "gameDexId": "012",
       "family": [
         "caterpie",
@@ -2210,6 +2224,7 @@
       },
       "baseTotal": 195,
       "vanillaTotal": 195,
+      "sprite": null,
       "gameDexId": "013",
       "family": [
         "weedle",
@@ -2360,6 +2375,7 @@
       },
       "baseTotal": 205,
       "vanillaTotal": 205,
+      "sprite": null,
       "gameDexId": "014",
       "family": [
         "weedle",
@@ -2542,6 +2558,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 380,
+      "sprite": null,
       "gameDexId": "015",
       "family": [
         "weedle",
@@ -2712,6 +2729,7 @@
       },
       "baseTotal": 251,
       "vanillaTotal": 251,
+      "sprite": null,
       "gameDexId": "016",
       "family": [
         "pidgey",
@@ -2898,6 +2916,7 @@
       },
       "baseTotal": 358,
       "vanillaTotal": 349,
+      "sprite": null,
       "gameDexId": "017",
       "family": [
         "pidgey",
@@ -3080,6 +3099,7 @@
       },
       "baseTotal": 503,
       "vanillaTotal": 469,
+      "sprite": null,
       "gameDexId": "018",
       "family": [
         "pidgey",
@@ -3278,6 +3298,12 @@
       },
       "baseTotal": 255,
       "vanillaTotal": 253,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/rattata.png",
+        "sourceName": "RATTATA"
+      },
       "gameDexId": "019",
       "family": [
         "rattata",
@@ -3504,6 +3530,12 @@
       },
       "baseTotal": 460,
       "vanillaTotal": 413,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/ratreecate.png",
+        "sourceName": "RATREECATE"
+      },
       "gameDexId": "020",
       "family": [
         "rattata",
@@ -3722,6 +3754,12 @@
       },
       "baseTotal": 275,
       "vanillaTotal": 262,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/spearow.png",
+        "sourceName": "SPEAROW"
+      },
       "gameDexId": "021",
       "family": [
         "spearow",
@@ -3955,6 +3993,12 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 442,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/fearow.png",
+        "sourceName": "FEAROW"
+      },
       "gameDexId": "022",
       "family": [
         "spearow",
@@ -4157,6 +4201,12 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 288,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/ekans.png",
+        "sourceName": "EKANS"
+      },
       "gameDexId": "023",
       "family": [
         "ekans",
@@ -4444,6 +4494,12 @@
       },
       "baseTotal": 480,
       "vanillaTotal": 438,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/arbok.png",
+        "sourceName": "ARBOK"
+      },
       "gameDexId": "024",
       "family": [
         "ekans",
@@ -4714,6 +4770,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "025",
       "family": [
         "pikachu",
@@ -4943,6 +5000,7 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 475,
+      "sprite": null,
       "gameDexId": "026",
       "family": [
         "pikachu",
@@ -5129,6 +5187,12 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/sandshrew.png",
+        "sourceName": "SANDSHREW"
+      },
       "gameDexId": "027",
       "family": [
         "sandshrew",
@@ -5389,6 +5453,12 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 450,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/sandslash.png",
+        "sourceName": "SANDSLASH"
+      },
       "gameDexId": "028",
       "family": [
         "sandshrew",
@@ -5600,6 +5670,7 @@
       },
       "baseTotal": 275,
       "vanillaTotal": 275,
+      "sprite": null,
       "gameDexId": "029",
       "family": [
         "nidoran-f",
@@ -5807,6 +5878,7 @@
       },
       "baseTotal": 365,
       "vanillaTotal": 365,
+      "sprite": null,
       "gameDexId": "030",
       "family": [
         "nidoran-f",
@@ -6038,6 +6110,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 495,
+      "sprite": null,
       "gameDexId": "031",
       "family": [
         "nidoran-f",
@@ -6219,6 +6292,7 @@
       },
       "baseTotal": 273,
       "vanillaTotal": 273,
+      "sprite": null,
       "gameDexId": "032",
       "family": [
         "nidoran-m",
@@ -6426,6 +6500,7 @@
       },
       "baseTotal": 365,
       "vanillaTotal": 365,
+      "sprite": null,
       "gameDexId": "033",
       "family": [
         "nidoran-m",
@@ -6661,6 +6736,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 495,
+      "sprite": null,
       "gameDexId": "034",
       "family": [
         "nidoran-m",
@@ -6842,6 +6918,7 @@
       },
       "baseTotal": 323,
       "vanillaTotal": 323,
+      "sprite": null,
       "gameDexId": "035",
       "family": [
         "clefairy",
@@ -7043,6 +7120,7 @@
       },
       "baseTotal": 495,
       "vanillaTotal": 473,
+      "sprite": null,
       "gameDexId": "036",
       "family": [
         "clefairy",
@@ -7260,6 +7338,12 @@
       },
       "baseTotal": 299,
       "vanillaTotal": 299,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/vulpix.png",
+        "sourceName": "VULPIX"
+      },
       "gameDexId": "037",
       "family": [
         "vulpix",
@@ -7532,6 +7616,12 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 505,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/ninetales.png",
+        "sourceName": "NINETALES"
+      },
       "gameDexId": "038",
       "family": [
         "vulpix",
@@ -7798,6 +7888,12 @@
       },
       "baseTotal": 285,
       "vanillaTotal": 270,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/jigglypuff.png",
+        "sourceName": "JIGGLYPUFF"
+      },
       "gameDexId": "039",
       "family": [
         "jigglypuff",
@@ -7996,6 +8092,12 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 425,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/wigglytuff.png",
+        "sourceName": "WIGGLYTUFF"
+      },
       "gameDexId": "040",
       "family": [
         "jigglypuff",
@@ -8194,6 +8296,7 @@
       },
       "baseTotal": 245,
       "vanillaTotal": 245,
+      "sprite": null,
       "gameDexId": "041",
       "family": [
         "zubat",
@@ -8436,6 +8539,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 455,
+      "sprite": null,
       "gameDexId": "042",
       "family": [
         "zubat",
@@ -8720,6 +8824,7 @@
       },
       "baseTotal": 320,
       "vanillaTotal": 320,
+      "sprite": null,
       "gameDexId": "043",
       "family": [
         "oddish",
@@ -8972,6 +9077,7 @@
       },
       "baseTotal": 395,
       "vanillaTotal": 395,
+      "sprite": null,
       "gameDexId": "044",
       "family": [
         "oddish",
@@ -9221,6 +9327,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "045",
       "family": [
         "oddish",
@@ -9447,6 +9554,7 @@
       },
       "baseTotal": 285,
       "vanillaTotal": 285,
+      "sprite": null,
       "gameDexId": "046",
       "family": [
         "paras",
@@ -9692,6 +9800,7 @@
       },
       "baseTotal": 480,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "047",
       "family": [
         "paras",
@@ -9915,6 +10024,7 @@
       },
       "baseTotal": 305,
       "vanillaTotal": 305,
+      "sprite": null,
       "gameDexId": "048",
       "family": [
         "venonat",
@@ -10123,6 +10233,7 @@
       },
       "baseTotal": 475,
       "vanillaTotal": 450,
+      "sprite": null,
       "gameDexId": "049",
       "family": [
         "venonat",
@@ -10317,6 +10428,7 @@
       },
       "baseTotal": 265,
       "vanillaTotal": 265,
+      "sprite": null,
       "gameDexId": "050",
       "family": [
         "diglett",
@@ -10500,6 +10612,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "051",
       "family": [
         "diglett",
@@ -10647,6 +10760,7 @@
       },
       "baseTotal": 290,
       "vanillaTotal": 290,
+      "sprite": null,
       "gameDexId": "052",
       "family": [
         "meowth",
@@ -10826,6 +10940,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 440,
+      "sprite": null,
       "gameDexId": "053",
       "family": [
         "meowth",
@@ -10977,6 +11092,7 @@
       },
       "baseTotal": 320,
       "vanillaTotal": 320,
+      "sprite": null,
       "gameDexId": "054",
       "family": [
         "psyduck",
@@ -11325,6 +11441,7 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "055",
       "family": [
         "psyduck",
@@ -11641,6 +11758,7 @@
       },
       "baseTotal": 305,
       "vanillaTotal": 305,
+      "sprite": null,
       "gameDexId": "056",
       "family": [
         "mankey",
@@ -11855,6 +11973,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 455,
+      "sprite": null,
       "gameDexId": "057",
       "family": [
         "mankey",
@@ -12014,6 +12133,7 @@
       },
       "baseTotal": 350,
       "vanillaTotal": 350,
+      "sprite": null,
       "gameDexId": "058",
       "family": [
         "growlithe",
@@ -12273,6 +12393,7 @@
       },
       "baseTotal": 555,
       "vanillaTotal": 555,
+      "sprite": null,
       "gameDexId": "059",
       "family": [
         "growlithe",
@@ -12495,6 +12616,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "060",
       "family": [
         "poliwag",
@@ -13043,6 +13165,7 @@
       },
       "baseTotal": 385,
       "vanillaTotal": 385,
+      "sprite": null,
       "gameDexId": "061",
       "family": [
         "poliwag",
@@ -13498,6 +13621,7 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "062",
       "family": [
         "poliwag",
@@ -13819,6 +13943,7 @@
       },
       "baseTotal": 315,
       "vanillaTotal": 315,
+      "sprite": null,
       "gameDexId": "063",
       "family": [
         "abra",
@@ -14077,6 +14202,7 @@
       },
       "baseTotal": 400,
       "vanillaTotal": 400,
+      "sprite": null,
       "gameDexId": "064",
       "family": [
         "abra",
@@ -14320,6 +14446,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "065",
       "family": [
         "abra",
@@ -14583,6 +14710,12 @@
       },
       "baseTotal": 305,
       "vanillaTotal": 305,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/machop.png",
+        "sourceName": "MACHOP"
+      },
       "gameDexId": "066",
       "family": [
         "machop",
@@ -14862,6 +14995,12 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/machoke.png",
+        "sourceName": "MACHOKE"
+      },
       "gameDexId": "067",
       "family": [
         "machop",
@@ -15151,6 +15290,12 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 505,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/machamp.png",
+        "sourceName": "MACHAMP"
+      },
       "gameDexId": "068",
       "family": [
         "machop",
@@ -15367,6 +15512,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "069",
       "family": [
         "bellsprout",
@@ -15561,6 +15707,7 @@
       },
       "baseTotal": 390,
       "vanillaTotal": 390,
+      "sprite": null,
       "gameDexId": "070",
       "family": [
         "bellsprout",
@@ -15765,6 +15912,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "071",
       "family": [
         "bellsprout",
@@ -15929,6 +16077,7 @@
       },
       "baseTotal": 335,
       "vanillaTotal": 335,
+      "sprite": null,
       "gameDexId": "072",
       "family": [
         "tentacool",
@@ -16327,6 +16476,7 @@
       },
       "baseTotal": 515,
       "vanillaTotal": 515,
+      "sprite": null,
       "gameDexId": "073",
       "family": [
         "tentacool",
@@ -16664,6 +16814,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "074",
       "family": [
         "geodude",
@@ -16980,6 +17131,7 @@
       },
       "baseTotal": 390,
       "vanillaTotal": 390,
+      "sprite": null,
       "gameDexId": "075",
       "family": [
         "geodude",
@@ -17258,6 +17410,7 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 485,
+      "sprite": null,
       "gameDexId": "076",
       "family": [
         "geodude",
@@ -17506,6 +17659,12 @@
       },
       "baseTotal": 410,
       "vanillaTotal": 410,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/ponyta.png",
+        "sourceName": "PONYTA"
+      },
       "gameDexId": "077",
       "family": [
         "ponyta",
@@ -17758,6 +17917,12 @@
       },
       "baseTotal": 515,
       "vanillaTotal": 500,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/rapidash.png",
+        "sourceName": "RAPIDASH"
+      },
       "gameDexId": "078",
       "family": [
         "ponyta",
@@ -17968,6 +18133,7 @@
       },
       "baseTotal": 315,
       "vanillaTotal": 315,
+      "sprite": null,
       "gameDexId": "079",
       "family": [
         "slowpoke",
@@ -18284,6 +18450,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "080",
       "family": [
         "slowpoke",
@@ -18545,6 +18712,7 @@
       },
       "baseTotal": 325,
       "vanillaTotal": 325,
+      "sprite": null,
       "gameDexId": "081",
       "family": [
         "magnemite",
@@ -18739,6 +18907,7 @@
       },
       "baseTotal": 465,
       "vanillaTotal": 465,
+      "sprite": null,
       "gameDexId": "082",
       "family": [
         "magnemite",
@@ -18921,6 +19090,7 @@
       },
       "baseTotal": 310,
       "vanillaTotal": 310,
+      "sprite": null,
       "gameDexId": "084",
       "family": [
         "doduo",
@@ -19146,6 +19316,7 @@
       },
       "baseTotal": 480,
       "vanillaTotal": 460,
+      "sprite": null,
       "gameDexId": "085",
       "family": [
         "doduo",
@@ -19335,6 +19506,7 @@
       },
       "baseTotal": 325,
       "vanillaTotal": 325,
+      "sprite": null,
       "gameDexId": "086",
       "family": [
         "seel",
@@ -19655,6 +19827,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 475,
+      "sprite": null,
       "gameDexId": "087",
       "family": [
         "seel",
@@ -19924,6 +20097,7 @@
       },
       "baseTotal": 325,
       "vanillaTotal": 325,
+      "sprite": null,
       "gameDexId": "088",
       "family": [
         "grimer",
@@ -20153,6 +20327,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "089",
       "family": [
         "grimer",
@@ -20342,6 +20517,7 @@
       },
       "baseTotal": 305,
       "vanillaTotal": 305,
+      "sprite": null,
       "gameDexId": "090",
       "family": [
         "shellder",
@@ -20634,6 +20810,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "091",
       "family": [
         "shellder",
@@ -20895,6 +21072,7 @@
       },
       "baseTotal": 310,
       "vanillaTotal": 310,
+      "sprite": null,
       "gameDexId": "092",
       "family": [
         "gastly",
@@ -21140,6 +21318,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "093",
       "family": [
         "gastly",
@@ -21417,6 +21596,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "094",
       "family": [
         "gastly",
@@ -21672,6 +21852,7 @@
       },
       "baseTotal": 385,
       "vanillaTotal": 385,
+      "sprite": null,
       "gameDexId": "095",
       "family": [
         "onix",
@@ -21901,6 +22082,7 @@
       },
       "baseTotal": 328,
       "vanillaTotal": 328,
+      "sprite": null,
       "gameDexId": "096",
       "family": [
         "drowzee",
@@ -22094,6 +22276,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 483,
+      "sprite": null,
       "gameDexId": "097",
       "family": [
         "drowzee",
@@ -22270,6 +22453,12 @@
       },
       "baseTotal": 325,
       "vanillaTotal": 325,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/krabby.png",
+        "sourceName": "KRABBY"
+      },
       "gameDexId": "098",
       "family": [
         "krabby",
@@ -22481,6 +22670,12 @@
       },
       "baseTotal": 495,
       "vanillaTotal": 475,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/kingler.png",
+        "sourceName": "KINGLER"
+      },
       "gameDexId": "099",
       "family": [
         "krabby",
@@ -22639,6 +22834,7 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 330,
+      "sprite": null,
       "gameDexId": "100",
       "family": [
         "voltorb",
@@ -22833,6 +23029,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "101",
       "family": [
         "voltorb",
@@ -23013,6 +23210,12 @@
       },
       "baseTotal": 335,
       "vanillaTotal": 325,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/exeggcute.png",
+        "sourceName": "EXEGGCUTE"
+      },
       "gameDexId": "102",
       "family": [
         "exeggcute",
@@ -23290,6 +23493,12 @@
       },
       "baseTotal": 550,
       "vanillaTotal": 520,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/exeggutor.png",
+        "sourceName": "EXEGGUTOR"
+      },
       "gameDexId": "103",
       "family": [
         "exeggcute",
@@ -23488,6 +23697,12 @@
       },
       "baseTotal": 320,
       "vanillaTotal": 320,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/cubone.png",
+        "sourceName": "CUBONE"
+      },
       "gameDexId": "104",
       "family": [
         "cubone",
@@ -23793,6 +24008,12 @@
       },
       "baseTotal": 460,
       "vanillaTotal": 425,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/marowak.png",
+        "sourceName": "MAROWAK"
+      },
       "gameDexId": "105",
       "family": [
         "cubone",
@@ -24055,6 +24276,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 455,
+      "sprite": null,
       "gameDexId": "106",
       "family": [
         "hitmonlee",
@@ -24232,6 +24454,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 455,
+      "sprite": null,
       "gameDexId": "107",
       "family": [
         "hitmonlee",
@@ -24387,6 +24610,7 @@
       },
       "baseTotal": 385,
       "vanillaTotal": 385,
+      "sprite": null,
       "gameDexId": "108",
       "family": [
         "lickitung",
@@ -24548,6 +24772,7 @@
       },
       "baseTotal": 340,
       "vanillaTotal": 340,
+      "sprite": null,
       "gameDexId": "109",
       "family": [
         "koffing",
@@ -24758,6 +24983,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "110",
       "family": [
         "koffing",
@@ -24928,6 +25154,7 @@
       },
       "baseTotal": 345,
       "vanillaTotal": 345,
+      "sprite": null,
       "gameDexId": "111",
       "family": [
         "rhyhorn",
@@ -25112,6 +25339,7 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 485,
+      "sprite": null,
       "gameDexId": "112",
       "family": [
         "rhyhorn",
@@ -25264,6 +25492,12 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 450,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/chansey.png",
+        "sourceName": "CHANSEY"
+      },
       "gameDexId": "113",
       "family": [
         "chansey"
@@ -25454,6 +25688,12 @@
       },
       "baseTotal": 440,
       "vanillaTotal": 435,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/tangela.png",
+        "sourceName": "TANGELA"
+      },
       "gameDexId": "114",
       "family": [
         "tangela",
@@ -25749,6 +25989,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "115",
       "family": [
         "kangaskhan"
@@ -25912,6 +26153,7 @@
       },
       "baseTotal": 295,
       "vanillaTotal": 295,
+      "sprite": null,
       "gameDexId": "116",
       "family": [
         "horsea",
@@ -26496,6 +26738,7 @@
       },
       "baseTotal": 440,
       "vanillaTotal": 440,
+      "sprite": null,
       "gameDexId": "117",
       "family": [
         "horsea",
@@ -26938,6 +27181,7 @@
       },
       "baseTotal": 320,
       "vanillaTotal": 320,
+      "sprite": null,
       "gameDexId": "118",
       "family": [
         "goldeen",
@@ -27253,6 +27497,7 @@
       },
       "baseTotal": 475,
       "vanillaTotal": 450,
+      "sprite": null,
       "gameDexId": "119",
       "family": [
         "goldeen",
@@ -27511,6 +27756,7 @@
       },
       "baseTotal": 340,
       "vanillaTotal": 340,
+      "sprite": null,
       "gameDexId": "120",
       "family": [
         "staryu",
@@ -27791,6 +28037,7 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 520,
+      "sprite": null,
       "gameDexId": "121",
       "family": [
         "staryu",
@@ -28062,6 +28309,7 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 460,
+      "sprite": null,
       "gameDexId": "122",
       "family": [
         "mr-mime"
@@ -28227,6 +28475,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "123",
       "family": [
         "scyther",
@@ -28452,6 +28701,12 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 455,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/jynx.png",
+        "sourceName": "JYNX"
+      },
       "gameDexId": "124",
       "family": [
         "jynx"
@@ -28762,6 +29017,12 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/electabuzz.png",
+        "sourceName": "ELECTABUZZ"
+      },
       "gameDexId": "125",
       "family": [
         "electabuzz",
@@ -28930,6 +29191,12 @@
       },
       "baseTotal": 495,
       "vanillaTotal": 495,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/magmar.png",
+        "sourceName": "MAGMAR"
+      },
       "gameDexId": "126",
       "family": [
         "magmar",
@@ -29180,6 +29447,7 @@
       },
       "baseTotal": 515,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "127",
       "family": [
         "pinsir"
@@ -29384,6 +29652,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "128",
       "family": [
         "tauros"
@@ -29537,6 +29806,7 @@
       },
       "baseTotal": 200,
       "vanillaTotal": 200,
+      "sprite": null,
       "gameDexId": "129",
       "family": [
         "magikarp",
@@ -30199,6 +30469,7 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 540,
+      "sprite": null,
       "gameDexId": "130",
       "family": [
         "magikarp",
@@ -30904,6 +31175,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 535,
+      "sprite": null,
       "gameDexId": "131",
       "family": [
         "lapras"
@@ -31091,6 +31363,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "132",
       "family": [
         "scyther",
@@ -31276,6 +31549,7 @@
       },
       "baseTotal": 325,
       "vanillaTotal": 345,
+      "sprite": null,
       "gameDexId": "133",
       "family": [
         "eevee",
@@ -31515,6 +31789,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "134",
       "family": [
         "eevee",
@@ -31718,6 +31993,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "135",
       "family": [
         "eevee",
@@ -31917,6 +32193,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "136",
       "family": [
         "eevee",
@@ -32106,6 +32383,7 @@
       },
       "baseTotal": 395,
       "vanillaTotal": 395,
+      "sprite": null,
       "gameDexId": "137",
       "family": [
         "porygon",
@@ -32278,6 +32556,12 @@
       },
       "baseTotal": 355,
       "vanillaTotal": 355,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/omanyte.png",
+        "sourceName": "OMANYTE"
+      },
       "gameDexId": "138",
       "family": [
         "omanyte",
@@ -32601,6 +32885,12 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 495,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/omastar.png",
+        "sourceName": "OMASTAR"
+      },
       "gameDexId": "139",
       "family": [
         "omanyte",
@@ -32838,6 +33128,12 @@
       },
       "baseTotal": 355,
       "vanillaTotal": 355,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/kabuto.png",
+        "sourceName": "KABUTO"
+      },
       "gameDexId": "140",
       "family": [
         "kabuto",
@@ -33036,6 +33332,12 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 495,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/kabutops.png",
+        "sourceName": "KABUTOPS"
+      },
       "gameDexId": "141",
       "family": [
         "kabuto",
@@ -33241,6 +33543,12 @@
       },
       "baseTotal": 515,
       "vanillaTotal": 515,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/aerodactyl.png",
+        "sourceName": "AERODACTYL"
+      },
       "gameDexId": "142",
       "family": [
         "aerodactyl"
@@ -33441,6 +33749,7 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 540,
+      "sprite": null,
       "gameDexId": "143",
       "family": [
         "snorlax"
@@ -33626,6 +33935,12 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 352,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/farfetchd.png",
+        "sourceName": "FARFETCH'D"
+      },
       "gameDexId": "144",
       "family": [
         "farfetchd",
@@ -33817,6 +34132,7 @@
       },
       "baseTotal": 507,
       "vanillaTotal": 507,
+      "sprite": null,
       "gameDexId": "145",
       "family": [
         "farfetchd",
@@ -34010,6 +34326,12 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 465,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/stantler.png",
+        "sourceName": "STANTLER"
+      },
       "gameDexId": "146",
       "family": [
         "stantler"
@@ -34208,6 +34530,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "147",
       "family": [
         "dratini",
@@ -34446,6 +34769,7 @@
       },
       "baseTotal": 420,
       "vanillaTotal": 420,
+      "sprite": null,
       "gameDexId": "148",
       "family": [
         "dratini",
@@ -34668,6 +34992,7 @@
       },
       "baseTotal": 600,
       "vanillaTotal": 600,
+      "sprite": null,
       "gameDexId": "149",
       "family": [
         "dratini",
@@ -34916,6 +35241,12 @@
       "statDelta": null,
       "baseTotal": 500,
       "vanillaTotal": null,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/kecleon-bb.png",
+        "sourceName": "KECLEON (BATTLE BOND)"
+      },
       "gameDexId": "150",
       "family": [
         "kecleon-bb",
@@ -35071,6 +35402,12 @@
       "statDelta": null,
       "baseTotal": 500,
       "vanillaTotal": null,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/mawile-bb.png",
+        "sourceName": "MAWILE (BATTLE BOND)"
+      },
       "gameDexId": "151",
       "family": [
         "mawile-bb",
@@ -35214,6 +35551,7 @@
       },
       "baseTotal": 318,
       "vanillaTotal": 318,
+      "sprite": null,
       "gameDexId": "152",
       "family": [
         "chikorita",
@@ -35416,6 +35754,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "153",
       "family": [
         "chikorita",
@@ -35614,6 +35953,12 @@
       },
       "baseTotal": 545,
       "vanillaTotal": 525,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/meganium.png",
+        "sourceName": "MEGANIUM"
+      },
       "gameDexId": "154",
       "family": [
         "chikorita",
@@ -35810,6 +36155,7 @@
       },
       "baseTotal": 310,
       "vanillaTotal": 309,
+      "sprite": null,
       "gameDexId": "155",
       "family": [
         "cyndaquil",
@@ -36012,6 +36358,7 @@
       },
       "baseTotal": 415,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "156",
       "family": [
         "cyndaquil",
@@ -36202,6 +36549,7 @@
       },
       "baseTotal": 545,
       "vanillaTotal": 534,
+      "sprite": null,
       "gameDexId": "157",
       "family": [
         "cyndaquil",
@@ -36376,6 +36724,7 @@
       },
       "baseTotal": 314,
       "vanillaTotal": 314,
+      "sprite": null,
       "gameDexId": "158",
       "family": [
         "totodile",
@@ -36578,6 +36927,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "159",
       "family": [
         "totodile",
@@ -36772,6 +37122,12 @@
       },
       "baseTotal": 545,
       "vanillaTotal": 530,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/feraligatr.png",
+        "sourceName": "FERALIGATR"
+      },
       "gameDexId": "160",
       "family": [
         "totodile",
@@ -36956,6 +37312,7 @@
       },
       "baseTotal": 215,
       "vanillaTotal": 215,
+      "sprite": null,
       "gameDexId": "161",
       "family": [
         "sentret",
@@ -37175,6 +37532,7 @@
       },
       "baseTotal": 460,
       "vanillaTotal": 415,
+      "sprite": null,
       "gameDexId": "162",
       "family": [
         "sentret",
@@ -37400,6 +37758,12 @@
       },
       "baseTotal": 275,
       "vanillaTotal": 262,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/hoothoot.png",
+        "sourceName": "HOOTHOOT"
+      },
       "gameDexId": "163",
       "family": [
         "hoothoot",
@@ -37625,6 +37989,12 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 442,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/noctowl.png",
+        "sourceName": "NOCTOWL"
+      },
       "gameDexId": "164",
       "family": [
         "hoothoot",
@@ -37810,6 +38180,7 @@
       },
       "baseTotal": 290,
       "vanillaTotal": 265,
+      "sprite": null,
       "gameDexId": "165",
       "family": [
         "ledyba",
@@ -37985,6 +38356,7 @@
       },
       "baseTotal": 430,
       "vanillaTotal": 390,
+      "sprite": null,
       "gameDexId": "166",
       "family": [
         "ledyba",
@@ -38128,6 +38500,7 @@
       },
       "baseTotal": 260,
       "vanillaTotal": 250,
+      "sprite": null,
       "gameDexId": "167",
       "family": [
         "spinarak",
@@ -38370,6 +38743,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 390,
+      "sprite": null,
       "gameDexId": "168",
       "family": [
         "spinarak",
@@ -38601,6 +38975,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 535,
+      "sprite": null,
       "gameDexId": "169",
       "family": [
         "crobat"
@@ -38730,6 +39105,7 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 330,
+      "sprite": null,
       "gameDexId": "170",
       "family": [
         "chinchou",
@@ -39059,6 +39435,7 @@
       },
       "baseTotal": 475,
       "vanillaTotal": 460,
+      "sprite": null,
       "gameDexId": "171",
       "family": [
         "chinchou",
@@ -39370,6 +39747,7 @@
       },
       "baseTotal": 570,
       "vanillaTotal": 570,
+      "sprite": null,
       "gameDexId": "172",
       "family": [
         "scream-tail"
@@ -39582,6 +39960,7 @@
       },
       "baseTotal": 570,
       "vanillaTotal": 570,
+      "sprite": null,
       "gameDexId": "173",
       "family": [
         "sandy-shock"
@@ -39754,6 +40133,7 @@
       },
       "baseTotal": 570,
       "vanillaTotal": 570,
+      "sprite": null,
       "gameDexId": "174",
       "family": [
         "flutter-mane"
@@ -39929,6 +40309,7 @@
       },
       "baseTotal": 245,
       "vanillaTotal": 245,
+      "sprite": null,
       "gameDexId": "175",
       "family": [
         "togepi",
@@ -40107,6 +40488,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "176",
       "family": [
         "togepi",
@@ -40265,6 +40647,12 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 320,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/natu.png",
+        "sourceName": "NATU"
+      },
       "gameDexId": "177",
       "family": [
         "natu",
@@ -40525,6 +40913,12 @@
       },
       "baseTotal": 510,
       "vanillaTotal": 470,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/xatu.png",
+        "sourceName": "XATU"
+      },
       "gameDexId": "178",
       "family": [
         "natu",
@@ -40752,6 +41146,12 @@
       },
       "baseTotal": 280,
       "vanillaTotal": 280,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/mareep.png",
+        "sourceName": "MAREEP"
+      },
       "gameDexId": "179",
       "family": [
         "mareep",
@@ -41074,6 +41474,12 @@
       },
       "baseTotal": 365,
       "vanillaTotal": 365,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/flaaffy.png",
+        "sourceName": "FLAAFFY"
+      },
       "gameDexId": "180",
       "family": [
         "mareep",
@@ -41366,6 +41772,12 @@
       },
       "baseTotal": 530,
       "vanillaTotal": 500,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/ampharos.png",
+        "sourceName": "AMPHAROS"
+      },
       "gameDexId": "181",
       "family": [
         "mareep",
@@ -41734,6 +42146,12 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 480,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/bellossom.png",
+        "sourceName": "BELLOSSOM"
+      },
       "gameDexId": "182",
       "family": [
         "oddish",
@@ -41978,6 +42396,7 @@
       },
       "baseTotal": 250,
       "vanillaTotal": 250,
+      "sprite": null,
       "gameDexId": "183",
       "family": [
         "marill",
@@ -42229,6 +42648,7 @@
       },
       "baseTotal": 410,
       "vanillaTotal": 410,
+      "sprite": null,
       "gameDexId": "184",
       "family": [
         "marill",
@@ -42442,6 +42862,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 435,
+      "sprite": null,
       "gameDexId": "185",
       "family": [
         "sudowoodo"
@@ -42658,6 +43079,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "186",
       "family": [
         "poliwag",
@@ -43042,6 +43464,7 @@
       },
       "baseTotal": 250,
       "vanillaTotal": 250,
+      "sprite": null,
       "gameDexId": "187",
       "family": [
         "hoppip",
@@ -43282,6 +43705,7 @@
       },
       "baseTotal": 340,
       "vanillaTotal": 340,
+      "sprite": null,
       "gameDexId": "188",
       "family": [
         "hoppip",
@@ -43488,6 +43912,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 450,
+      "sprite": null,
       "gameDexId": "189",
       "family": [
         "hoppip",
@@ -43685,6 +44110,7 @@
       },
       "baseTotal": 360,
       "vanillaTotal": 360,
+      "sprite": null,
       "gameDexId": "190",
       "family": [
         "aipom",
@@ -43888,6 +44314,12 @@
       },
       "baseTotal": 220,
       "vanillaTotal": 180,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/sunkern.png",
+        "sourceName": "SUNKERN"
+      },
       "gameDexId": "191",
       "family": [
         "sunkern",
@@ -44103,6 +44535,12 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 425,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/sunflora.png",
+        "sourceName": "SUNFLORA"
+      },
       "gameDexId": "192",
       "family": [
         "sunkern",
@@ -44275,6 +44713,7 @@
       },
       "baseTotal": 390,
       "vanillaTotal": 390,
+      "sprite": null,
       "gameDexId": "193",
       "family": [
         "yanma",
@@ -44443,6 +44882,7 @@
       },
       "baseTotal": 210,
       "vanillaTotal": 210,
+      "sprite": null,
       "gameDexId": "194",
       "family": [
         "wooper",
@@ -44701,6 +45141,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 430,
+      "sprite": null,
       "gameDexId": "195",
       "family": [
         "wooper",
@@ -44941,6 +45382,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "196",
       "family": [
         "eevee",
@@ -45140,6 +45582,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "197",
       "family": [
         "eevee",
@@ -45369,6 +45812,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "198",
       "family": [
         "murkrow",
@@ -45574,6 +46018,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "199",
       "family": [
         "slowpoke",
@@ -45802,6 +46247,7 @@
       },
       "baseTotal": 435,
       "vanillaTotal": 435,
+      "sprite": null,
       "gameDexId": "200",
       "family": [
         "misdreavus",
@@ -46020,6 +46466,7 @@
       "statDelta": null,
       "baseTotal": 525,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "201",
       "family": [
         "pikachu",
@@ -46206,6 +46653,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "202",
       "family": [
         "wobbuffet"
@@ -46374,6 +46822,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 455,
+      "sprite": null,
       "gameDexId": "203",
       "family": [
         "girafarig",
@@ -46572,6 +47021,7 @@
       },
       "baseTotal": 290,
       "vanillaTotal": 290,
+      "sprite": null,
       "gameDexId": "204",
       "family": [
         "pineco",
@@ -46752,6 +47202,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 465,
+      "sprite": null,
       "gameDexId": "205",
       "family": [
         "pineco",
@@ -46903,6 +47354,7 @@
       },
       "baseTotal": 460,
       "vanillaTotal": 415,
+      "sprite": null,
       "gameDexId": "206",
       "family": [
         "dunsparce",
@@ -47079,6 +47531,7 @@
       },
       "baseTotal": 435,
       "vanillaTotal": 430,
+      "sprite": null,
       "gameDexId": "207",
       "family": [
         "gligar",
@@ -47305,6 +47758,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 510,
+      "sprite": null,
       "gameDexId": "208",
       "family": [
         "onix",
@@ -47517,6 +47971,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "209",
       "family": [
         "snubbull",
@@ -47748,6 +48203,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 450,
+      "sprite": null,
       "gameDexId": "210",
       "family": [
         "snubbull",
@@ -47927,6 +48383,7 @@
       },
       "baseTotal": 570,
       "vanillaTotal": 570,
+      "sprite": null,
       "gameDexId": "211",
       "family": [
         "great-tusk"
@@ -48136,6 +48593,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "212",
       "family": [
         "scyther",
@@ -48378,6 +48836,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 505,
+      "sprite": null,
       "gameDexId": "213",
       "family": [
         "shuckle"
@@ -48560,6 +49019,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "214",
       "family": [
         "heracross"
@@ -48744,6 +49204,12 @@
       },
       "baseTotal": 430,
       "vanillaTotal": 430,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/sneasel.png",
+        "sourceName": "SNEASEL"
+      },
       "gameDexId": "215",
       "family": [
         "sneasel",
@@ -48978,6 +49444,7 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 330,
+      "sprite": null,
       "gameDexId": "216",
       "family": [
         "teddiursa",
@@ -49221,6 +49688,7 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "217",
       "family": [
         "teddiursa",
@@ -49457,6 +49925,7 @@
       },
       "baseTotal": 280,
       "vanillaTotal": 250,
+      "sprite": null,
       "gameDexId": "218",
       "family": [
         "slugma",
@@ -49780,6 +50249,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 410,
+      "sprite": null,
       "gameDexId": "219",
       "family": [
         "slugma",
@@ -50011,6 +50481,7 @@
       },
       "baseTotal": 250,
       "vanillaTotal": 250,
+      "sprite": null,
       "gameDexId": "220",
       "family": [
         "swinub",
@@ -50274,6 +50745,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 450,
+      "sprite": null,
       "gameDexId": "221",
       "family": [
         "swinub",
@@ -50559,6 +51031,7 @@
       },
       "baseTotal": 590,
       "vanillaTotal": 590,
+      "sprite": null,
       "gameDexId": "222",
       "family": [
         "raging-bolt"
@@ -50718,6 +51191,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "223",
       "family": [
         "remoraid",
@@ -50997,6 +51471,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "224",
       "family": [
         "remoraid",
@@ -51276,6 +51751,7 @@
       },
       "baseTotal": 590,
       "vanillaTotal": 590,
+      "sprite": null,
       "gameDexId": "225",
       "family": [
         "gouging-fire"
@@ -51445,6 +51921,12 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 465,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/mantine.png",
+        "sourceName": "MANTINE"
+      },
       "gameDexId": "226",
       "family": [
         "mantine"
@@ -51677,6 +52159,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 465,
+      "sprite": null,
       "gameDexId": "227",
       "family": [
         "skarmory"
@@ -51837,6 +52320,7 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 330,
+      "sprite": null,
       "gameDexId": "228",
       "family": [
         "houndour",
@@ -52072,6 +52556,7 @@
       },
       "baseTotal": 510,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "229",
       "family": [
         "houndour",
@@ -52307,6 +52792,7 @@
       },
       "baseTotal": 555,
       "vanillaTotal": 540,
+      "sprite": null,
       "gameDexId": "230",
       "family": [
         "horsea",
@@ -52676,6 +53162,7 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 330,
+      "sprite": null,
       "gameDexId": "231",
       "family": [
         "phanpy",
@@ -52898,6 +53385,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 500,
+      "sprite": null,
       "gameDexId": "232",
       "family": [
         "phanpy",
@@ -53075,6 +53563,7 @@
       },
       "baseTotal": 515,
       "vanillaTotal": 515,
+      "sprite": null,
       "gameDexId": "233",
       "family": [
         "porygon",
@@ -53259,6 +53748,7 @@
       },
       "baseTotal": 590,
       "vanillaTotal": 590,
+      "sprite": null,
       "gameDexId": "234",
       "family": [
         "roaring-moon"
@@ -53459,6 +53949,7 @@
       },
       "baseTotal": 590,
       "vanillaTotal": 590,
+      "sprite": null,
       "gameDexId": "235",
       "family": [
         "walking-wake"
@@ -53583,6 +54074,7 @@
       },
       "baseTotal": 210,
       "vanillaTotal": 210,
+      "sprite": null,
       "gameDexId": "236",
       "family": [
         "hitmonlee",
@@ -53770,6 +54262,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 455,
+      "sprite": null,
       "gameDexId": "237",
       "family": [
         "hitmonlee",
@@ -53928,6 +54421,12 @@
       },
       "baseTotal": 305,
       "vanillaTotal": 305,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/smoochum.png",
+        "sourceName": "SMOOCHUM"
+      },
       "gameDexId": "238",
       "family": [
         "smoochum"
@@ -54142,6 +54641,12 @@
       },
       "baseTotal": 360,
       "vanillaTotal": 360,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/elekid.png",
+        "sourceName": "ELEKID"
+      },
       "gameDexId": "239",
       "family": [
         "electabuzz",
@@ -54349,6 +54854,12 @@
       },
       "baseTotal": 365,
       "vanillaTotal": 365,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/magby.png",
+        "sourceName": "MAGBY"
+      },
       "gameDexId": "240",
       "family": [
         "magmar",
@@ -54600,6 +55111,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "241",
       "family": [
         "miltank"
@@ -54774,6 +55286,12 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 540,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/blissey.png",
+        "sourceName": "BLISSEY"
+      },
       "gameDexId": "242",
       "family": [
         "blissey"
@@ -54960,6 +55478,7 @@
       },
       "baseTotal": 580,
       "vanillaTotal": 580,
+      "sprite": null,
       "gameDexId": "243",
       "family": [
         "raikou",
@@ -55168,6 +55687,7 @@
       },
       "baseTotal": 580,
       "vanillaTotal": 580,
+      "sprite": null,
       "gameDexId": "244",
       "family": [
         "raikou",
@@ -55376,6 +55896,7 @@
       },
       "baseTotal": 580,
       "vanillaTotal": 580,
+      "sprite": null,
       "gameDexId": "245",
       "family": [
         "raikou",
@@ -55563,6 +56084,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "246",
       "family": [
         "larvitar",
@@ -55780,6 +56302,7 @@
       },
       "baseTotal": 410,
       "vanillaTotal": 410,
+      "sprite": null,
       "gameDexId": "247",
       "family": [
         "larvitar",
@@ -56024,6 +56547,7 @@
       },
       "baseTotal": 600,
       "vanillaTotal": 600,
+      "sprite": null,
       "gameDexId": "248",
       "family": [
         "larvitar",
@@ -56241,6 +56765,12 @@
       "statDelta": null,
       "baseTotal": 500,
       "vanillaTotal": null,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/plusle-bb.png",
+        "sourceName": "PLUSLE (BATTLE BOND)"
+      },
       "gameDexId": "249",
       "family": [
         "plusle-bb",
@@ -56426,6 +56956,12 @@
       "statDelta": null,
       "baseTotal": 500,
       "vanillaTotal": null,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/minun-bb.png",
+        "sourceName": "MINUN (BATTLE BOND)"
+      },
       "gameDexId": "250",
       "family": [
         "minun-bb",
@@ -56590,6 +57126,12 @@
       },
       "baseTotal": 600,
       "vanillaTotal": 600,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/celebi.png",
+        "sourceName": "CELEBI"
+      },
       "gameDexId": "251",
       "family": [
         "celebi"
@@ -56745,6 +57287,7 @@
       },
       "baseTotal": 310,
       "vanillaTotal": 310,
+      "sprite": null,
       "gameDexId": "252",
       "family": [
         "treecko",
@@ -56955,6 +57498,7 @@
       },
       "baseTotal": 415,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "253",
       "family": [
         "treecko",
@@ -57136,6 +57680,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 530,
+      "sprite": null,
       "gameDexId": "254",
       "family": [
         "treecko",
@@ -57295,6 +57840,7 @@
       },
       "baseTotal": 310,
       "vanillaTotal": 310,
+      "sprite": null,
       "gameDexId": "255",
       "family": [
         "torchic",
@@ -57506,6 +58052,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "256",
       "family": [
         "torchic",
@@ -57696,6 +58243,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 530,
+      "sprite": null,
       "gameDexId": "257",
       "family": [
         "torchic",
@@ -57859,6 +58407,7 @@
       },
       "baseTotal": 310,
       "vanillaTotal": 310,
+      "sprite": null,
       "gameDexId": "258",
       "family": [
         "mudkip",
@@ -58070,6 +58619,7 @@
       },
       "baseTotal": 405,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "259",
       "family": [
         "mudkip",
@@ -58256,6 +58806,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 535,
+      "sprite": null,
       "gameDexId": "260",
       "family": [
         "mudkip",
@@ -58420,6 +58971,12 @@
       },
       "baseTotal": 220,
       "vanillaTotal": 220,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/poochyena.png",
+        "sourceName": "POOCHYENA"
+      },
       "gameDexId": "261",
       "family": [
         "poochyena",
@@ -58626,6 +59183,12 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 420,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/mightyena.png",
+        "sourceName": "MIGHTYENA"
+      },
       "gameDexId": "262",
       "family": [
         "poochyena",
@@ -58805,6 +59368,7 @@
       },
       "baseTotal": 240,
       "vanillaTotal": 240,
+      "sprite": null,
       "gameDexId": "263",
       "family": [
         "zigzagoon",
@@ -59020,6 +59584,7 @@
       },
       "baseTotal": 475,
       "vanillaTotal": 420,
+      "sprite": null,
       "gameDexId": "264",
       "family": [
         "zigzagoon",
@@ -59185,6 +59750,7 @@
       },
       "baseTotal": 195,
       "vanillaTotal": 195,
+      "sprite": null,
       "gameDexId": "265",
       "family": [
         "wurmple"
@@ -59303,6 +59869,7 @@
       },
       "baseTotal": 205,
       "vanillaTotal": 205,
+      "sprite": null,
       "gameDexId": "266",
       "family": [
         "silcoon",
@@ -59461,6 +60028,12 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 385,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/beautifly.png",
+        "sourceName": "BEAUTIFLY"
+      },
       "gameDexId": "267",
       "family": [
         "silcoon",
@@ -59585,6 +60158,7 @@
       },
       "baseTotal": 205,
       "vanillaTotal": 205,
+      "sprite": null,
       "gameDexId": "268",
       "family": [
         "cascoon",
@@ -59743,6 +60317,12 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 385,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/dustox.png",
+        "sourceName": "DUSTOX"
+      },
       "gameDexId": "269",
       "family": [
         "cascoon",
@@ -59905,6 +60485,7 @@
       },
       "baseTotal": 220,
       "vanillaTotal": 220,
+      "sprite": null,
       "gameDexId": "270",
       "family": [
         "lotad",
@@ -60117,6 +60698,7 @@
       },
       "baseTotal": 340,
       "vanillaTotal": 340,
+      "sprite": null,
       "gameDexId": "271",
       "family": [
         "lotad",
@@ -60337,6 +60919,7 @@
       },
       "baseTotal": 480,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "272",
       "family": [
         "lotad",
@@ -60534,6 +61117,7 @@
       },
       "baseTotal": 220,
       "vanillaTotal": 220,
+      "sprite": null,
       "gameDexId": "273",
       "family": [
         "seedot",
@@ -60736,6 +61320,7 @@
       },
       "baseTotal": 340,
       "vanillaTotal": 340,
+      "sprite": null,
       "gameDexId": "274",
       "family": [
         "seedot",
@@ -60954,6 +61539,7 @@
       },
       "baseTotal": 480,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "275",
       "family": [
         "seedot",
@@ -61116,6 +61702,7 @@
       },
       "baseTotal": 280,
       "vanillaTotal": 270,
+      "sprite": null,
       "gameDexId": "276",
       "family": [
         "taillow",
@@ -61306,6 +61893,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 430,
+      "sprite": null,
       "gameDexId": "277",
       "family": [
         "taillow",
@@ -61470,6 +62058,7 @@
       },
       "baseTotal": 270,
       "vanillaTotal": 270,
+      "sprite": null,
       "gameDexId": "278",
       "family": [
         "wingull",
@@ -61773,6 +62362,7 @@
       },
       "baseTotal": 430,
       "vanillaTotal": 430,
+      "sprite": null,
       "gameDexId": "279",
       "family": [
         "wingull",
@@ -62049,6 +62639,12 @@
       },
       "baseTotal": 210,
       "vanillaTotal": 198,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/ralts.png",
+        "sourceName": "RALTS"
+      },
       "gameDexId": "280",
       "family": [
         "ralts",
@@ -62310,6 +62906,12 @@
       },
       "baseTotal": 280,
       "vanillaTotal": 278,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/kirlia.png",
+        "sourceName": "KIRLIA"
+      },
       "gameDexId": "281",
       "family": [
         "ralts",
@@ -62554,6 +63156,12 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 518,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/gardevoir.png",
+        "sourceName": "GARDEVOIR"
+      },
       "gameDexId": "282",
       "family": [
         "ralts",
@@ -62777,6 +63385,7 @@
       },
       "baseTotal": 269,
       "vanillaTotal": 269,
+      "sprite": null,
       "gameDexId": "283",
       "family": [
         "surskit",
@@ -62992,6 +63601,7 @@
       },
       "baseTotal": 480,
       "vanillaTotal": 414,
+      "sprite": null,
       "gameDexId": "284",
       "family": [
         "surskit",
@@ -63149,6 +63759,12 @@
       },
       "baseTotal": 295,
       "vanillaTotal": 295,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/shroomish.png",
+        "sourceName": "SHROOMISH"
+      },
       "gameDexId": "285",
       "family": [
         "shroomish",
@@ -63355,6 +63971,12 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 460,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/breloom.png",
+        "sourceName": "BRELOOM"
+      },
       "gameDexId": "286",
       "family": [
         "shroomish",
@@ -63555,6 +64177,7 @@
       },
       "baseTotal": 280,
       "vanillaTotal": 280,
+      "sprite": null,
       "gameDexId": "287",
       "family": [
         "slakoth",
@@ -63751,6 +64374,7 @@
       },
       "baseTotal": 475,
       "vanillaTotal": 440,
+      "sprite": null,
       "gameDexId": "288",
       "family": [
         "slakoth",
@@ -63961,6 +64585,7 @@
       },
       "baseTotal": 560,
       "vanillaTotal": 670,
+      "sprite": null,
       "gameDexId": "289",
       "family": [
         "slakoth",
@@ -64116,6 +64741,7 @@
       },
       "baseTotal": 266,
       "vanillaTotal": 266,
+      "sprite": null,
       "gameDexId": "290",
       "family": [
         "nincada",
@@ -64305,6 +64931,7 @@
       },
       "baseTotal": 456,
       "vanillaTotal": 456,
+      "sprite": null,
       "gameDexId": "291",
       "family": [
         "nincada",
@@ -64480,6 +65107,7 @@
       },
       "baseTotal": 236,
       "vanillaTotal": 236,
+      "sprite": null,
       "gameDexId": "292",
       "family": [
         "nincada",
@@ -64625,6 +65253,7 @@
       },
       "baseTotal": 240,
       "vanillaTotal": 240,
+      "sprite": null,
       "gameDexId": "293",
       "family": [
         "whismur",
@@ -64883,6 +65512,7 @@
       },
       "baseTotal": 360,
       "vanillaTotal": 360,
+      "sprite": null,
       "gameDexId": "294",
       "family": [
         "whismur",
@@ -65168,6 +65798,7 @@
       },
       "baseTotal": 545,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "295",
       "family": [
         "whismur",
@@ -65405,6 +66036,7 @@
       },
       "baseTotal": 237,
       "vanillaTotal": 237,
+      "sprite": null,
       "gameDexId": "296",
       "family": [
         "makuhita",
@@ -65606,6 +66238,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 474,
+      "sprite": null,
       "gameDexId": "297",
       "family": [
         "makuhita",
@@ -65780,6 +66413,12 @@
       "statDelta": null,
       "baseTotal": 525,
       "vanillaTotal": 0,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/yggdreon.png",
+        "sourceName": "YGGDREON"
+      },
       "gameDexId": "298",
       "family": [
         "eevee",
@@ -65982,6 +66621,7 @@
       },
       "baseTotal": 375,
       "vanillaTotal": 375,
+      "sprite": null,
       "gameDexId": "299",
       "family": [
         "nosepass",
@@ -66189,6 +66829,7 @@
       },
       "baseTotal": 290,
       "vanillaTotal": 260,
+      "sprite": null,
       "gameDexId": "300",
       "family": [
         "skitty",
@@ -66381,6 +67022,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 380,
+      "sprite": null,
       "gameDexId": "301",
       "family": [
         "skitty",
@@ -66551,6 +67193,7 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 380,
+      "sprite": null,
       "gameDexId": "302",
       "family": [
         "sableye"
@@ -66807,6 +67450,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 380,
+      "sprite": null,
       "gameDexId": "303",
       "family": [
         "mawile-bb",
@@ -66977,6 +67621,12 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 330,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/aron.png",
+        "sourceName": "ARON"
+      },
       "gameDexId": "304",
       "family": [
         "aron",
@@ -67257,6 +67907,12 @@
       },
       "baseTotal": 430,
       "vanillaTotal": 430,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/lairon.png",
+        "sourceName": "LAIRON"
+      },
       "gameDexId": "305",
       "family": [
         "aron",
@@ -67530,6 +68186,12 @@
       },
       "baseTotal": 530,
       "vanillaTotal": 530,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/aggron.png",
+        "sourceName": "AGGRON"
+      },
       "gameDexId": "306",
       "family": [
         "aron",
@@ -67796,6 +68458,12 @@
       },
       "baseTotal": 290,
       "vanillaTotal": 280,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/meditite.png",
+        "sourceName": "MEDITITE"
+      },
       "gameDexId": "307",
       "family": [
         "meditite",
@@ -68069,6 +68737,12 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 410,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/medicham.png",
+        "sourceName": "MEDICHAM"
+      },
       "gameDexId": "308",
       "family": [
         "meditite",
@@ -68314,6 +68988,7 @@
       },
       "baseTotal": 295,
       "vanillaTotal": 295,
+      "sprite": null,
       "gameDexId": "309",
       "family": [
         "electrike",
@@ -68538,6 +69213,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 475,
+      "sprite": null,
       "gameDexId": "310",
       "family": [
         "electrike",
@@ -68732,6 +69408,7 @@
       },
       "baseTotal": 415,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "311",
       "family": [
         "plusle-bb",
@@ -68869,6 +69546,7 @@
       },
       "baseTotal": 415,
       "vanillaTotal": 405,
+      "sprite": null,
       "gameDexId": "312",
       "family": [
         "minun-bb",
@@ -69000,6 +69678,12 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 400,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/volbeat.png",
+        "sourceName": "VOLBEAT"
+      },
       "gameDexId": "313",
       "family": [
         "volbeat",
@@ -69232,6 +69916,12 @@
       },
       "baseTotal": 450,
       "vanillaTotal": 400,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/illumise.png",
+        "sourceName": "ILLUMISE"
+      },
       "gameDexId": "314",
       "family": [
         "volbeat",
@@ -69478,6 +70168,7 @@
       },
       "baseTotal": 400,
       "vanillaTotal": 400,
+      "sprite": null,
       "gameDexId": "315",
       "family": [
         "roselia",
@@ -69671,6 +70362,12 @@
       },
       "baseTotal": 305,
       "vanillaTotal": 302,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/gulpin.png",
+        "sourceName": "GULPIN"
+      },
       "gameDexId": "316",
       "family": [
         "gulpin",
@@ -69928,6 +70625,12 @@
       },
       "baseTotal": 510,
       "vanillaTotal": 467,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/swalot.png",
+        "sourceName": "SWALOT"
+      },
       "gameDexId": "317",
       "family": [
         "gulpin",
@@ -70184,6 +70887,7 @@
       },
       "baseTotal": 305,
       "vanillaTotal": 305,
+      "sprite": null,
       "gameDexId": "318",
       "family": [
         "carvanha",
@@ -70527,6 +71231,7 @@
       },
       "baseTotal": 460,
       "vanillaTotal": 460,
+      "sprite": null,
       "gameDexId": "319",
       "family": [
         "carvanha",
@@ -70839,6 +71544,7 @@
       },
       "baseTotal": 400,
       "vanillaTotal": 400,
+      "sprite": null,
       "gameDexId": "320",
       "family": [
         "wailmer",
@@ -71204,6 +71910,12 @@
       },
       "baseTotal": 550,
       "vanillaTotal": 500,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/wailord.png",
+        "sourceName": "WAILORD"
+      },
       "gameDexId": "321",
       "family": [
         "wailmer",
@@ -71500,6 +72212,7 @@
       },
       "baseTotal": 320,
       "vanillaTotal": 310,
+      "sprite": null,
       "gameDexId": "322",
       "family": [
         "numel",
@@ -71758,6 +72471,7 @@
       },
       "baseTotal": 510,
       "vanillaTotal": 460,
+      "sprite": null,
       "gameDexId": "323",
       "family": [
         "numel",
@@ -71998,6 +72712,7 @@
       },
       "baseTotal": 470,
       "vanillaTotal": 470,
+      "sprite": null,
       "gameDexId": "324",
       "family": [
         "torkoal"
@@ -72238,6 +72953,7 @@
       },
       "baseTotal": 330,
       "vanillaTotal": 330,
+      "sprite": null,
       "gameDexId": "325",
       "family": [
         "spoink",
@@ -72431,6 +73147,7 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 470,
+      "sprite": null,
       "gameDexId": "326",
       "family": [
         "spoink",
@@ -72637,6 +73354,12 @@
       },
       "baseTotal": 650,
       "vanillaTotal": 670,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/regigigas.png",
+        "sourceName": "REGIGIGAS"
+      },
       "gameDexId": "327",
       "family": [
         "regigigas"
@@ -72796,6 +73519,7 @@
       },
       "baseTotal": 290,
       "vanillaTotal": 290,
+      "sprite": null,
       "gameDexId": "328",
       "family": [
         "trapinch",
@@ -73101,6 +73825,7 @@
       },
       "baseTotal": 365,
       "vanillaTotal": 365,
+      "sprite": null,
       "gameDexId": "329",
       "family": [
         "trapinch",
@@ -73354,6 +74079,7 @@
       },
       "baseTotal": 545,
       "vanillaTotal": 520,
+      "sprite": null,
       "gameDexId": "330",
       "family": [
         "trapinch",
@@ -73618,6 +74344,7 @@
       },
       "baseTotal": 335,
       "vanillaTotal": 335,
+      "sprite": null,
       "gameDexId": "331",
       "family": [
         "cacnea",
@@ -73868,6 +74595,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 475,
+      "sprite": null,
       "gameDexId": "332",
       "family": [
         "cacnea",
@@ -74044,6 +74772,7 @@
       },
       "baseTotal": 310,
       "vanillaTotal": 310,
+      "sprite": null,
       "gameDexId": "333",
       "family": [
         "swablu",
@@ -74300,6 +75029,7 @@
       },
       "baseTotal": 530,
       "vanillaTotal": 490,
+      "sprite": null,
       "gameDexId": "334",
       "family": [
         "swablu",
@@ -74523,6 +75253,7 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 458,
+      "sprite": null,
       "gameDexId": "335",
       "family": [
         "zangoose",
@@ -74708,6 +75439,7 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 458,
+      "sprite": null,
       "gameDexId": "336",
       "family": [
         "zangoose",
@@ -74897,6 +75629,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 440,
+      "sprite": null,
       "gameDexId": "337",
       "family": [
         "lunatone",
@@ -75131,6 +75864,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 440,
+      "sprite": null,
       "gameDexId": "338",
       "family": [
         "lunatone",
@@ -75348,6 +76082,12 @@
       },
       "baseTotal": 288,
       "vanillaTotal": 288,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/barboach.png",
+        "sourceName": "BARBOACH"
+      },
       "gameDexId": "339",
       "family": [
         "barboach",
@@ -75654,6 +76394,12 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 468,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/whiscash.png",
+        "sourceName": "WHISCASH"
+      },
       "gameDexId": "340",
       "family": [
         "barboach",
@@ -75885,6 +76631,7 @@
       },
       "baseTotal": 308,
       "vanillaTotal": 308,
+      "sprite": null,
       "gameDexId": "341",
       "family": [
         "corphish",
@@ -76069,6 +76816,7 @@
       },
       "baseTotal": 468,
       "vanillaTotal": 468,
+      "sprite": null,
       "gameDexId": "342",
       "family": [
         "corphish",
@@ -76228,6 +76976,12 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/baltoy.png",
+        "sourceName": "BALTOY"
+      },
       "gameDexId": "343",
       "family": [
         "baltoy",
@@ -76411,6 +77165,7 @@
       "statDelta": null,
       "baseTotal": null,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "344",
       "family": [
         "claydal"
@@ -76539,6 +77294,7 @@
       },
       "baseTotal": 355,
       "vanillaTotal": 355,
+      "sprite": null,
       "gameDexId": "345",
       "family": [
         "lileep",
@@ -76727,6 +77483,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 495,
+      "sprite": null,
       "gameDexId": "346",
       "family": [
         "lileep",
@@ -76889,6 +77646,7 @@
       },
       "baseTotal": 355,
       "vanillaTotal": 355,
+      "sprite": null,
       "gameDexId": "347",
       "family": [
         "anorith",
@@ -77075,6 +77833,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 495,
+      "sprite": null,
       "gameDexId": "348",
       "family": [
         "anorith",
@@ -77186,6 +77945,7 @@
       },
       "baseTotal": 200,
       "vanillaTotal": 200,
+      "sprite": null,
       "gameDexId": "349",
       "family": [
         "feebas",
@@ -77504,6 +78264,7 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 540,
+      "sprite": null,
       "gameDexId": "350",
       "family": [
         "feebas",
@@ -77758,6 +78519,7 @@
       },
       "baseTotal": 510,
       "vanillaTotal": 420,
+      "sprite": null,
       "gameDexId": "351",
       "family": [
         "castform"
@@ -77935,6 +78697,7 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 440,
+      "sprite": null,
       "gameDexId": "352",
       "family": [
         "kecleon-bb",
@@ -78099,6 +78862,7 @@
       },
       "baseTotal": 295,
       "vanillaTotal": 295,
+      "sprite": null,
       "gameDexId": "353",
       "family": [
         "shuppet",
@@ -78346,6 +79110,7 @@
       },
       "baseTotal": 485,
       "vanillaTotal": 455,
+      "sprite": null,
       "gameDexId": "354",
       "family": [
         "shuppet",
@@ -78545,6 +79310,12 @@
       },
       "baseTotal": 295,
       "vanillaTotal": 295,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/duskull.png",
+        "sourceName": "DUSKULL"
+      },
       "gameDexId": "355",
       "family": [
         "duskull",
@@ -78839,6 +79610,12 @@
       },
       "baseTotal": 455,
       "vanillaTotal": 455,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/dusclops.png",
+        "sourceName": "DUSCLOPS"
+      },
       "gameDexId": "356",
       "family": [
         "duskull",
@@ -79193,6 +79970,7 @@
       },
       "baseTotal": 500,
       "vanillaTotal": 460,
+      "sprite": null,
       "gameDexId": "357",
       "family": [
         "tropius"
@@ -79363,6 +80141,7 @@
       },
       "baseTotal": 470,
       "vanillaTotal": 425,
+      "sprite": null,
       "gameDexId": "358",
       "family": [
         "chimecho"
@@ -79540,6 +80319,12 @@
       },
       "baseTotal": 490,
       "vanillaTotal": 465,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/absol.png",
+        "sourceName": "ABSOL"
+      },
       "gameDexId": "359",
       "family": [
         "absol"
@@ -79774,6 +80559,12 @@
       "statDelta": null,
       "baseTotal": 630,
       "vanillaTotal": 0,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/blaziken-bb.png",
+        "sourceName": "BLAZIKEN (BATTLE BOND)"
+      },
       "gameDexId": "360",
       "family": [
         "blaziken-bb"
@@ -79935,6 +80726,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "361",
       "family": [
         "snorunt",
@@ -80241,6 +81033,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "362",
       "family": [
         "snorunt",
@@ -80509,6 +81302,7 @@
       },
       "baseTotal": 290,
       "vanillaTotal": 290,
+      "sprite": null,
       "gameDexId": "363",
       "family": [
         "spheal",
@@ -80743,6 +81537,7 @@
       },
       "baseTotal": 410,
       "vanillaTotal": 410,
+      "sprite": null,
       "gameDexId": "364",
       "family": [
         "spheal",
@@ -80983,6 +81778,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 530,
+      "sprite": null,
       "gameDexId": "365",
       "family": [
         "spheal",
@@ -81205,6 +82001,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 535,
+      "sprite": null,
       "gameDexId": "366",
       "family": [
         "mankey",
@@ -81290,6 +82087,7 @@
       "statDelta": null,
       "baseTotal": null,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "367",
       "family": [
         "dudunspars"
@@ -81447,6 +82245,7 @@
       },
       "baseTotal": 550,
       "vanillaTotal": 550,
+      "sprite": null,
       "gameDexId": "368",
       "family": [
         "teddiursa",
@@ -81693,6 +82492,12 @@
       },
       "baseTotal": 530,
       "vanillaTotal": 485,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/relicanth.png",
+        "sourceName": "RELICANTH"
+      },
       "gameDexId": "369",
       "family": [
         "relicanth"
@@ -81942,6 +82747,12 @@
       },
       "baseTotal": 410,
       "vanillaTotal": 410,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/corsola.png",
+        "sourceName": "CORSOLA"
+      },
       "gameDexId": "370",
       "family": [
         "corsola",
@@ -82214,6 +83025,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "371",
       "family": [
         "bagon",
@@ -82410,6 +83222,7 @@
       },
       "baseTotal": 420,
       "vanillaTotal": 420,
+      "sprite": null,
       "gameDexId": "372",
       "family": [
         "bagon",
@@ -82599,6 +83412,7 @@
       },
       "baseTotal": 600,
       "vanillaTotal": 600,
+      "sprite": null,
       "gameDexId": "373",
       "family": [
         "bagon",
@@ -82751,6 +83565,7 @@
       },
       "baseTotal": 300,
       "vanillaTotal": 300,
+      "sprite": null,
       "gameDexId": "374",
       "family": [
         "beldum",
@@ -82982,6 +83797,7 @@
       },
       "baseTotal": 420,
       "vanillaTotal": 420,
+      "sprite": null,
       "gameDexId": "375",
       "family": [
         "beldum",
@@ -83236,6 +84052,7 @@
       },
       "baseTotal": 600,
       "vanillaTotal": 600,
+      "sprite": null,
       "gameDexId": "376",
       "family": [
         "beldum",
@@ -83499,6 +84316,12 @@
       },
       "baseTotal": 620,
       "vanillaTotal": 580,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/regirock.png",
+        "sourceName": "REGIROCK"
+      },
       "gameDexId": "377",
       "family": [
         "regirock",
@@ -83721,6 +84544,12 @@
       },
       "baseTotal": 620,
       "vanillaTotal": 580,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/regice.png",
+        "sourceName": "REGICE"
+      },
       "gameDexId": "378",
       "family": [
         "regirock",
@@ -83943,6 +84772,12 @@
       },
       "baseTotal": 620,
       "vanillaTotal": 580,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/registeel.png",
+        "sourceName": "REGISTEEL"
+      },
       "gameDexId": "379",
       "family": [
         "regirock",
@@ -84056,6 +84891,7 @@
       "statDelta": null,
       "baseTotal": null,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "380",
       "family": [
         "deepmaiden"
@@ -84105,6 +84941,7 @@
       "statDelta": null,
       "baseTotal": null,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "381",
       "family": [
         "narmer"
@@ -84154,6 +84991,7 @@
       "statDelta": null,
       "baseTotal": null,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "382",
       "family": [
         "tlachtga"
@@ -84203,6 +85041,7 @@
       "statDelta": null,
       "baseTotal": null,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "383",
       "family": [
         "dinogator"
@@ -84252,6 +85091,7 @@
       "statDelta": null,
       "baseTotal": null,
       "vanillaTotal": null,
+      "sprite": null,
       "gameDexId": "384",
       "family": [
         "av-dragon"
@@ -84377,6 +85217,7 @@
       },
       "baseTotal": 600,
       "vanillaTotal": 600,
+      "sprite": null,
       "gameDexId": "385",
       "family": [
         "jirachi"
@@ -84552,6 +85393,12 @@
       "statDelta": null,
       "baseTotal": 510,
       "vanillaTotal": 0,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/reefsola.png",
+        "sourceName": "REEFSOLA"
+      },
       "gameDexId": "386",
       "family": [
         "corsola",
@@ -84808,6 +85655,7 @@
       },
       "baseTotal": 515,
       "vanillaTotal": 505,
+      "sprite": null,
       "gameDexId": "387",
       "family": [
         "roselia",
@@ -84991,6 +85839,7 @@
       },
       "baseTotal": 482,
       "vanillaTotal": 482,
+      "sprite": null,
       "gameDexId": "388",
       "family": [
         "aipom",
@@ -85202,6 +86051,12 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 495,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/mismagius.png",
+        "sourceName": "MISMAGIUS"
+      },
       "gameDexId": "389",
       "family": [
         "misdreavus",
@@ -85410,6 +86265,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 505,
+      "sprite": null,
       "gameDexId": "390",
       "family": [
         "murkrow",
@@ -85614,6 +86470,12 @@
       },
       "baseTotal": 510,
       "vanillaTotal": 510,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/weavile.png",
+        "sourceName": "WEAVILE"
+      },
       "gameDexId": "391",
       "family": [
         "sneasel",
@@ -85846,6 +86708,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "392",
       "family": [
         "magnemite",
@@ -86031,6 +86894,7 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 515,
+      "sprite": null,
       "gameDexId": "393",
       "family": [
         "lickitung",
@@ -86205,6 +87069,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 535,
+      "sprite": null,
       "gameDexId": "394",
       "family": [
         "rhyhorn",
@@ -86389,6 +87254,12 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 535,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/tangrowth.png",
+        "sourceName": "TANGROWTH"
+      },
       "gameDexId": "395",
       "family": [
         "tangela",
@@ -86751,6 +87622,12 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 540,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/electivire.png",
+        "sourceName": "ELECTIVIRE"
+      },
       "gameDexId": "396",
       "family": [
         "electabuzz",
@@ -86956,6 +87833,12 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 540,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/magmortar.png",
+        "sourceName": "MAGMORTAR"
+      },
       "gameDexId": "397",
       "family": [
         "magmar",
@@ -87204,6 +88087,7 @@
       },
       "baseTotal": 545,
       "vanillaTotal": 545,
+      "sprite": null,
       "gameDexId": "398",
       "family": [
         "togepi",
@@ -87399,6 +88283,7 @@
       },
       "baseTotal": 515,
       "vanillaTotal": 515,
+      "sprite": null,
       "gameDexId": "399",
       "family": [
         "yanma",
@@ -87599,6 +88484,7 @@
       },
       "baseTotal": 505,
       "vanillaTotal": 480,
+      "sprite": null,
       "gameDexId": "400",
       "family": [
         "snorunt",
@@ -87869,6 +88755,7 @@
       },
       "baseTotal": 510,
       "vanillaTotal": 510,
+      "sprite": null,
       "gameDexId": "401",
       "family": [
         "gligar",
@@ -88099,6 +88986,7 @@
       },
       "baseTotal": 535,
       "vanillaTotal": 535,
+      "sprite": null,
       "gameDexId": "402",
       "family": [
         "porygon",
@@ -88292,6 +89180,12 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 518,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/gallade.png",
+        "sourceName": "GALLADE"
+      },
       "gameDexId": "403",
       "family": [
         "ralts",
@@ -88553,6 +89447,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "404",
       "family": [
         "nosepass",
@@ -88787,6 +89682,12 @@
       },
       "baseTotal": 540,
       "vanillaTotal": 525,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/dusknoir.png",
+        "sourceName": "DUSKNOIR"
+      },
       "gameDexId": "405",
       "family": [
         "duskull",
@@ -89099,6 +90000,7 @@
       },
       "baseTotal": 530,
       "vanillaTotal": 530,
+      "sprite": null,
       "gameDexId": "406",
       "family": [
         "swinub",
@@ -89363,6 +90265,7 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 520,
+      "sprite": null,
       "gameDexId": "407",
       "family": [
         "girafarig",
@@ -89562,6 +90465,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "408",
       "family": [
         "eevee",
@@ -89761,6 +90665,7 @@
       },
       "baseTotal": 525,
       "vanillaTotal": 525,
+      "sprite": null,
       "gameDexId": "409",
       "family": [
         "eevee",
@@ -89960,6 +90865,7 @@
       },
       "baseTotal": 377,
       "vanillaTotal": 377,
+      "sprite": null,
       "gameDexId": null,
       "family": [
         "farfetchd",
@@ -90158,6 +91064,7 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 520,
+      "sprite": null,
       "gameDexId": null,
       "family": [
         "dunsparce",
@@ -90374,6 +91281,12 @@
       },
       "baseTotal": 520,
       "vanillaTotal": 485,
+      "sprite": {
+        "source": "Etrian Variants",
+        "kind": "normal",
+        "path": "src/assets/sprites/claydol.png",
+        "sourceName": "CLAYDOL"
+      },
       "gameDexId": null,
       "family": [
         "baltoy",
