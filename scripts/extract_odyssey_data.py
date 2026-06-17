@@ -279,6 +279,12 @@ LOCATION_CHECKPOINT_RULES = [
     ),
 ]
 
+ENCOUNTER_METHOD_CHECKPOINT_GATES = {
+    "OLD ROD": "first-stratum",
+    "GOOD ROD": "third-stratum",
+    "SUPER ROD": "fifth-stratum",
+}
+
 LOTTERY_STONES = {"Fire Stone", "Water Stone", "Thunderstone", "Sun Stone"}
 NAPIER_TREASURE_TIER_LEVELS = {0: 0, 1: 24, 2: 38, 3: 45, 4: 55, 5: 58}
 ITEM_NAME_ALIASES = {
@@ -531,6 +537,14 @@ def checkpoint_for_location(location: str, area_map: dict[str, str] | None = Non
         if any(needle in text for needle in needles):
             return checkpoint_for_sort(sort)
     return checkpoint_for_id(default)
+
+
+def checkpoint_for_encounter_method(method: str) -> dict | None:
+    text = clean_space(method).upper()
+    for needle, checkpoint_id in ENCOUNTER_METHOD_CHECKPOINT_GATES.items():
+        if needle in text:
+            return checkpoint_for_id(checkpoint_id)
+    return None
 
 
 def checkpoint_payload(checkpoint: dict) -> dict:
@@ -1059,7 +1073,9 @@ def make_encounter_record(source: str, area: str, method: str, raw_name: str, le
     records = []
     level_text = level_to_text(level)
     rate_text = encounter_rate_to_text(rate)
-    checkpoint = checkpoint_for_id(checkpoint_id) if checkpoint_id else checkpoint_for_location(area, area_map)
+    area_checkpoint = checkpoint_for_id(checkpoint_id) if checkpoint_id else checkpoint_for_location(area, area_map)
+    method_checkpoint = checkpoint_for_encounter_method(method)
+    checkpoint = max_checkpoint(area_checkpoint, method_checkpoint)
     for name in split_species_list(raw_name):
         if not name:
             continue
@@ -2119,6 +2135,7 @@ def main() -> None:
                 "Etrian Variant portrait art uses NORMAL embedded workbook sprites when a matching Pokemon exists.",
                 "Timeline availability uses encounter order, stratum level caps, evolution levels, and parsed evolution-item sources.",
                 "Manual timeline rule: Wonder Trade Pokemon are available from the start of the game.",
+                "Manual timeline rule: Fishing encounters are gated by rod acquisition: Old Rod from Seaside Grotto, Good Rod from Desert of Golgonda, and Super Rod from Azure Cave.",
                 "Manual timeline rule: Fire, Water, Thunder, and Sun Stones are available from the Talrega Lottery by the First Stratum cap.",
                 "Napier's Shop treasure tiers use conservative gate-level assumptions from documented sea boss and naval F.O.E. levels.",
             ],

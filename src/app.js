@@ -1,4 +1,4 @@
-const DATA_URL = "src/data/pokemon-odyssey-data.json?v=timeline-v2";
+const DATA_URL = "src/data/pokemon-odyssey-data.json?v=timeline-v3";
 
 const TYPE_COLORS = {
   Normal: "#7f8792",
