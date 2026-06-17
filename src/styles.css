@@ -63,8 +63,7 @@ button {
   backdrop-filter: blur(18px);
 }
 
-.brand-block h1,
-.insight-strip h2 {
+.brand-block h1 {
   margin: 0;
   letter-spacing: 0;
 }
@@ -247,33 +246,6 @@ button {
 .dex-panel {
   padding: 16px;
   min-width: 0;
-}
-
-.insight-strip {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px;
-  margin-bottom: 14px;
-  color: #fff;
-  background:
-    linear-gradient(120deg, rgba(8, 71, 67, 0.92), rgba(18, 35, 53, 0.88)),
-    url("https://img.pokemondb.net/sprites/home/normal/plusle.png");
-  background-repeat: no-repeat;
-  background-position: right 28px center;
-  background-size: 160px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.insight-strip .eyebrow {
-  color: #9ee6d9;
-}
-
-.insight-strip h2 {
-  max-width: 740px;
-  font-size: clamp(1.1rem, 1.8vw, 1.75rem);
-  line-height: 1.17;
 }
 
 .results-toolbar {
@@ -1154,13 +1126,6 @@ details summary {
     margin-bottom: 12px;
   }
 
-  .insight-strip {
-    display: block;
-    background-size: 112px;
-    background-position: right 12px bottom 8px;
-    padding-right: 104px;
-  }
-
   .team-analysis {
     justify-content: flex-start;
     max-width: none;
@@ -1220,17 +1185,6 @@ details summary {
   .detail-panel,
   .team-dock {
     border-radius: 7px;
-  }
-
-  .insight-strip {
-    padding: 16px;
-    background-size: 82px;
-    background-position: right 10px top 10px;
-  }
-
-  .insight-strip h2 {
-    min-height: 76px;
-    padding-right: 76px;
   }
 
   .team-slots,
