@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pokemon Odyssey Team Planner</title>
+    <link rel="stylesheet" href="src/styles.css?v=wonder-trade-filter-v3" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <p class="eyebrow">Pokemon Odyssey v4.1.1</p>
+          <h1>Team Planner</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="toggle-row">
+            <input id="spoiler-toggle" type="checkbox" checked />
+            <span>Spoiler-safe locations</span>
+          </label>
+          <button id="reset-filters" class="ghost-button" type="button">Reset filters</button>
+        </div>
+      </header>
+
+      <section class="team-dock" aria-label="Team builder">
+        <div class="team-header">
+          <div>
+            <p class="eyebrow">Saved teams</p>
+            <div class="team-title-row">
+              <select id="team-select" class="select-input compact"></select>
+              <button id="new-team" class="icon-button" type="button" title="New team">+</button>
+              <button id="rename-team" class="icon-button" type="button" title="Rename team">Aa</button>
+              <button id="delete-team" class="icon-button danger" type="button" title="Delete team">×</button>
+            </div>
+          </div>
+          <div id="team-analysis" class="team-analysis"></div>
+        </div>
+        <div id="team-slots" class="team-slots"></div>
+        <div id="team-defense" class="team-defense"></div>
+      </section>
+
+      <main class="layout">
+        <aside class="filter-panel" aria-label="Search and filters">
+          <section class="panel-section">
+            <label class="field-label" for="search-input">Search</label>
+            <input id="search-input" class="search-input" type="search" placeholder="Name, move, ability, role, location" />
+          </section>
+
+          <section class="panel-section">
+            <div class="section-heading">Availability</div>
+            <div id="phase-filters" class="segmented"></div>
+            <div id="source-filters" class="segmented availability-source-filters"></div>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-heading">Types</div>
+            <div id="type-filters" class="chip-grid"></div>
+          </section>
+
+          <section class="panel-section">
+            <div class="section-heading">Roles</div>
+            <div id="role-filters" class="role-list"></div>
+          </section>
+
+          <section class="panel-section">
+            <label class="field-label" for="archetype-filter">Stat profile</label>
+            <select id="archetype-filter" class="select-input"></select>
+          </section>
+
+        </aside>
+
+        <section class="dex-panel" aria-label="Pokemon browser">
+          <div class="insight-strip">
+            <div>
+              <p class="eyebrow">Doubles-first planning</p>
+              <h2>Build around pairs, roles, and when each line becomes available.</h2>
+            </div>
+            <div id="data-summary" class="summary-metrics"></div>
+          </div>
+
+          <div class="results-toolbar">
+            <div>
+              <strong id="result-count">0 results</strong>
+              <span id="active-filter-copy"></span>
+            </div>
+            <div class="results-actions">
+              <label class="sort-control" for="sort-select">
+                <span>Sort</span>
+                <select id="sort-select" class="select-input compact">
+                  <option value="availability">Earliest availability</option>
+                  <option value="dex">Game dex</option>
+                  <option value="bst">Base stat total</option>
+                  <option value="buff">Largest Odyssey buff</option>
+                  <optgroup label="Stats">
+                    <option value="stat:hp">HP</option>
+                    <option value="stat:atk">Attack</option>
+                    <option value="stat:def">Defense</option>
+                    <option value="stat:spa">Sp. Atk</option>
+                    <option value="stat:spd">Sp. Def</option>
+                    <option value="stat:spe">Speed</option>
+                  </optgroup>
+                  <option value="name">Name</option>
+                </select>
+              </label>
+              <button id="add-selected" class="primary-button" type="button">Add selected</button>
+            </div>
+          </div>
+
+          <div id="pokemon-grid" class="pokemon-grid" aria-live="polite"></div>
+        </section>
+
+        <aside class="detail-panel" aria-label="Pokemon details">
+          <div id="detail-content" class="detail-content"></div>
+        </aside>
+      </main>
+
+    </div>
+
+    <script type="module" src="src/app.js?v=wonder-trade-filter-v3"></script>
+  </body>
+</html>

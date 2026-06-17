@@ -1,0 +1,674 @@
+[
+  {
+    "id": "adaptability",
+    "name": "Adaptability",
+    "effect": "Increases the same-type attack bonus from 1.5× to 2×.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "arenatrap",
+    "name": "Arena Trap",
+    "effect": "Prevents opponents from fleeing or switching out. Eluded by Flying-types and Pokémon in the air.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "battlearmor",
+    "name": "Battle Armor",
+    "effect": "Protects against critical hits.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "blaze",
+    "name": "Blaze",
+    "effect": "Strengthens Fire moves to inflict 1.5× damage at 1/3 max HP or less.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "chlorophyll",
+    "name": "Chlorophyll",
+    "effect": "Doubles Speed during strong sunlight.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "clearbody",
+    "name": "Clear Body",
+    "effect": "Prevents stats from being lowered by other Pokémon.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "cloudnine",
+    "name": "Cloud Nine",
+    "effect": "Negates all effects of weather, but does not prevent the weather itself.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "colorchange",
+    "name": "Color Change",
+    "effect": "Changes type to match when hit by a damaging move.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "competitive",
+    "name": "Competitive",
+    "effect": "Raises Special Attack by two stages upon having any stat lowered.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "compoundeyes",
+    "name": "Compoundeyes",
+    "effect": "Increases moves' accuracy to 1.3×.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "defiant",
+    "name": "Defiant",
+    "effect": "Raises Attack two stages upon having any stat lowered.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "drizzle",
+    "name": "Drizzle",
+    "effect": "Summons rain that lasts indefinitely upon entering battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "drought",
+    "name": "Drought",
+    "effect": "Summons strong sunlight that lasts indefinitely upon entering battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "earlybird",
+    "name": "Early Bird",
+    "effect": "Makes sleep pass twice as quickly.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "effectspore",
+    "name": "Effect Spore",
+    "effect": "Has a 30% chance of inflcting either paralysis, poison, or sleep on attacking Pokémon on contact.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "filter",
+    "name": "Filter",
+    "effect": "Decreases damage taken from super-effective moves by 1/4.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "flamebody",
+    "name": "Flame Body",
+    "effect": "Has a 30% chance of burning attacking Pokémon on contact.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "flareboost",
+    "name": "Flare Boost",
+    "effect": "Increases Special Attack to 1.5× when burned.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "flashfire",
+    "name": "Flash Fire",
+    "effect": "Protects against Fire moves. Once one has been blocked, the Pokémon's own Fire moves inflict 1.5× damage until it leaves battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "forecast",
+    "name": "Forecast",
+    "effect": "Changes Castform's type and form to match the weather.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "furcoat",
+    "name": "Fur Coat",
+    "effect": "Halves damage from physical attacks.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "galewings",
+    "name": "Gale Wings",
+    "effect": "Raises Flying moves' priority by one stage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "gluttony",
+    "name": "Gluttony",
+    "effect": "Makes the Pokémon eat any held Berry triggered by low HP below 1/2 its max HP.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "guts",
+    "name": "Guts",
+    "effect": "Increases Attack to 1.5× with a major status ailment.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "hugepower",
+    "name": "Huge Power",
+    "effect": "Doubles Attack in battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "hustle",
+    "name": "Hustle",
+    "effect": "Strengthens physical moves to inflict 1.5× damage, but decreases their accuracy to 0.8×.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "hypercutter",
+    "name": "Hyper Cutter",
+    "effect": "Prevents Attack from being lowered by other Pokémon.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "illuminate",
+    "name": "Illuminate",
+    "effect": "Doubles the wild encounter rate.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "immunity",
+    "name": "Immunity",
+    "effect": "Prevents poison.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "innerfocus",
+    "name": "Inner Focus",
+    "effect": "Prevents flinching.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "insomnia",
+    "name": "Insomnia",
+    "effect": "Prevents sleep.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "intimidate",
+    "name": "Intimidate",
+    "effect": "Lowers opponents' Attack one stage upon entering battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "keeneye",
+    "name": "Keen Eye",
+    "effect": "Prevents accuracy from being lowered.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "keeneyes",
+    "name": "Keen Eyes",
+    "effect": "Prevents accuracy from being lowered.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "levitate",
+    "name": "Levitate",
+    "effect": "Evades Ground moves.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "lightningrod",
+    "name": "Lightningrod",
+    "effect": "Redirects single-target Electric moves to this Pokémon where possible. Absorbs Electric moves, raising Special Attack one stage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "limber",
+    "name": "Limber",
+    "effect": "Prevents paralysis.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "liquidooze",
+    "name": "Liquid Ooze",
+    "effect": "Damages opponents using leeching moves for as much as they would heal.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "magmaarmor",
+    "name": "Magma Armor",
+    "effect": "Prevents freezing.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "magnetpull",
+    "name": "Magnet Pull",
+    "effect": "Prevents Steel opponents from fleeing or switching out.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "marvelscale",
+    "name": "Marvel Scale",
+    "effect": "Increases Defense to 1.5× with a major status ailment.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "minus",
+    "name": "Minus",
+    "effect": "Increases Special Attack to 1.5× when a friendly Pokémon has Plus or Minus.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "moxie",
+    "name": "Moxie",
+    "effect": "Raises Attack one stage upon KOing a Pokémon.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "multiscale",
+    "name": "Multiscale",
+    "effect": "Halves damage taken from full HP.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "naturalcure",
+    "name": "Natural Cure",
+    "effect": "Cures any major status ailment upon switching out.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "noguard",
+    "name": "No Guard",
+    "effect": "Ensures all moves used by and against the Pokémon hit.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "oblivious",
+    "name": "Oblivious",
+    "effect": "Prevents infatuation and protects against Captivate.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "overgrow",
+    "name": "Overgrow",
+    "effect": "Strengthens Grass moves to inflict 1.5× damage at 1/3 max HP or less.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "owntempo",
+    "name": "Own Tempo",
+    "effect": "Prevents confusion.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "pickup",
+    "name": "Pickup",
+    "effect": "Picks up other Pokémon's used and Flung held items. May also pick up an item after battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "plus",
+    "name": "Plus",
+    "effect": "Increases Special Attack to 1.5× when a friendly Pokémon has Plus or Minus.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "poisonpoint",
+    "name": "Poison Point",
+    "effect": "Has a 30% chance of poisoning attacking Pokémon on contact.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "prankster",
+    "name": "Prankster",
+    "effect": "Raises non-damaging moves' priority by one stage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "pressure",
+    "name": "Pressure",
+    "effect": "Increases the PP cost of moves targetting the Pokémon by one.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "protean",
+    "name": "Protean",
+    "effect": "Changes the bearer's type to match each move it uses.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "purepower",
+    "name": "Pure Power",
+    "effect": "Doubles Attack in battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "raindish",
+    "name": "Rain Dish",
+    "effect": "Heals for 1/16 max HP after each turn during rain.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "rockhead",
+    "name": "Rock Head",
+    "effect": "Protects against recoil damage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "roughskin",
+    "name": "Rough Skin",
+    "effect": "Damages attacking Pokémon for 1/8 their max HP on contact.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "sandrush",
+    "name": "Sand Rush",
+    "effect": "Doubles Speed during a sandstorm. Protects against sandstorm damage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "sandstream",
+    "name": "Sand Stream",
+    "effect": "Summons a sandstorm that lasts indefinitely upon entering battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "sandveil",
+    "name": "Sand Veil",
+    "effect": "Increases evasion to 1.25× during a sandstorm. Protects against sandstorm damage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "scrappy",
+    "name": "Scrappy",
+    "effect": "Lets the Pokémon's Normal and Fighting moves hit Ghost Pokémon.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "serenegrace",
+    "name": "Serene Grace",
+    "effect": "Doubles the chance of moves' extra effects occurring.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "shadowtag",
+    "name": "Shadow Tag",
+    "effect": "Prevents opponents from fleeing or switching out.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "shedskin",
+    "name": "Shed Skin",
+    "effect": "Has a 33% chance of curing any major status ailment after each turn.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "shellarmor",
+    "name": "Shell Armor",
+    "effect": "Protects against critical hits.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "shielddust",
+    "name": "Shield Dust",
+    "effect": "Protects against incoming moves' extra effects.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "skilllink",
+    "name": "Skill Link",
+    "effect": "Extends two-to-five-hit moves and Triple Kick to their full length every time.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "slushrush",
+    "name": "Slush Rush",
+    "effect": "During Hail, this Pokémon has double Speed.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "sniper",
+    "name": "Sniper",
+    "effect": "Strengthens critical hits to inflict 3× damage rather than 2×.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "snowcloak",
+    "name": "Snow Cloak",
+    "effect": "Increases evasion to 1.25× during hail. Protects against hail damage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "snowwarning",
+    "name": "Snow Warning",
+    "effect": "Summons hail that lasts indefinitely upon entering battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "solidrock",
+    "name": "Solid Rock",
+    "effect": "Decreases damage taken from super-effective moves by 1/4.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "soundproof",
+    "name": "Soundproof",
+    "effect": "Protects against sound-based moves.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "speedboost",
+    "name": "Speed Boost",
+    "effect": "Raises Speed one stage after each turn.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "static",
+    "name": "Static",
+    "effect": "Has a 30% chance of paralyzing attacking Pokémon on contact.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "stickyhold",
+    "name": "Sticky Hold",
+    "effect": "Prevents a held item from being removed by other Pokémon.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "superluck",
+    "name": "Super Luck",
+    "effect": "Raises moves' critical hit rates one stage.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "swarm",
+    "name": "Swarm",
+    "effect": "Strengthens Bug moves to inflict 1.5× damage at 1/3 max HP or less.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "swiftswim",
+    "name": "Swift Swim",
+    "effect": "Doubles Speed during rain.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "synchronize",
+    "name": "Synchronize",
+    "effect": "Copies burns, paralysis, and poison received onto the Pokémon that inflicted them.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "technician",
+    "name": "Technician",
+    "effect": "Strengthens moves of 60 base power or less to 1.5× their power.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "thickfat",
+    "name": "Thick Fat",
+    "effect": "Halves damage from Fire and Ice moves.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "tintedlens",
+    "name": "Tinted Lens",
+    "effect": "Doubles damage inflicted with not-very-effective moves.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "torrent",
+    "name": "Torrent",
+    "effect": "Strengthens Water moves to inflict 1.5× damage at 1/3 max HP or less.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "toxicboost",
+    "name": "Toxic Boost",
+    "effect": "Increases Attack to 1.5× when poisoned.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "trace",
+    "name": "Trace",
+    "effect": "Copies an opponent's ability upon entering battle.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "unaware",
+    "name": "Unaware",
+    "effect": "Ignores other Pokémon's stat modifiers for damage and accuracy calculation.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "unburden",
+    "name": "Unburden",
+    "effect": "Doubles Speed upon using or losing a held item.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "vitalspirit",
+    "name": "Vital Spirit",
+    "effect": "Prevents sleep.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "voltabsorb",
+    "name": "Volt Absorb",
+    "effect": "Absorbs Electric moves, healing for 1/4 max HP.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "waterabsorb",
+    "name": "Water Absorb",
+    "effect": "Absorbs Water moves, healing for 1/4 max HP.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "whitesmoke",
+    "name": "White Smoke",
+    "effect": "Prevents stats from being lowered by other Pokémon.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "wonderguard",
+    "name": "Wonder Guard",
+    "effect": "Protects against damaging moves that are not super effective.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  },
+  {
+    "id": "wonderskin",
+    "name": "Wonder Skin",
+    "effect": "Lowers incoming non-damaging moves' base accuracy to exactly 50%.",
+    "section": "Standard Ability",
+    "source": "PokeAPI"
+  }
+]
