@@ -1,4 +1,4 @@
-const DATA_URL = "src/data/pokemon-odyssey-data.json?v=variant-sprites-v1";
+const DATA_URL = "src/data/pokemon-odyssey-data.json?v=timeline-v2";
 
 const TYPE_COLORS = {
   Normal: "#7f8792",
@@ -74,7 +74,7 @@ const state = {
   abilityDefinitions: new Map(),
   selectedId: "",
   search: "",
-  phases: new Set(),
+  checkpointId: "",
   sources: new Set(),
   types: new Set(),
   roles: new Set(),
@@ -99,7 +99,6 @@ const elements = {
   detail: $("#detail-content"),
   resultCount: $("#result-count"),
   filterCopy: $("#active-filter-copy"),
-  summary: $("#data-summary"),
   reset: $("#reset-filters"),
   addSelected: $("#add-selected"),
   spoilerToggle: $("#spoiler-toggle"),
@@ -181,8 +180,35 @@ function roleBadges(roles, limit = 3) {
   ].join("");
 }
 
-function phaseBadge(phase) {
-  return `<span class="phase-badge phase-${escapeHtml(phase)}">${escapeHtml(phase)}</span>`;
+function cssSlug(value) {
+  return String(value || "unknown").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function progressionCheckpoints() {
+  return state.data?.facets?.checkpoints || [];
+}
+
+function checkpointById(id) {
+  return progressionCheckpoints().find((checkpoint) => checkpoint.id === id);
+}
+
+function fallbackCheckpoint() {
+  return { id: "unknown", sort: 99, label: "Unknown", shortLabel: "Unknown", levelCap: null };
+}
+
+function pokemonCheckpoint(mon) {
+  return mon.timeline?.checkpoint || mon.availability?.checkpoint || fallbackCheckpoint();
+}
+
+function checkpointLabel(checkpoint, compact = false) {
+  const cp = checkpoint || fallbackCheckpoint();
+  const label = compact ? (cp.shortLabel || cp.label) : cp.label;
+  return cp.levelCap ? `${label} · Lv.${cp.levelCap}` : label;
+}
+
+function checkpointBadge(checkpoint) {
+  const cp = checkpoint || fallbackCheckpoint();
+  return `<span class="checkpoint-badge checkpoint-${escapeHtml(cssSlug(cp.id || cp.label))}" title="${escapeHtml(checkpointLabel(cp))}">${escapeHtml(checkpointLabel(cp, true))}</span>`;
 }
 
 function evolutionMethodTone(method) {
@@ -284,6 +310,10 @@ function normalizedSearchText(mon) {
     mon.evolution,
     mon.evolutionMethod?.label,
     mon.incomingEvolution?.label,
+    mon.timeline?.checkpoint?.label,
+    mon.timeline?.checkpoint?.shortLabel,
+    mon.timeline?.source,
+    mon.timeline?.reason,
     mon.availability?.phase,
     mon.availability?.source,
     mon.availability?.details,
@@ -302,9 +332,10 @@ function hasWonderTradeAvailability(mon) {
 
 function filterPokemon() {
   const query = state.search.trim().toLowerCase();
+  const selectedCheckpoint = checkpointById(state.checkpointId);
   return state.pokemon.filter((mon) => {
     if (query && !normalizedSearchText(mon).includes(query)) return false;
-    if (state.phases.size && !state.phases.has(mon.availability?.phase || "Unknown")) return false;
+    if (selectedCheckpoint && pokemonCheckpoint(mon).sort > selectedCheckpoint.sort) return false;
     if (state.sources.has("wonderTrade") && !hasWonderTradeAvailability(mon)) return false;
     if (state.types.size && !mon.types.some((type) => state.types.has(type))) return false;
     if (state.roles.size && !mon.roles.some((role) => state.roles.has(role))) return false;
@@ -343,7 +374,7 @@ function dexNumber(mon) {
 }
 
 function availabilityRank(mon) {
-  return mon.availability?.sort ?? 9;
+  return pokemonCheckpoint(mon).sort ?? 99;
 }
 
 function availabilityLevel(mon) {
@@ -351,8 +382,11 @@ function availabilityLevel(mon) {
 }
 
 function renderFilters() {
-  elements.phaseFilters.innerHTML = state.data.facets.phases.map((phase) => `
-    <button class="phase-chip ${state.phases.has(phase) ? "active" : ""}" data-phase="${escapeHtml(phase)}" type="button">${escapeHtml(phase)}</button>
+  elements.phaseFilters.innerHTML = progressionCheckpoints().map((checkpoint) => `
+    <button class="checkpoint-chip ${state.checkpointId === checkpoint.id ? "active" : ""}" data-checkpoint="${escapeHtml(checkpoint.id)}" type="button">
+      <span>${escapeHtml(checkpoint.shortLabel || checkpoint.label)}</span>
+      ${checkpoint.levelCap ? `<small>Lv.${escapeHtml(checkpoint.levelCap)}</small>` : ""}
+    </button>
   `).join("");
 
   elements.sourceFilters.innerHTML = `
@@ -372,17 +406,6 @@ function renderFilters() {
   `).join("");
 }
 
-function renderSummary() {
-  if (!elements.summary) return;
-  const withRoles = state.pokemon.filter((mon) => mon.roles.length).length;
-  const early = state.pokemon.filter((mon) => ["Starter", "Early"].includes(mon.availability.phase)).length;
-  elements.summary.innerHTML = `
-    <div class="metric"><strong>${state.pokemon.length}</strong><span>Pokemon</span></div>
-    <div class="metric"><strong>${early}</strong><span>Starter/Early</span></div>
-    <div class="metric"><strong>${withRoles}</strong><span>Guide-tagged</span></div>
-  `;
-}
-
 function renderGrid() {
   const results = filterPokemon();
   elements.resultCount.textContent = `${results.length} result${results.length === 1 ? "" : "s"}`;
@@ -399,7 +422,8 @@ function renderGrid() {
 function activeFilterCopy() {
   const parts = [];
   if (state.search) parts.push(`search "${state.search}"`);
-  if (state.phases.size) parts.push([...state.phases].join(", "));
+  const selectedCheckpoint = checkpointById(state.checkpointId);
+  if (selectedCheckpoint) parts.push(`available by ${checkpointLabel(selectedCheckpoint)}`);
   if (state.sources.has("wonderTrade")) parts.push("Wonder Trade");
   if (state.types.size) parts.push([...state.types].join(", "));
   if (state.roles.size) parts.push([...state.roles].join(", "));
@@ -423,7 +447,7 @@ function pokemonCard(mon) {
       </div>
       <div class="card-body">
         <div class="badge-row">
-          ${phaseBadge(mon.availability?.phase || "Unknown")}
+          ${checkpointBadge(pokemonCheckpoint(mon))}
           <span class="stat-badge role-badge">${mon.baseTotal || "-"} BST</span>
           ${deltaChip}
           ${evolutionCardBadge(mon)}
@@ -453,18 +477,21 @@ function spriteFrame(mon) {
 function availabilityCopy(mon, short = false) {
   const wonderTrade = state.sources.has("wonderTrade") ? wonderTradeRecord(mon) : null;
   if (wonderTrade) {
-    const phase = wonderTrade.phase || "Early";
+    const phase = wonderTrade.startAvailable ? "Start" : (wonderTrade.checkpointLabel || wonderTrade.phase || "First Stratum");
     const via = wonderTrade.via && wonderTrade.via !== mon.displayName ? ` via ${wonderTrade.via}` : "";
     if (state.spoilerSafe) return `${phase}${via} · Wonder Trade`;
     const level = wonderTrade.level ? ` · Lv. ${wonderTrade.level}` : "";
     return `${wonderTrade.area || "Wonder Trade"}${via}${level} · Wonder Trade`;
   }
 
+  const timeline = mon.timeline || {};
   const availability = mon.availability || {};
-  if (!availability.details) return `${availability.phase || "Unknown"} availability`;
+  const checkpoint = timeline.checkpoint || availability.checkpoint || fallbackCheckpoint();
+  if (timeline.startAvailable) return state.spoilerSafe ? "Start · Wonder Trade" : `${timeline.encounter?.area || "Wonder Trade"} · Wonder Trade`;
+  if (!availability.details && !timeline.source) return `${checkpointLabel(checkpoint)} availability`;
   if (state.spoilerSafe) {
     const via = availability.via && availability.via !== mon.displayName ? ` via ${availability.via}` : "";
-    return `${availability.phase}${via} · ${availability.source}`;
+    return `By ${checkpointLabel(checkpoint)}${via} · ${timeline.source || availability.source}`;
   }
   const level = availability.level ? ` · Lv. ${availability.level}` : "";
   const rate = availability.rate ? ` · ${availability.rate}` : "";
@@ -495,7 +522,7 @@ function renderDetail() {
     <section class="detail-section">
       <h3>Core Data</h3>
       <div class="badge-row">
-        ${phaseBadge(mon.availability?.phase || "Unknown")}
+        ${checkpointBadge(pokemonCheckpoint(mon))}
         ${abilityBadges(mon.abilities)}
         ${evolutionBadges(mon)}
       </div>
@@ -632,27 +659,66 @@ function multiplierLabel(value) {
   return `${Number(value.toFixed(2))}x`;
 }
 
+function recordTimingLabel(record) {
+  if (record.startAvailable) return "Start";
+  if (record.checkpointLabel) return record.levelCap ? `${record.checkpointLabel} · Lv.${record.levelCap}` : record.checkpointLabel;
+  return record.phase || "Unknown";
+}
+
+function requirementText(requirement, exact = false) {
+  const parts = [requirement.label].filter(Boolean);
+  if (requirement.specialGate) {
+    const gate = requirement.specialGate;
+    parts.push(exact ? `${gate.source} · ${checkpointLabel(gate.checkpoint)}` : `Gate by ${checkpointLabel(gate.checkpoint)}`);
+  }
+  if (requirement.items?.length) {
+    parts.push(...requirement.items.map((item) => {
+      const timing = checkpointLabel(item.checkpoint);
+      if (!exact) return `${item.item} source by ${timing}`;
+      return `${item.item}: ${item.source}${item.location ? ` · ${item.location}` : ""}${item.method ? ` · ${item.method}` : ""}`;
+    }));
+  }
+  if (requirement.missingItems?.length) parts.push(`Missing source for ${requirement.missingItems.join(", ")}`);
+  return parts.join(" · ");
+}
+
+function timelineRequirementList(timeline, exact = false) {
+  if (!timeline.requirements?.length) return "";
+  return `
+    <div class="requirement-list">
+      ${timeline.requirements.map((requirement) => `<p>${escapeHtml(requirementText(requirement, exact))}</p>`).join("")}
+    </div>
+  `;
+}
+
 function availabilitySection(mon) {
   const records = mon.familyEncounters || [];
+  const timeline = mon.timeline || {};
+  const checkpoint = timeline.checkpoint || pokemonCheckpoint(mon);
   const exact = records.slice(0, 6).map((record) => `
     <div class="encounter-card">
-      <strong>${escapeHtml(record.phase)} · ${escapeHtml(record.via || record.pokemon)}</strong>
+      <strong>${escapeHtml(recordTimingLabel(record))} · ${escapeHtml(record.via || record.pokemon)}</strong>
       <p>${escapeHtml(record.area)} - ${escapeHtml(record.method)}${record.level ? ` · Lv. ${escapeHtml(record.level)}` : ""}${record.rate ? ` · ${escapeHtml(record.rate)}` : ""}</p>
       <p>${escapeHtml(record.source)}</p>
     </div>
   `).join("");
 
-  if (!records.length) {
+  if (!records.length && checkpoint.id === "unknown") {
     return `<p class="muted">No direct encounter was parsed. Check guide notes or source docs for special cases.</p>`;
   }
 
-  if (!state.spoilerSafe) return exact;
+  const summary = `
+    <div class="encounter-card">
+      <strong>${escapeHtml(timeline.startAvailable ? "Start" : checkpointLabel(checkpoint))} availability</strong>
+      <p>${escapeHtml(timeline.reason || `Earliest parsed route uses ${mon.availability?.via || mon.displayName}.`)}</p>
+      ${timelineRequirementList(timeline, !state.spoilerSafe)}
+    </div>
+  `;
+
+  if (!state.spoilerSafe) return summary + exact;
 
   return `
-    <div class="encounter-card">
-      <strong>${escapeHtml(mon.availability.phase)} availability</strong>
-      <p>Earliest parsed route uses ${escapeHtml(mon.availability.via || mon.displayName)} from ${escapeHtml(mon.availability.source)}.</p>
-    </div>
+    ${summary}
     <details>
       <summary>Show exact parsed locations</summary>
       <div style="margin-top:8px">${exact}</div>
@@ -721,7 +787,7 @@ function renderTeams() {
         ${spriteFrame(mon)}
         <div>
           <span class="slot-name">${escapeHtml(mon.displayName)}</span>
-          <span class="slot-meta">${escapeHtml(mon.types.join(" / "))} · ${escapeHtml(mon.availability.phase)}</span>
+          <span class="slot-meta">${escapeHtml(mon.types.join(" / "))} · ${escapeHtml(checkpointLabel(pokemonCheckpoint(mon), true))}</span>
         </div>
         <button class="slot-remove" data-remove-slot="${index}" type="button" title="Remove">×</button>
       </div>
@@ -759,9 +825,14 @@ function teamAnalysis(team) {
   if (weaknesses.length) chips.push({ label: `Shared weak: ${weaknesses.slice(0, 3).join(", ")}`, tone: "warn" });
   else chips.push({ label: "No major shared weakness", tone: "good" });
 
-  const latestPhase = members.reduce((latest, mon) => Math.max(latest, mon.availability.sort ?? 9), 0);
-  const phase = Object.entries({ Starter: 0, Early: 1, Mid: 2, Late: 3, Postgame: 4, Unknown: 9 }).find(([, rank]) => rank === latestPhase)?.[0] || "Mixed";
-  chips.push({ label: `Online by ${phase}`, tone: latestPhase <= 2 ? "good" : latestPhase >= 4 ? "warn" : "" });
+  const latestCheckpoint = members.reduce((latest, mon) => {
+    const checkpoint = pokemonCheckpoint(mon);
+    return checkpoint.sort > latest.sort ? checkpoint : latest;
+  }, { sort: 0, label: "Start", shortLabel: "Start" });
+  chips.push({
+    label: `Online by ${checkpointLabel(latestCheckpoint, true)}`,
+    tone: latestCheckpoint.sort <= 2 ? "good" : latestCheckpoint.sort >= 9 ? "warn" : "",
+  });
   return chips;
 }
 
@@ -864,7 +935,7 @@ function wireEvents() {
   });
   elements.reset.addEventListener("click", () => {
     state.search = "";
-    state.phases.clear();
+    state.checkpointId = "";
     state.sources.clear();
     state.types.clear();
     state.roles.clear();
@@ -876,9 +947,9 @@ function wireEvents() {
     renderGrid();
   });
   elements.phaseFilters.addEventListener("click", (event) => {
-    const phase = event.target.closest("[data-phase]")?.dataset.phase;
-    if (!phase) return;
-    toggleSet(state.phases, phase);
+    const checkpoint = event.target.closest("[data-checkpoint]")?.dataset.checkpoint;
+    if (!checkpoint) return;
+    state.checkpointId = state.checkpointId === checkpoint ? "" : checkpoint;
     renderFilters();
     renderGrid();
   });
@@ -984,7 +1055,6 @@ async function init() {
   state.selectedId = state.pokemon.find((mon) => mon.id === "plusle")?.id || state.pokemon[0]?.id;
   loadTeams();
   renderFilters();
-  renderSummary();
   renderGrid();
   renderDetail();
   renderTeams();

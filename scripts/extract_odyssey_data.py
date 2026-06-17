@@ -85,6 +85,8 @@ METHOD_TOKENS = {
     "FLOOR",
     "CAVE",
     "ROCK SMASH",
+    "GRASS",
+    "SAND",
     "WATER",
     "SURF",
     "F.O.E.",
@@ -160,6 +162,171 @@ LATE_LOCATIONS = [
 ]
 
 TIMING_ORDER = {"Starter": 0, "Early": 1, "Mid": 2, "Late": 3, "Postgame": 4, "Unknown": 9}
+
+PROGRESSION_CHECKPOINTS = [
+    {
+        "id": "first-stratum",
+        "sort": 1,
+        "label": "First Stratum",
+        "shortLabel": "First",
+        "levelCap": 18,
+        "description": "Available before clearing the First Stratum boss at Lv. 18.",
+    },
+    {
+        "id": "second-stratum",
+        "sort": 2,
+        "label": "Second Stratum",
+        "shortLabel": "Second",
+        "levelCap": 30,
+        "description": "Available after First Stratum and before clearing the Second Stratum boss at Lv. 30.",
+    },
+    {
+        "id": "third-stratum",
+        "sort": 3,
+        "label": "Third Stratum",
+        "shortLabel": "Third",
+        "levelCap": 40,
+        "description": "Available after Second Stratum and before clearing the Third Stratum boss at Lv. 40.",
+    },
+    {
+        "id": "fourth-stratum",
+        "sort": 4,
+        "label": "Fourth Stratum",
+        "shortLabel": "Fourth",
+        "levelCap": 50,
+        "description": "Available after Third Stratum and before clearing the Fourth Stratum boss at Lv. 50.",
+    },
+    {
+        "id": "fifth-stratum",
+        "sort": 5,
+        "label": "Fifth Stratum",
+        "shortLabel": "Fifth",
+        "levelCap": 60,
+        "description": "Available after Fourth Stratum and before clearing the Fifth Stratum boss at Lv. 60.",
+    },
+    {
+        "id": "sixth-stratum",
+        "sort": 6,
+        "label": "Sixth Stratum",
+        "shortLabel": "Sixth",
+        "levelCap": 65,
+        "description": "Available after Fifth Stratum and before clearing the Sixth Stratum boss at Lv. 65.",
+    },
+    {
+        "id": "seventh-stratum",
+        "sort": 7,
+        "label": "Seventh Stratum",
+        "shortLabel": "Seventh",
+        "levelCap": 70,
+        "description": "Available after Sixth Stratum and before clearing the Seventh Stratum boss at Lv. 70.",
+    },
+    {
+        "id": "eighth-stratum",
+        "sort": 8,
+        "label": "Eighth Stratum",
+        "shortLabel": "Eighth",
+        "levelCap": 75,
+        "description": "Available after Seventh Stratum and before clearing the Eighth Stratum boss at Lv. 75.",
+    },
+    {
+        "id": "postgame",
+        "sort": 9,
+        "label": "Postgame",
+        "shortLabel": "Postgame",
+        "levelCap": None,
+        "description": "Postgame-only documentation.",
+    },
+    {
+        "id": "unknown",
+        "sort": 99,
+        "label": "Unknown",
+        "shortLabel": "Unknown",
+        "levelCap": None,
+        "description": "No reliable progression source was parsed.",
+    },
+]
+
+CHECKPOINT_BY_ID = {checkpoint["id"]: checkpoint for checkpoint in PROGRESSION_CHECKPOINTS}
+CHECKPOINT_BY_SORT = {checkpoint["sort"]: checkpoint for checkpoint in PROGRESSION_CHECKPOINTS}
+
+LOCATION_CHECKPOINT_RULES = [
+    (8, ["EIGHTH STRATUM"]),
+    (7, ["SEVENTH STRATUM", "PORCELAIN"]),
+    (6, ["SIXTH STRATUM", "ACUITY", "LAKE OF RAGE", "MOUNT CHIMNEY"]),
+    (5, ["FIFTH STRATUM", "AZURE", "LOST WOODS", "ETRIA GRAVEYARD", "CAVE OF AGES"]),
+    (4, ["FOURTH STRATUM", "AUBURN THICKET"]),
+    (3, ["THIRD STRATUM", "DESERT OF GOLGONDA", "CHARON", "BRIGIT", "MAPLE ISLAND"]),
+    (2, ["SECOND STRATUM", "ARUNDEL", "YGGDRASIL", "CAVE OF ATHARI", "GORGE OF ZANADO"]),
+    (
+        1,
+        [
+            "FIBERNIA",
+            "ABANDONED LAB",
+            "COASTAL ROAD",
+            "SEASIDE GROTTO",
+            "TALREGA",
+            "VARLEY",
+            "WATERFALL WOOD",
+            "NORTHERN ATOLL",
+            "PIRATE ISLAND",
+            "JAGGED MOUNTAIN",
+            "FARAWAY ISLAND",
+            "AQUA RESORT",
+            "FIRST STRATUM",
+            "NORMAL ENCOUNTERS",
+            "WONDER TRADE",
+        ],
+    ),
+]
+
+LOTTERY_STONES = {"Fire Stone", "Water Stone", "Thunderstone", "Sun Stone"}
+NAPIER_TREASURE_TIER_LEVELS = {0: 0, 1: 24, 2: 38, 3: 45, 4: 55, 5: 58}
+ITEM_NAME_ALIASES = {
+    "blackaugurite": "B. Augurite",
+}
+
+DIRECT_EVOLUTION_OVERRIDES = {
+    "vileplume": ("gloom", "Leaf Stone"),
+    "bellossom": ("gloom", "Sun Stone"),
+    "poliwrath": ("poliwhirl", "Water Stone"),
+    "politoed": ("poliwhirl", "Link Stone"),
+    "slowbro": ("slowpoke", "LV.37"),
+    "slowking": ("slowpoke", "Link Stone"),
+    "kleavor": ("scyther", "B. Augurite"),
+    "scizor": ("scyther", "Link Stone"),
+    "hitmonlee": ("tyrogue", "LV.20"),
+    "hitmonchan": ("tyrogue", "LV.20"),
+    "hitmontop": ("tyrogue", "LV.20"),
+    "vaporeon": ("eevee", "Water Stone"),
+    "jolteon": ("eevee", "Thunderstone"),
+    "flareon": ("eevee", "Fire Stone"),
+    "espeon": ("eevee", "Happiness"),
+    "umbreon": ("eevee", "Happiness"),
+    "leafeon": ("eevee", "Musky Rock in First Stratum"),
+    "glaceon": ("eevee", "Icy Stone in Arundel Woods"),
+    "gardevoir": ("kirlia", "LV.30"),
+    "gallade": ("kirlia", "Dawn Stone"),
+    "glalie": ("snorunt", "LV.42"),
+    "froslass": ("snorunt", "Dawn Stone"),
+    "silcoon": ("wurmple", "LV.7"),
+    "cascoon": ("wurmple", "LV.7"),
+    "beautifly": ("silcoon", "LV.10"),
+    "dustox": ("cascoon", "LV.10"),
+    "sirfetchd": ("farfetchd-galar", "LV.35"),
+}
+
+SPECIAL_EVOLUTION_GATES = {
+    "Musky Rock in First Stratum": {
+        "checkpointId": "first-stratum",
+        "source": "Teambuilding guide",
+        "note": "Guide note says Leafeon evolves by interacting with the Musky Rock in the First Stratum.",
+    },
+    "Icy Stone in Arundel Woods": {
+        "checkpointId": "second-stratum",
+        "source": "Teambuilding guide",
+        "note": "Guide note says Glaceon evolves by interacting with the Icy Stone in Arundel Woods.",
+    },
+}
 
 NAME_ALIASES = {
     "ScreamTail": "Scream Tail",
@@ -311,6 +478,93 @@ def timing_rank(timing: str) -> int:
     return TIMING_ORDER.get(timing, TIMING_ORDER["Unknown"])
 
 
+def checkpoint_for_id(checkpoint_id: str | None) -> dict:
+    return CHECKPOINT_BY_ID.get(checkpoint_id or "", CHECKPOINT_BY_ID["unknown"])
+
+
+def checkpoint_for_sort(sort: int | None) -> dict:
+    if sort is None:
+        return CHECKPOINT_BY_ID["unknown"]
+    return CHECKPOINT_BY_SORT.get(sort, CHECKPOINT_BY_ID["unknown"])
+
+
+def checkpoint_for_level(level: int | None) -> dict:
+    if level is None or level <= 0:
+        return CHECKPOINT_BY_ID["first-stratum"]
+    for checkpoint in PROGRESSION_CHECKPOINTS:
+        cap = checkpoint.get("levelCap")
+        if cap is not None and cap >= level:
+            return checkpoint
+    return CHECKPOINT_BY_ID["postgame"]
+
+
+def checkpoint_for_location(location: str, area_map: dict[str, str] | None = None, default: str = "unknown") -> dict:
+    text = clean_space(location).upper()
+    if not text:
+        return checkpoint_for_id(default)
+    if "POSTGAME" in text:
+        return CHECKPOINT_BY_ID["postgame"]
+    after_matches = [
+        ("AFTER THE FIRST STRATUM", 2),
+        ("AFTER FIRST STRATUM", 2),
+        ("AFTER THE SECOND STRATUM", 3),
+        ("AFTER SECOND STRATUM", 3),
+        ("AFTER THE THIRD STRATUM", 4),
+        ("AFTER THIRD STRATUM", 4),
+        ("AFTER THE FOURTH STRATUM", 5),
+        ("AFTER FOURTH STRATUM", 5),
+        ("AFTER THE FIFTH STRATUM", 6),
+        ("AFTER FIFTH STRATUM", 6),
+        ("AFTER THE SIXTH STRATUM", 7),
+        ("AFTER SIXTH STRATUM", 7),
+        ("AFTER THE SEVENTH STRATUM", 8),
+        ("AFTER SEVENTH STRATUM", 8),
+    ]
+    for needle, sort in after_matches:
+        if needle in text:
+            return checkpoint_for_sort(sort)
+    if area_map:
+        for area, checkpoint_id in sorted(area_map.items(), key=lambda item: len(item[0]), reverse=True):
+            if area and area in text:
+                return checkpoint_for_id(checkpoint_id)
+    for sort, needles in LOCATION_CHECKPOINT_RULES:
+        if any(needle in text for needle in needles):
+            return checkpoint_for_sort(sort)
+    return checkpoint_for_id(default)
+
+
+def checkpoint_payload(checkpoint: dict) -> dict:
+    return {
+        "id": checkpoint["id"],
+        "sort": checkpoint["sort"],
+        "label": checkpoint["label"],
+        "shortLabel": checkpoint["shortLabel"],
+        "levelCap": checkpoint.get("levelCap"),
+    }
+
+
+def max_checkpoint(*checkpoints: dict) -> dict:
+    return max((checkpoint for checkpoint in checkpoints if checkpoint), key=lambda item: item["sort"], default=CHECKPOINT_BY_ID["unknown"])
+
+
+def item_key(raw: str) -> str:
+    value = clean_space(raw).lower()
+    value = unicodedata.normalize("NFKD", value)
+    value = "".join(ch for ch in value if not unicodedata.combining(ch))
+    return re.sub(r"[^a-z0-9]+", "", value)
+
+
+def canonical_item_name(raw: str, item_names: set[str] | None = None) -> str:
+    key = item_key(raw)
+    if key in ITEM_NAME_ALIASES:
+        return ITEM_NAME_ALIASES[key]
+    if item_names:
+        by_key = {item_key(item): item for item in item_names}
+        if key in by_key:
+            return by_key[key]
+    return clean_space(raw)
+
+
 def is_area_heading(value: str, row_values: list[str]) -> bool:
     text = clean_space(value)
     if not text:
@@ -373,6 +627,24 @@ def parse_evolution_method(raw: str) -> dict:
             "isItemBased": False,
             "isStoneBased": False,
         }
+    if raw in SPECIAL_EVOLUTION_GATES:
+        gate = SPECIAL_EVOLUTION_GATES[raw]
+        checkpoint = checkpoint_for_id(gate["checkpointId"])
+        return {
+            "raw": raw,
+            "kind": "special",
+            "label": f"Evolves at {raw}",
+            "items": [],
+            "levels": [],
+            "isItemBased": False,
+            "isStoneBased": False,
+            "specialGate": {
+                "label": raw,
+                "source": gate["source"],
+                "note": gate["note"],
+                "checkpoint": checkpoint_payload(checkpoint),
+            },
+        }
 
     parts = [normalize_evolution_part(part) for part in re.split(r"\s*/\s*", raw) if clean_space(part)]
     levels = [part for part in parts if re.match(r"Lv\.\s*\d+$", part, flags=re.I)]
@@ -413,6 +685,22 @@ def parse_evolution_method(raw: str) -> dict:
     }
 
 
+def evolution_method_summary(method: dict) -> str:
+    parts = [*method.get("levels", []), *method.get("items", [])]
+    return " / ".join(parts) or method.get("raw") or method.get("label", "")
+
+
+def incoming_evolution_payload(pokemon: dict, source_key: str, raw_method: str) -> dict:
+    source = pokemon[source_key]
+    method = parse_evolution_method(raw_method)
+    return {
+        **method,
+        "fromId": source_key,
+        "fromName": source["displayName"],
+        "label": f"From {source['displayName']}: {evolution_method_summary(method)}",
+    }
+
+
 def ensure_pokemon(pokemon: dict, raw_name: str, source: str = "") -> dict:
     key = name_key(raw_name)
     if not key:
@@ -450,6 +738,7 @@ def ensure_pokemon(pokemon: dict, raw_name: str, source: str = "") -> dict:
                 "details": "",
                 "via": "",
             },
+            "timeline": None,
             "sourceSheets": [],
         }
     mon = pokemon[key]
@@ -756,18 +1045,21 @@ def parse_level_caps(wb) -> list[dict]:
         cap = clean_space(as_text(ws.cell(row, 3).value))
         if not stratum or not cap or not cap.upper().startswith("LV"):
             continue
+        checkpoint = checkpoint_for_location(stratum)
         caps.append({
             "stratum": stratum,
             "cap": cap.replace("LV.", "Lv.").replace("LV", "Lv."),
             "phase": timing_for_location(stratum),
+            "checkpoint": checkpoint_payload(checkpoint),
         })
     return caps
 
 
-def make_encounter_record(source: str, area: str, method: str, raw_name: str, level, rate) -> list[dict]:
+def make_encounter_record(source: str, area: str, method: str, raw_name: str, level, rate, checkpoint_id: str | None = None, area_map: dict[str, str] | None = None) -> list[dict]:
     records = []
     level_text = level_to_text(level)
     rate_text = encounter_rate_to_text(rate)
+    checkpoint = checkpoint_for_id(checkpoint_id) if checkpoint_id else checkpoint_for_location(area, area_map)
     for name in split_species_list(raw_name):
         if not name:
             continue
@@ -782,21 +1074,40 @@ def make_encounter_record(source: str, area: str, method: str, raw_name: str, le
             "area": clean_space(area),
             "method": clean_space(method) or "Encounter",
             "phase": timing_for_location(area, method),
+            "checkpoint": checkpoint["id"],
+            "checkpointSort": checkpoint["sort"],
+            "checkpointLabel": checkpoint["label"],
+            "levelCap": checkpoint.get("levelCap"),
             "source": source,
         })
     return records
 
 
-def parse_wild_encounters(wb) -> list[dict]:
+def build_area_checkpoint_map(wb) -> dict[str, str]:
+    ws = wb["Pokémon"]
+    area_map: dict[str, str] = {}
+    for row in range(1, ws.max_row + 1):
+        row_values = [as_text(ws.cell(row, col).value) for col in range(1, ws.max_column + 1)]
+        first = clean_space(row_values[0] if row_values else "")
+        if not is_area_heading(first, row_values):
+            continue
+        checkpoint = checkpoint_for_location(first)
+        area_map[first.upper()] = checkpoint["id"]
+    return area_map
+
+
+def parse_wild_encounters(wb, area_map: dict[str, str] | None = None) -> list[dict]:
     ws = wb["Pokémon"]
     encounters = []
     current_area = ""
+    current_checkpoint_id = "first-stratum"
     current_methods: dict[int, str] = defaultdict(str)
     for row in range(1, ws.max_row + 1):
         row_values = [as_text(ws.cell(row, col).value) for col in range(1, ws.max_column + 1)]
         first = clean_space(row_values[0] if row_values else "")
         if is_area_heading(first, row_values):
             current_area = first
+            current_checkpoint_id = checkpoint_for_location(first, area_map, current_checkpoint_id)["id"]
             current_methods = defaultdict(str)
             continue
 
@@ -818,7 +1129,7 @@ def parse_wild_encounters(wb) -> list[dict]:
             if level is None and rate is None:
                 continue
             method = current_methods[col] or "Encounter"
-            encounters.extend(make_encounter_record("Wild encounters", current_area, method, raw_name, level, rate))
+            encounters.extend(make_encounter_record("Wild encounters", current_area, method, raw_name, level, rate, current_checkpoint_id, area_map))
 
     post = wb["Pokémon (Postgame)"]
     for row in range(1, post.max_row + 1):
@@ -838,7 +1149,7 @@ def parse_wild_encounters(wb) -> list[dict]:
                 if possible and possible != raw_name and not is_method_heading(possible) and "POKÉMON" not in possible.upper():
                     area = possible
                     break
-            records = make_encounter_record("Postgame encounters", area or "Postgame", "Event (Postgame)", raw_name, level, rate)
+            records = make_encounter_record("Postgame encounters", area or "Postgame", "Event (Postgame)", raw_name, level, rate, "postgame", area_map)
             for record in records:
                 record["phase"] = "Postgame"
             encounters.extend(records)
@@ -854,9 +1165,10 @@ def parse_wonder_trade(wb) -> list[dict]:
             raw_name = as_text(ws.cell(row, col).value)
             if not raw_name:
                 continue
-            records = make_encounter_record("Wonder Trade", area, "Wonder Trade", raw_name, ws.cell(row, col + 1).value, "Trade")
+            records = make_encounter_record("Wonder Trade", area, "Wonder Trade", raw_name, ws.cell(row, col + 1).value, "Trade", "first-stratum")
             for record in records:
-                record["phase"] = "Early"
+                record["phase"] = "Start"
+                record["startAvailable"] = True
             encounters.extend(records)
     return encounters
 
@@ -888,7 +1200,8 @@ def parse_naval_explorations(wb) -> list[dict]:
             if level is None:
                 continue
             rate = ws.cell(row, col + 2).value if col + 2 <= ws.max_column else ""
-            records = make_encounter_record("Naval Explorations", current_phase, current_methods[col] or "Naval Encounter", raw_name, level, rate)
+            checkpoint = checkpoint_for_location(current_phase, default="first-stratum" if current_phase == "Normal Encounters" else "unknown")
+            records = make_encounter_record("Naval Explorations", current_phase, current_methods[col] or "Naval Encounter", raw_name, level, rate, checkpoint["id"])
             for record in records:
                 if current_phase == "Normal Encounters":
                     record["phase"] = "Early"
@@ -898,7 +1211,7 @@ def parse_naval_explorations(wb) -> list[dict]:
     return encounters
 
 
-def parse_tms_and_tutors(wb) -> tuple[list[dict], list[dict]]:
+def parse_tms_and_tutors(wb, area_map: dict[str, str] | None = None) -> tuple[list[dict], list[dict]]:
     tms = []
     ws = wb["TM Location"]
     for row in range(4, ws.max_row + 1):
@@ -906,7 +1219,8 @@ def parse_tms_and_tutors(wb) -> tuple[list[dict], list[dict]]:
         move = clean_space(as_text(ws.cell(row, 3).value))
         location = clean_space(as_text(ws.cell(row, 4).value))
         if number and move:
-            tms.append({"number": number, "move": move, "location": location, "phase": timing_for_location(location)})
+            checkpoint = checkpoint_for_location(location, area_map)
+            tms.append({"number": number, "move": move, "location": location, "phase": timing_for_location(location), "checkpoint": checkpoint_payload(checkpoint)})
 
     tutors = []
     ws = wb["Move Tutors"]
@@ -914,11 +1228,12 @@ def parse_tms_and_tutors(wb) -> tuple[list[dict], list[dict]]:
         move = clean_space(as_text(ws.cell(row, 2).value))
         location = clean_space(as_text(ws.cell(row, 3).value))
         if move:
-            tutors.append({"move": move, "location": location, "phase": timing_for_location(location)})
+            checkpoint = checkpoint_for_location(location, area_map)
+            tutors.append({"move": move, "location": location, "phase": timing_for_location(location), "checkpoint": checkpoint_payload(checkpoint)})
     return tms, tutors
 
 
-def parse_sidequests(wb) -> list[dict]:
+def parse_sidequests(wb, area_map: dict[str, str] | None = None) -> list[dict]:
     ws = wb["Sidequests"]
     quests = []
     for row in range(2, ws.max_row + 1):
@@ -936,8 +1251,178 @@ def parse_sidequests(wb) -> list[dict]:
             "description": description,
             "reward": reward,
             "phase": timing_for_location(location),
+            "checkpoint": checkpoint_payload(checkpoint_for_location(location, area_map)),
         })
     return quests
+
+
+def add_item_source(sources: dict[str, list[dict]], item_names: set[str], raw_item: str, source: str, location: str, method: str, checkpoint: dict, gate_level: int | None = None, note: str = "") -> None:
+    item = canonical_item_name(raw_item, item_names)
+    if item_key(item) not in {item_key(name) for name in item_names}:
+        return
+    level_checkpoint = checkpoint_for_level(gate_level)
+    final_checkpoint = max_checkpoint(checkpoint, level_checkpoint)
+    sources[item].append({
+        "item": item,
+        "source": source,
+        "location": clean_space(location),
+        "method": clean_space(method),
+        "checkpoint": checkpoint_payload(final_checkpoint),
+        "areaCheckpoint": checkpoint_payload(checkpoint),
+        "gateLevel": gate_level,
+        "note": note,
+    })
+
+
+def foe_levels_by_area(encounters: list[dict]) -> dict[str, int]:
+    levels: dict[str, int] = {}
+    for record in encounters:
+        if "F.O.E" not in record.get("method", "").upper():
+            continue
+        level = record.get("minLevel")
+        if level is None:
+            continue
+        area = clean_space(record.get("area", "")).upper()
+        if not area:
+            continue
+        levels[area] = min(levels.get(area, level), level)
+    return levels
+
+
+def foe_level_for_area(foe_levels: dict[str, int], area: str) -> int | None:
+    key = clean_space(area).upper()
+    if key in foe_levels:
+        return foe_levels[key]
+    matches = [level for foe_area, level in foe_levels.items() if key and (key in foe_area or foe_area in key)]
+    return min(matches) if matches else None
+
+
+def parse_field_item_sources(wb, item_names: set[str], area_map: dict[str, str], encounters: list[dict], sources: dict[str, list[dict]]) -> None:
+    ws = wb["Items"]
+    foe_levels = foe_levels_by_area(encounters)
+    current_areas: dict[int, str] = {}
+    for row in range(1, ws.max_row + 1):
+        for start_col in [1, 6]:
+            area = clean_space(as_text(ws.cell(row, start_col).value))
+            item = clean_space(as_text(ws.cell(row, start_col + 1).value))
+            method = clean_space(as_text(ws.cell(row, start_col + 2).value))
+            if area and not item and not method:
+                current_areas[start_col] = area
+                continue
+            if not item:
+                continue
+            current_area = current_areas.get(start_col, "")
+            checkpoint = checkpoint_for_location(current_area, area_map)
+            gate_level = None
+            note = ""
+            if "F.O.E" in method.upper():
+                gate_level = foe_level_for_area(foe_levels, current_area)
+                note = "Guarded by an F.O.E.; checkpoint uses the parsed F.O.E. level when available."
+                if gate_level is None:
+                    checkpoint = CHECKPOINT_BY_ID["unknown"]
+                    note = "Guarded by an F.O.E.; no guard level was parsed, so this source is not used for early timeline claims."
+            add_item_source(sources, item_names, item, "Field item", current_area, method, checkpoint, gate_level, note)
+
+
+def parse_gathering_mining_item_sources(wb, item_names: set[str], sources: dict[str, list[dict]]) -> None:
+    ws = wb["GatheringMining"]
+    current_checkpoint = CHECKPOINT_BY_ID["unknown"]
+    current_methods: dict[int, str] = {}
+    for row in range(1, ws.max_row + 1):
+        first = clean_space(as_text(ws.cell(row, 1).value))
+        if first and "STRATUM" in first.upper():
+            current_checkpoint = checkpoint_for_location(first)
+            current_methods = {}
+            continue
+        for col in [1, 4, 7]:
+            header = clean_space(as_text(ws.cell(row, col).value))
+            if header and any(token in header.upper() for token in ["GATHERING", "MINING"]):
+                current_methods[col] = header
+                continue
+            item = header
+            if item:
+                add_item_source(sources, item_names, item.replace(" ↑↑", ""), "Gathering/Mining", current_checkpoint["label"], current_methods.get(col, "Gathering/Mining"), current_checkpoint)
+
+
+def parse_napier_item_sources(wb, item_names: set[str], area_map: dict[str, str], sources: dict[str, list[dict]]) -> None:
+    ws = wb["Items (Shop)"]
+    napier_checkpoint = checkpoint_for_location("Aqua Resort", area_map)
+    tier_by_col: dict[int, int] = {}
+    in_napier = False
+    for row in range(1, ws.max_row + 1):
+        row_text = " ".join(clean_space(as_text(ws.cell(row, col).value)) for col in range(1, ws.max_column + 1))
+        if "NAPIER'S SHOP" in row_text.upper():
+            in_napier = True
+            continue
+        if in_napier and "POWER ITEM SHOP" in row_text.upper():
+            break
+        if not in_napier:
+            continue
+        for col in range(1, ws.max_column + 1):
+            value = clean_space(as_text(ws.cell(row, col).value))
+            match = re.search(r"TREASURES\s+OBTAINED:\s*(\d+)", value, flags=re.I)
+            if match:
+                tier_by_col[col] = int(match.group(1))
+                continue
+            if not value:
+                continue
+            tier = None
+            for header_col, header_tier in sorted(tier_by_col.items()):
+                if col >= header_col and col < header_col + 3:
+                    tier = header_tier
+                    break
+            if tier is None:
+                continue
+            gate_level = NAPIER_TREASURE_TIER_LEVELS.get(tier)
+            note = f"Napier shop tier {tier}; tier gates are conservative assumptions from documented sea boss/F.O.E. levels."
+            add_item_source(sources, item_names, value, "Napier's Shop", "Aqua Resort", f"Treasures obtained: {tier}", napier_checkpoint, gate_level, note)
+
+
+def parse_sidequest_item_sources(sidequests: list[dict], item_names: set[str], sources: dict[str, list[dict]]) -> None:
+    for quest in sidequests:
+        reward = quest.get("reward", "")
+        for item in item_names:
+            if item_key(item) and item_key(item) in item_key(reward):
+                checkpoint = checkpoint_for_id(quest.get("checkpoint", {}).get("id"))
+                add_item_source(sources, item_names, item, "Sidequest reward", quest.get("location", ""), quest.get("name", ""), checkpoint, note=f"Reward from sidequest {quest.get('number', '')}: {quest.get('name', '')}")
+
+
+def evolution_item_names_from_pokemon(pokemon: dict) -> set[str]:
+    names = set()
+    for mon in pokemon.values():
+        for method in [mon.get("evolutionMethod"), mon.get("incomingEvolution")]:
+            if not method:
+                continue
+            for item in method.get("items", []):
+                if item:
+                    names.add(canonical_item_name(item))
+    return names
+
+
+def parse_evolution_item_sources(wild_wb, sidequests: list[dict], item_names: set[str], area_map: dict[str, str], encounters: list[dict]) -> list[dict]:
+    sources: dict[str, list[dict]] = defaultdict(list)
+    for stone in LOTTERY_STONES & item_names:
+        add_item_source(
+            sources,
+            item_names,
+            stone,
+            "Talrega Lottery",
+            "Talrega",
+            "Lottery prize",
+            CHECKPOINT_BY_ID["first-stratum"],
+            note="Manual rule: Fire, Water, Thunder, and Sun Stones are available from the Talrega Lottery before the First Stratum cap.",
+        )
+    parse_field_item_sources(wild_wb, item_names, area_map, encounters, sources)
+    parse_gathering_mining_item_sources(wild_wb, item_names, sources)
+    parse_napier_item_sources(wild_wb, item_names, area_map, sources)
+    parse_sidequest_item_sources(sidequests, item_names, sources)
+
+    rows = []
+    for item, item_sources in sources.items():
+        item_sources.sort(key=lambda source: (source["checkpoint"]["sort"], source.get("gateLevel") or 0, source["source"], source["location"]))
+        rows.extend(item_sources)
+    rows.sort(key=lambda source: (source["item"], source["checkpoint"]["sort"], source.get("gateLevel") or 0))
+    return rows
 
 
 def normalize_role(raw_role: str) -> str:
@@ -1115,11 +1600,15 @@ def apply_manual_evolution_groups(pokemon: dict, groups: list[list[str]]) -> Non
         ["poliwag", "poliwhirl", "poliwrath", "politoed"],
         ["slowpoke", "slowbro", "slowking"],
         ["onix", "steelix"],
-        ["scyther", "scizor"],
+        ["scyther", "kleavor", "scizor"],
         ["seadra", "kingdra"],
         ["porygon", "porygon2", "porygon-z"],
         ["tyrogue", "hitmonlee", "hitmonchan", "hitmontop"],
         ["eevee", "vaporeon", "jolteon", "flareon", "espeon", "umbreon", "leafeon", "glaceon", "yggdreon", "goreon"],
+        ["zubat", "golbat", "crobat"],
+        ["happiny", "chansey", "blissey"],
+        ["wurmple", "silcoon", "beautifly", "cascoon", "dustox"],
+        ["farfetchd-galar", "sirfetchd"],
         ["roselia", "roserade"],
         ["aipom", "ambipom"],
         ["misdreavus", "mismagius"],
@@ -1155,6 +1644,11 @@ def apply_manual_evolution_groups(pokemon: dict, groups: list[list[str]]) -> Non
 
 def assign_families(pokemon: dict, groups: list[list[str]]) -> None:
     apply_manual_evolution_groups(pokemon, groups)
+    order_hints = {}
+    for group in groups:
+        for index, key in enumerate(group):
+            if key in pokemon:
+                order_hints[key] = index
     dsu = DisjointSet()
     for key in pokemon:
         dsu.find(key)
@@ -1169,7 +1663,7 @@ def assign_families(pokemon: dict, groups: list[list[str]]) -> None:
     for key in pokemon:
         families[dsu.find(key)].append(key)
     for members in families.values():
-        sorted_members = sorted(members, key=lambda key: int(pokemon[key]["gameDexId"] or 9999))
+        sorted_members = sorted(members, key=lambda key: (order_hints.get(key, 999), int(pokemon[key]["gameDexId"] or 9999)))
         names = [pokemon[key]["displayName"] for key in sorted_members]
         for key in members:
             pokemon[key]["family"] = sorted_members
@@ -1204,13 +1698,20 @@ def assign_evolution_metadata(pokemon: dict) -> None:
                 **source_method,
                 "fromId": source_key,
                 "fromName": source["displayName"],
-                "label": f"From {source['displayName']}: {' / '.join([*source_method.get('levels', []), *source_method.get('items', [])]) or source_method.get('raw') or source_method.get('label')}",
+                "label": f"From {source['displayName']}: {evolution_method_summary(source_method)}",
             }
+
+    for target_key, (source_key, raw_method) in DIRECT_EVOLUTION_OVERRIDES.items():
+        if target_key not in pokemon or source_key not in pokemon:
+            continue
+        if source_key not in pokemon[target_key].get("family", []):
+            continue
+        pokemon[target_key]["incomingEvolution"] = incoming_evolution_payload(pokemon, source_key, raw_method)
 
 
 def sort_encounter(record: dict) -> tuple:
     return (
-        timing_rank(record.get("phase", "Unknown")),
+        record.get("checkpointSort") or timing_rank(record.get("phase", "Unknown")),
         record.get("minLevel") if record.get("minLevel") is not None else 999,
         record.get("area", ""),
         record.get("method", ""),
@@ -1292,17 +1793,218 @@ def attach_guide_entries(pokemon: dict, guide_entries: list[dict]) -> None:
                     "page": entry["page"],
                 })
 
-            guide_phase = entry.get("availability")
-            if guide_phase and timing_rank(guide_phase) < mon["availability"]["sort"]:
-                mon["availability"] = {
-                    "phase": guide_phase,
-                    "sort": timing_rank(guide_phase),
-                    "source": "Teambuilding guide",
-                    "details": entry.get("howToObtain", ""),
-                    "via": ", ".join(entry.get("pokemonNames", [])),
+            # Guide tags are useful role hints, but concrete timeline availability
+            # is derived later from encounters, level caps, and evolution gates.
+
+
+def earliest_item_source(item: str, item_sources_by_key: dict[str, list[dict]]) -> dict | None:
+    sources = item_sources_by_key.get(item_key(item), [])
+    return sources[0] if sources else None
+
+
+def method_required_level(method: dict | None) -> int | None:
+    if not method:
+        return None
+    levels = []
+    for level in method.get("levels", []):
+        match = re.search(r"\d+", level)
+        if match:
+            levels.append(int(match.group(0)))
+    return max(levels) if levels else None
+
+
+def method_checkpoint(method: dict | None, item_sources_by_key: dict[str, list[dict]]) -> tuple[dict, list[dict], list[str]]:
+    if not method or method.get("kind") == "none":
+        return CHECKPOINT_BY_ID["first-stratum"], [], []
+    checkpoints = [CHECKPOINT_BY_ID["first-stratum"]]
+    item_requirements = []
+    missing_items = []
+    required_level = method_required_level(method)
+    if required_level:
+        checkpoints.append(checkpoint_for_level(required_level))
+    if method.get("specialGate"):
+        checkpoints.append(checkpoint_for_id(method["specialGate"]["checkpoint"]["id"]))
+    for item in method.get("items", []):
+        source = earliest_item_source(item, item_sources_by_key)
+        if source:
+            checkpoints.append(checkpoint_for_id(source["checkpoint"]["id"]))
+            item_requirements.append({
+                "item": source["item"],
+                "source": source["source"],
+                "location": source["location"],
+                "method": source["method"],
+                "checkpoint": source["checkpoint"],
+                "gateLevel": source.get("gateLevel"),
+                "note": source.get("note", ""),
+            })
+        else:
+            missing_items.append(item)
+            checkpoints.append(CHECKPOINT_BY_ID["unknown"])
+    return max_checkpoint(*checkpoints), item_requirements, missing_items
+
+
+def record_checkpoint(record: dict) -> dict:
+    area_checkpoint = checkpoint_for_id(record.get("checkpoint"))
+    level_checkpoint = checkpoint_for_level(record.get("minLevel"))
+    return max_checkpoint(area_checkpoint, level_checkpoint)
+
+
+def evolution_path_between(pokemon: dict, family: list[str], source_key: str, target_key: str) -> list[dict] | None:
+    if source_key == target_key:
+        return []
+    if source_key not in family or target_key not in family:
+        return None
+    methods = []
+    current_key = target_key
+    seen = set()
+    while current_key != source_key:
+        if current_key in seen:
+            return None
+        seen.add(current_key)
+        method = pokemon.get(current_key, {}).get("incomingEvolution")
+        if not method:
+            return None
+        from_key = method.get("fromId")
+        if not from_key or from_key not in family:
+            return None
+        methods.append(method)
+        current_key = from_key
+    return list(reversed(methods))
+
+
+def timeline_candidate_from_record(pokemon: dict, target_key: str, source_key: str, record: dict, item_sources_by_key: dict[str, list[dict]]) -> dict | None:
+    target = pokemon[target_key]
+    family = target.get("family") or [target_key]
+    path = evolution_path_between(pokemon, family, source_key, target_key)
+    if path is None:
+        return None
+
+    checkpoints = [record_checkpoint(record)]
+    requirements = []
+    missing_items: list[str] = []
+    for method in path:
+        method_cp, item_requirements, method_missing = method_checkpoint(method, item_sources_by_key)
+        checkpoints.append(method_cp)
+        requirements.append({
+            "fromId": method.get("fromId"),
+            "fromName": method.get("fromName"),
+            "label": method.get("label") or evolutionSummaryText(method),
+            "requiredLevel": method_required_level(method),
+            "items": item_requirements,
+            "missingItems": method_missing,
+            "specialGate": method.get("specialGate"),
+        })
+        missing_items.extend(method_missing)
+
+    checkpoint = max_checkpoint(*checkpoints)
+    via = pokemon.get(source_key, {}).get("displayName", record.get("pokemon", ""))
+    if source_key == target_key:
+        source = record.get("source", "Encounter")
+        if record.get("startAvailable"):
+            reason = "Wonder Trade entries are available from the start of the game."
+        else:
+            reason = f"Direct encounter by {checkpoint['label']}."
+    else:
+        source = "Evolution"
+        reason = f"Evolves from {via} by {checkpoint['label']}."
+    return {
+        "checkpoint": checkpoint_payload(checkpoint),
+        "source": source,
+        "via": via,
+        "baseId": source_key,
+        "baseName": via,
+        "encounter": {
+            "pokemon": record.get("pokemon"),
+            "area": record.get("area"),
+            "method": record.get("method"),
+            "level": record.get("level"),
+            "minLevel": record.get("minLevel"),
+            "rate": record.get("rate"),
+            "source": record.get("source"),
+            "checkpoint": checkpoint_payload(record_checkpoint(record)),
+            "startAvailable": bool(record.get("startAvailable")),
+        },
+        "requirements": requirements,
+        "missingItems": sorted(set(missing_items)),
+        "startAvailable": bool(record.get("startAvailable")) and source_key == target_key,
+        "reason": reason,
+    }
+
+
+def evolutionSummaryText(method: dict) -> str:
+    return evolution_method_summary(method)
+
+
+def attach_progression_timeline(pokemon: dict, item_sources: list[dict]) -> None:
+    item_sources_by_key: dict[str, list[dict]] = defaultdict(list)
+    for source in item_sources:
+        item_sources_by_key[item_key(source["item"])].append(source)
+    for sources in item_sources_by_key.values():
+        sources.sort(key=lambda item: (item["checkpoint"]["sort"], item.get("gateLevel") or 0, item["source"], item["location"]))
+
+    for key, mon in pokemon.items():
+        candidates = []
+        for family_key in mon.get("family", [key]):
+            for record in pokemon.get(family_key, {}).get("directEncounters", []):
+                candidate = timeline_candidate_from_record(pokemon, key, family_key, record, item_sources_by_key)
+                if candidate:
+                    candidates.append(candidate)
+
+        if key in {"plusle", "minun"}:
+            checkpoint = CHECKPOINT_BY_ID["first-stratum"]
+            candidates.append({
+                "checkpoint": checkpoint_payload(checkpoint),
+                "source": "Story starter",
+                "via": mon["displayName"],
+                "baseId": key,
+                "baseName": mon["displayName"],
+                "encounter": {
+                    "pokemon": mon["displayName"],
+                    "area": "Starter",
+                    "method": "Story starter",
                     "level": "",
+                    "minLevel": None,
                     "rate": "",
-                }
+                    "source": "Story starter",
+                    "checkpoint": checkpoint_payload(checkpoint),
+                },
+                "requirements": [],
+                "missingItems": [],
+                "reason": "Nyx starts the journey with Plusle and Minun.",
+            })
+
+        candidates.sort(key=lambda candidate: (
+            candidate["checkpoint"]["sort"],
+            candidate["encounter"].get("minLevel") if candidate["encounter"].get("minLevel") is not None else 999,
+            candidate["source"],
+            candidate["via"],
+        ))
+        timeline = candidates[0] if candidates else {
+            "checkpoint": checkpoint_payload(CHECKPOINT_BY_ID["unknown"]),
+            "source": "Unknown",
+            "via": "",
+            "baseId": "",
+            "baseName": "",
+            "encounter": {},
+            "requirements": [],
+            "missingItems": [],
+            "reason": "No parsed encounter or evolution route is available yet.",
+        }
+        mon["timeline"] = timeline
+        checkpoint = timeline["checkpoint"]
+        encounter = timeline.get("encounter", {})
+        mon["availability"] = {
+            "phase": checkpoint["label"],
+            "sort": checkpoint["sort"],
+            "source": timeline.get("source", ""),
+            "details": f"{encounter.get('area', '')} - {encounter.get('method', '')}".strip(" -"),
+            "via": timeline.get("via") or mon["displayName"],
+            "level": encounter.get("level", ""),
+            "rate": encounter.get("rate", ""),
+            "checkpoint": checkpoint,
+            "reason": timeline.get("reason", ""),
+            "startAvailable": bool(timeline.get("startAvailable")),
+        }
 
 
 def resolve_pokemon_key(key: str, pokemon: dict) -> str:
@@ -1376,21 +2078,25 @@ def main() -> None:
     ability_definitions = merge_ability_definitions(odyssey_ability_definitions, standard_ability_definitions)
 
     wild_wb = openpyxl.load_workbook(WILD_XLSX, data_only=True, read_only=False)
+    area_checkpoint_map = build_area_checkpoint_map(wild_wb)
     encounters = []
-    encounters.extend(parse_wild_encounters(wild_wb))
+    encounters.extend(parse_wild_encounters(wild_wb, area_checkpoint_map))
     encounters.extend(parse_wonder_trade(wild_wb))
     encounters.extend(parse_naval_explorations(wild_wb))
-    tms, tutors = parse_tms_and_tutors(wild_wb)
+    tms, tutors = parse_tms_and_tutors(wild_wb, area_checkpoint_map)
 
     levels_wb = openpyxl.load_workbook(LEVELS_XLSX, data_only=True, read_only=False)
     level_caps = parse_level_caps(levels_wb)
-    sidequests = parse_sidequests(levels_wb)
+    sidequests = parse_sidequests(levels_wb, area_checkpoint_map)
 
     guide_entries = parse_teambuilding_guide(TEAMBUILDING_PDF)
     assign_families(pokemon, family_groups)
     assign_evolution_metadata(pokemon)
     attach_encounters(pokemon, encounters)
     attach_guide_entries(pokemon, guide_entries)
+    evolution_item_names = evolution_item_names_from_pokemon(pokemon)
+    evolution_item_sources = parse_evolution_item_sources(wild_wb, sidequests, evolution_item_names, area_checkpoint_map, encounters)
+    attach_progression_timeline(pokemon, evolution_item_sources)
 
     roles = sorted({role for mon in pokemon.values() for role in mon.get("roles", [])})
     types = sorted({type_name for mon in pokemon.values() for type_name in mon.get("types", [])})
@@ -1406,18 +2112,24 @@ def main() -> None:
                 TEAMBUILDING_PDF.name,
             ],
             "sourceNotes": [
-                "Availability uses the earliest parsed direct encounter for the Pokemon or its evolution family.",
-                "Guide availability tags come from the teambuilding PDF and may override encounter timing when earlier.",
+                "Availability uses the earliest parsed direct encounter for the Pokemon or its evolution family, then applies evolution level and item gates.",
+                "Guide availability tags come from the teambuilding PDF as role context; encounter timing comes from parsed documentation and manual rules listed here.",
                 "Exact story/boss details are kept in source records but summarized in the UI by default.",
                 "Ability tooltips use Odyssey's new/buffed ability sheet first, with standard ability text cached from PokeAPI.",
                 "Etrian Variant portrait art uses NORMAL embedded workbook sprites when a matching Pokemon exists.",
+                "Timeline availability uses encounter order, stratum level caps, evolution levels, and parsed evolution-item sources.",
+                "Manual timeline rule: Wonder Trade Pokemon are available from the start of the game.",
+                "Manual timeline rule: Fire, Water, Thunder, and Sun Stones are available from the Talrega Lottery by the First Stratum cap.",
+                "Napier's Shop treasure tiers use conservative gate-level assumptions from documented sea boss and naval F.O.E. levels.",
             ],
             "spriteAssets": sprite_count,
         },
+        "progression": PROGRESSION_CHECKPOINTS,
         "pokemon": finalize_pokemon(pokemon),
         "encounters": sorted(encounters, key=sort_encounter),
         "guideEntries": guide_entries,
         "abilityDefinitions": ability_definitions,
+        "evolutionItemSources": evolution_item_sources,
         "levelCaps": level_caps,
         "sidequests": sidequests,
         "tms": tms,
@@ -1425,7 +2137,7 @@ def main() -> None:
         "facets": {
             "types": types,
             "roles": roles,
-            "phases": ["Starter", "Early", "Mid", "Late", "Postgame", "Unknown"],
+            "checkpoints": [checkpoint_payload(checkpoint) for checkpoint in PROGRESSION_CHECKPOINTS if checkpoint["id"] != "unknown"],
             "archetypes": sorted({pokemon_archetype(mon) for mon in pokemon.values()}),
         },
     }
@@ -1437,6 +2149,7 @@ def main() -> None:
     print(f"Encounters: {len(encounters)}")
     print(f"Guide entries: {len(guide_entries)}")
     print(f"Ability definitions: {len(ability_definitions)}")
+    print(f"Evolution item sources: {len(evolution_item_sources)}")
     print(f"Etrian Variant sprites: {sprite_count}")
     if unmatched_sprites:
         print(f"Unmatched Etrian Variant sprites: {', '.join(unmatched_sprites)}")

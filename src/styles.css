@@ -201,7 +201,7 @@ button {
 
 .filter-chip,
 .type-chip,
-.phase-chip,
+.checkpoint-chip,
 .source-chip {
   min-height: 32px;
   border: 1px solid var(--line);
@@ -215,11 +215,27 @@ button {
 
 .filter-chip.active,
 .type-chip.active,
-.phase-chip.active,
+.checkpoint-chip.active,
 .source-chip.active {
   color: #fff;
   background: var(--teal);
   border-color: var(--teal);
+}
+
+.checkpoint-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.checkpoint-chip small {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 850;
+}
+
+.checkpoint-chip.active small {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .source-chip {
@@ -429,7 +445,7 @@ button {
 .ability-badge,
 .evolution-badge,
 .role-badge,
-.phase-badge,
+.checkpoint-badge,
 .stat-badge {
   display: inline-flex;
   align-items: center;
@@ -536,32 +552,36 @@ button {
   transform: translateY(0);
 }
 
-.phase-badge {
+.checkpoint-badge {
   color: #fff;
   background: var(--blue);
 }
 
-.phase-Starter {
+.checkpoint-first-stratum {
   background: var(--teal);
 }
 
-.phase-Early {
+.checkpoint-second-stratum {
   background: #2f8a52;
 }
 
-.phase-Mid {
+.checkpoint-third-stratum,
+.checkpoint-fourth-stratum {
   background: var(--gold);
 }
 
-.phase-Late {
+.checkpoint-fifth-stratum,
+.checkpoint-sixth-stratum,
+.checkpoint-seventh-stratum,
+.checkpoint-eighth-stratum {
   background: var(--red);
 }
 
-.phase-Postgame {
+.checkpoint-postgame {
   background: var(--violet);
 }
 
-.phase-Unknown {
+.checkpoint-unknown {
   background: #6b7280;
 }
 
@@ -870,6 +890,18 @@ button {
   color: var(--muted);
   font-size: 0.84rem;
   line-height: 1.4;
+}
+
+.requirement-list {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.requirement-list p {
+  margin: 0;
 }
 
 .moves-list {
