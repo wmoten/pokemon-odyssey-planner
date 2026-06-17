@@ -1129,6 +1129,10 @@ details summary {
     flex-wrap: wrap;
   }
 
+  .toggle-row {
+    white-space: normal;
+  }
+
   .layout {
     max-width: none;
   }
@@ -1152,7 +1156,7 @@ details summary {
   }
 
   .summary-metrics {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     min-width: 0;
     margin-top: 14px;
   }
@@ -1164,6 +1168,127 @@ details summary {
   }
 
   .team-slots {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-slot {
+    grid-template-columns: 46px minmax(0, 1fr) 30px;
+  }
+
+  .slot-name,
+  .slot-meta {
+    overflow-wrap: anywhere;
+  }
+
+  .results-toolbar,
+  .results-actions,
+  .sort-control {
+    align-items: stretch;
+  }
+
+  .results-toolbar,
+  .results-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sort-control {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .select-input.compact,
+  #add-selected {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .team-title-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 38px 38px 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-shell {
+    padding: 8px;
+  }
+
+  .topbar,
+  .filter-panel,
+  .dex-panel,
+  .detail-panel,
+  .team-dock {
+    border-radius: 7px;
+  }
+
+  .insight-strip {
+    padding: 16px;
+    background-size: 82px;
+    background-position: right 10px top 10px;
+  }
+
+  .insight-strip h2 {
+    min-height: 76px;
+    padding-right: 76px;
+  }
+
+  .summary-metrics,
+  .team-slots,
+  .team-matchup-grid,
+  .matchup-grid,
+  .pokemon-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .metric {
+    min-width: 0;
+    padding: 8px;
+  }
+
+  .metric span {
+    overflow-wrap: anywhere;
+  }
+
+  .ability-badge.has-tooltip::after {
+    display: none;
+  }
+
+  .detail-hero {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .detail-hero .sprite-frame {
+    width: 76px;
+    height: 76px;
+  }
+
+  .detail-hero .sprite-frame img {
+    width: 74px;
+    max-height: 74px;
+  }
+
+  .detail-title {
+    min-width: 0;
+  }
+
+  .detail-title h2,
+  .pokemon-card h3 {
+    overflow-wrap: anywhere;
+  }
+
+  .detail-section {
+    padding: 14px;
+  }
+
+  .stat-table {
+    font-size: 0.76rem;
+  }
+
+  .stat-table th,
+  .stat-table td {
+    padding: 6px 4px;
   }
 }
