@@ -65,6 +65,16 @@ const SPRITE_ALIASES = {
 
 const STAT_KEYS = ["hp", "atk", "def", "spa", "spd", "spe"];
 const SORT_FALLBACKS = ["availability", "dex", "name"];
+const CHECKPOINT_MODES = ["", "include", "exclude"];
+const EVOLUTION_FILTERS = [
+  { id: "base", label: "Base stage" },
+  { id: "middle", label: "Middle stage" },
+  { id: "final", label: "Final evolution" },
+  { id: "standalone", label: "Standalone" },
+  { id: "can-evolve", label: "Can evolve" },
+  { id: "item-gated", label: "Item-gated line" },
+  { id: "stone-gated", label: "Stone-gated line" },
+];
 
 const state = {
   data: null,
@@ -76,10 +86,14 @@ const state = {
   mobileDetailOpen: false,
   abilityPopoverOpen: false,
   search: "",
-  checkpointId: "",
+  checkpointModes: {},
   sources: new Set(),
   types: new Set(),
   abilities: new Set(),
+  weaknessTypes: new Set(),
+  resistTypes: new Set(),
+  evolutionFilters: new Set(),
+  abilitySearch: "",
   roles: new Set(),
   archetype: "All",
   sort: "availability",
@@ -95,8 +109,12 @@ const elements = {
   phaseFilters: $("#phase-filters"),
   sourceFilters: $("#source-filters"),
   typeFilters: $("#type-filters"),
+  weaknessFilters: $("#weakness-filters"),
+  resistFilters: $("#resist-filters"),
   abilityFilters: $("#ability-filters"),
+  abilitySearch: $("#ability-filter-search"),
   roleFilters: $("#role-filters"),
+  evolutionFilters: $("#evolution-filters"),
   archetype: $("#archetype-filter"),
   sort: $("#sort-select"),
   grid: $("#pokemon-grid"),
@@ -228,6 +246,56 @@ function checkpointLabel(checkpoint, compact = false) {
   return cp.levelCap ? `${label} · Lv.${cp.levelCap}` : label;
 }
 
+function checkpointMode(id) {
+  return state.checkpointModes[id] || "";
+}
+
+function cycleCheckpointMode(id) {
+  const current = checkpointMode(id);
+  const next = CHECKPOINT_MODES[(CHECKPOINT_MODES.indexOf(current) + 1) % CHECKPOINT_MODES.length];
+  if (next) state.checkpointModes[id] = next;
+  else delete state.checkpointModes[id];
+}
+
+function checkpointIdsByMode(mode) {
+  return Object.entries(state.checkpointModes)
+    .filter(([, value]) => value === mode)
+    .map(([id]) => id);
+}
+
+function checkpointSortsByMode(mode) {
+  return checkpointIdsByMode(mode)
+    .map((id) => checkpointById(id)?.sort)
+    .filter((sort) => Number.isFinite(sort));
+}
+
+function checkpointModeLabel(mode) {
+  if (mode === "include") return "Included";
+  if (mode === "exclude") return "Excluded";
+  return "";
+}
+
+function evolutionFilterMatch(mon, filter) {
+  const canEvolve = mon.evolutionMethod?.kind && mon.evolutionMethod.kind !== "none";
+  const hasIncoming = Boolean(mon.incomingEvolution);
+  if (filter === "base") return !hasIncoming && canEvolve;
+  if (filter === "middle") return hasIncoming && canEvolve;
+  if (filter === "final") return hasIncoming && !canEvolve;
+  if (filter === "standalone") return !hasIncoming && !canEvolve;
+  if (filter === "can-evolve") return canEvolve;
+  if (filter === "item-gated") return Boolean(mon.evolutionMethod?.isItemBased || mon.incomingEvolution?.isItemBased);
+  if (filter === "stone-gated") return Boolean(mon.evolutionMethod?.isStoneBased || mon.incomingEvolution?.isStoneBased);
+  return false;
+}
+
+function hasWeakness(mon, attackType) {
+  return defensiveMultiplier(attackType, mon.types) > 1;
+}
+
+function hasResistanceOrImmunity(mon, attackType) {
+  return defensiveMultiplier(attackType, mon.types) < 1;
+}
+
 function checkpointBadge(checkpoint) {
   const cp = checkpoint || fallbackCheckpoint();
   return `<span class="checkpoint-badge checkpoint-${escapeHtml(cssSlug(cp.id || cp.label))}" title="${escapeHtml(checkpointLabel(cp))}">${escapeHtml(checkpointLabel(cp, true))}</span>`;
@@ -354,13 +422,21 @@ function hasWonderTradeAvailability(mon) {
 
 function filterPokemon() {
   const query = state.search.trim().toLowerCase();
-  const selectedCheckpoint = checkpointById(state.checkpointId);
+  const includedCheckpointSorts = checkpointSortsByMode("include");
+  const excludedCheckpointSorts = checkpointSortsByMode("exclude");
+  const includeLimit = includedCheckpointSorts.length ? Math.max(...includedCheckpointSorts) : null;
+  const excludeLimit = excludedCheckpointSorts.length ? Math.max(...excludedCheckpointSorts) : null;
   return state.pokemon.filter((mon) => {
+    const checkpointSort = pokemonCheckpoint(mon).sort ?? 99;
     if (query && !normalizedSearchText(mon).includes(query)) return false;
-    if (selectedCheckpoint && pokemonCheckpoint(mon).sort > selectedCheckpoint.sort) return false;
+    if (includeLimit !== null && checkpointSort > includeLimit) return false;
+    if (excludeLimit !== null && checkpointSort <= excludeLimit) return false;
     if (state.sources.has("wonderTrade") && !hasWonderTradeAvailability(mon)) return false;
     if (state.types.size && !mon.types.some((type) => state.types.has(type))) return false;
     if (state.abilities.size && !mon.abilities?.some((ability) => state.abilities.has(ability))) return false;
+    if (state.weaknessTypes.size && ![...state.weaknessTypes].every((type) => hasWeakness(mon, type))) return false;
+    if (state.resistTypes.size && ![...state.resistTypes].every((type) => hasResistanceOrImmunity(mon, type))) return false;
+    if (state.evolutionFilters.size && ![...state.evolutionFilters].some((filter) => evolutionFilterMatch(mon, filter))) return false;
     if (state.roles.size && !mon.roles.some((role) => state.roles.has(role))) return false;
     if (state.archetype !== "All" && mon.archetype !== state.archetype) return false;
     return true;
@@ -405,12 +481,22 @@ function availabilityLevel(mon) {
 }
 
 function renderFilters() {
-  elements.phaseFilters.innerHTML = progressionCheckpoints().map((checkpoint) => `
-    <button class="checkpoint-chip ${state.checkpointId === checkpoint.id ? "active" : ""}" data-checkpoint="${escapeHtml(checkpoint.id)}" type="button">
-      <span>${escapeHtml(checkpoint.shortLabel || checkpoint.label)}</span>
-      ${checkpoint.levelCap ? `<small>Lv.${escapeHtml(checkpoint.levelCap)}</small>` : ""}
-    </button>
-  `).join("");
+  elements.phaseFilters.innerHTML = progressionCheckpoints().map((checkpoint) => {
+    const mode = checkpointMode(checkpoint.id);
+    const marker = mode === "include" ? "+" : mode === "exclude" ? "−" : "";
+    const title = mode === "include"
+      ? `Including Pokemon available by ${checkpointLabel(checkpoint)}. Click again to exclude this point.`
+      : mode === "exclude"
+        ? `Excluding Pokemon available by ${checkpointLabel(checkpoint)}. Click again to clear.`
+        : `Click to include Pokemon available by ${checkpointLabel(checkpoint)}. Click twice to exclude this point.`;
+    return `
+      <button class="checkpoint-chip ${mode}" data-checkpoint="${escapeHtml(checkpoint.id)}" type="button" title="${escapeHtml(title)}" aria-label="${escapeHtml(`${checkpointLabel(checkpoint)} ${checkpointModeLabel(mode) || "neutral"}`)}">
+        <span class="checkpoint-mode-marker">${escapeHtml(marker)}</span>
+        <span>${escapeHtml(checkpoint.shortLabel || checkpoint.label)}</span>
+        ${checkpoint.levelCap ? `<small>Lv.${escapeHtml(checkpoint.levelCap)}</small>` : ""}
+      </button>
+    `;
+  }).join("");
 
   elements.sourceFilters.innerHTML = `
     <button class="source-chip ${state.sources.has("wonderTrade") ? "active" : ""}" data-source="wonderTrade" type="button">Wonder Trade</button>
@@ -420,7 +506,22 @@ function renderFilters() {
     <button class="type-chip ${state.types.has(type) ? "active" : ""}" data-type="${escapeHtml(type)}" type="button" style="${state.types.has(type) ? "" : `border-color:${TYPE_COLORS[type] || "#d7dee8"}55`}">${escapeHtml(type)}</button>
   `).join("");
 
-  elements.abilityFilters.innerHTML = abilityList().map((ability) => {
+  elements.weaknessFilters.innerHTML = attackTypes().map((type) => `
+    <button class="filter-chip matchup-filter-chip ${state.weaknessTypes.has(type) ? "active" : ""}" data-weakness="${escapeHtml(type)}" type="button" style="${state.weaknessTypes.has(type) ? "" : `border-color:${TYPE_COLORS[type] || "#d7dee8"}55`}">${escapeHtml(type)}</button>
+  `).join("");
+
+  elements.resistFilters.innerHTML = attackTypes().map((type) => `
+    <button class="filter-chip matchup-filter-chip ${state.resistTypes.has(type) ? "active" : ""}" data-resist="${escapeHtml(type)}" type="button" style="${state.resistTypes.has(type) ? "" : `border-color:${TYPE_COLORS[type] || "#d7dee8"}55`}">${escapeHtml(type)}</button>
+  `).join("");
+
+  const abilityQuery = state.abilitySearch.trim().toLowerCase();
+  const visibleAbilities = abilityList().filter((ability) => {
+    const definition = abilityDefinition(ability);
+    return !abilityQuery
+      || ability.toLowerCase().includes(abilityQuery)
+      || definition?.effect?.toLowerCase().includes(abilityQuery);
+  });
+  elements.abilityFilters.innerHTML = visibleAbilities.length ? visibleAbilities.map((ability) => {
     const hasDefinition = Boolean(abilityDefinition(ability));
     const classes = [
       "filter-chip",
@@ -429,10 +530,14 @@ function renderFilters() {
       state.abilities.has(ability) ? "active" : "",
     ].filter(Boolean).join(" ");
     return `<button class="${classes}" data-ability="${escapeHtml(ability)}" type="button"${abilityTooltipAttrs(ability)}>${escapeHtml(ability)}</button>`;
-  }).join("");
+  }).join("") : `<p class="muted filter-empty">No abilities match.</p>`;
 
   elements.roleFilters.innerHTML = state.data.facets.roles.map((role) => `
     <button class="filter-chip ${state.roles.has(role) ? "active" : ""}" data-role="${escapeHtml(role)}" type="button">${escapeHtml(role)}</button>
+  `).join("");
+
+  elements.evolutionFilters.innerHTML = EVOLUTION_FILTERS.map((filter) => `
+    <button class="filter-chip ${state.evolutionFilters.has(filter.id) ? "active" : ""}" data-evolution-filter="${escapeHtml(filter.id)}" type="button">${escapeHtml(filter.label)}</button>
   `).join("");
 
   elements.archetype.innerHTML = ["All", ...state.data.facets.archetypes].map((name) => `
@@ -456,13 +561,23 @@ function renderGrid() {
 function activeFilterCopy() {
   const parts = [];
   if (state.search) parts.push(`search "${state.search}"`);
-  const selectedCheckpoint = checkpointById(state.checkpointId);
-  if (selectedCheckpoint) parts.push(`available by ${checkpointLabel(selectedCheckpoint)}`);
+  const included = checkpointIdsByMode("include").map((id) => checkpointById(id)).filter(Boolean);
+  const excluded = checkpointIdsByMode("exclude").map((id) => checkpointById(id)).filter(Boolean);
+  if (included.length) parts.push(`available by ${included.map((checkpoint) => checkpointLabel(checkpoint)).join(", ")}`);
+  if (excluded.length) parts.push(`not already by ${excluded.map((checkpoint) => checkpointLabel(checkpoint)).join(", ")}`);
   if (state.sources.has("wonderTrade")) parts.push("Wonder Trade");
   if (state.types.size) parts.push([...state.types].join(", "));
+  if (state.weaknessTypes.size) parts.push(`weak to ${[...state.weaknessTypes].join(", ")}`);
+  if (state.resistTypes.size) parts.push(`resists ${[...state.resistTypes].join(", ")}`);
   if (state.abilities.size) parts.push([...state.abilities].join(", "));
   if (state.roles.size) parts.push([...state.roles].join(", "));
   if (state.archetype !== "All") parts.push(state.archetype);
+  if (state.evolutionFilters.size) {
+    const labels = [...state.evolutionFilters]
+      .map((id) => EVOLUTION_FILTERS.find((filter) => filter.id === id)?.label || id)
+      .join(", ");
+    parts.push(labels);
+  }
   return parts.length ? parts.join(" · ") : "Showing the full Odyssey dex with parsed documentation.";
 }
 
@@ -1042,14 +1157,19 @@ function wireEvents() {
   });
   elements.reset.addEventListener("click", () => {
     state.search = "";
-    state.checkpointId = "";
+    state.checkpointModes = {};
     state.sources.clear();
     state.types.clear();
     state.abilities.clear();
+    state.weaknessTypes.clear();
+    state.resistTypes.clear();
+    state.evolutionFilters.clear();
+    state.abilitySearch = "";
     state.roles.clear();
     state.archetype = "All";
     state.sort = "availability";
     elements.search.value = "";
+    elements.abilitySearch.value = "";
     elements.sort.value = state.sort;
     renderFilters();
     renderGrid();
@@ -1057,7 +1177,7 @@ function wireEvents() {
   elements.phaseFilters.addEventListener("click", (event) => {
     const checkpoint = event.target.closest("[data-checkpoint]")?.dataset.checkpoint;
     if (!checkpoint) return;
-    state.checkpointId = state.checkpointId === checkpoint ? "" : checkpoint;
+    cycleCheckpointMode(checkpoint);
     renderFilters();
     renderGrid();
   });
@@ -1075,12 +1195,37 @@ function wireEvents() {
     renderFilters();
     renderGrid();
   });
+  elements.weaknessFilters.addEventListener("click", (event) => {
+    const type = event.target.closest("[data-weakness]")?.dataset.weakness;
+    if (!type) return;
+    toggleSet(state.weaknessTypes, type);
+    renderFilters();
+    renderGrid();
+  });
+  elements.resistFilters.addEventListener("click", (event) => {
+    const type = event.target.closest("[data-resist]")?.dataset.resist;
+    if (!type) return;
+    toggleSet(state.resistTypes, type);
+    renderFilters();
+    renderGrid();
+  });
+  elements.abilitySearch.addEventListener("input", () => {
+    state.abilitySearch = elements.abilitySearch.value;
+    renderFilters();
+  });
   elements.abilityFilters.addEventListener("click", (event) => {
     const button = event.target.closest("[data-ability]");
     const ability = button?.dataset.ability;
     if (!ability) return;
     if (isMobileDetailLayout()) showAbilityPopover(button);
     toggleSet(state.abilities, ability);
+    renderFilters();
+    renderGrid();
+  });
+  elements.evolutionFilters.addEventListener("click", (event) => {
+    const filter = event.target.closest("[data-evolution-filter]")?.dataset.evolutionFilter;
+    if (!filter) return;
+    toggleSet(state.evolutionFilters, filter);
     renderFilters();
     renderGrid();
   });

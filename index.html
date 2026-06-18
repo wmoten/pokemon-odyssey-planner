@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokemon Odyssey Team Planner</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="src/styles.css?v=collapsible-ability-filters" />
+    <link rel="stylesheet" href="src/styles.css?v=team-builder-filters" />
   </head>
   <body>
     <div class="app-shell">
@@ -59,7 +59,16 @@
           </details>
 
           <details class="panel-section filter-details">
+            <summary>Defensive matchups</summary>
+            <div class="filter-subheading">Weak to</div>
+            <div id="weakness-filters" class="defense-filter-list"></div>
+            <div class="filter-subheading spaced">Resists or immune to</div>
+            <div id="resist-filters" class="defense-filter-list"></div>
+          </details>
+
+          <details class="panel-section filter-details">
             <summary>Abilities</summary>
+            <input id="ability-filter-search" class="search-input small-filter-search" type="search" placeholder="Find an ability" />
             <div id="ability-filters" class="ability-filter-list"></div>
           </details>
 
@@ -71,6 +80,11 @@
           <details class="panel-section filter-details" open>
             <summary>Stat profile</summary>
             <select id="archetype-filter" class="select-input"></select>
+          </details>
+
+          <details class="panel-section filter-details">
+            <summary>Evolution stage</summary>
+            <div id="evolution-filters" class="evolution-filter-list"></div>
           </details>
 
         </aside>
@@ -139,6 +153,6 @@
       </section>
     </div>
 
-    <script type="module" src="src/app.js?v=collapsible-ability-filters"></script>
+    <script type="module" src="src/app.js?v=team-builder-filters"></script>
   </body>
 </html>

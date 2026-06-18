@@ -213,6 +213,12 @@ button {
   box-shadow: 0 0 0 3px rgba(11, 116, 104, 0.13);
 }
 
+.small-filter-search {
+  min-height: 36px;
+  margin-bottom: 9px;
+  font-size: 0.84rem;
+}
+
 .select-input.compact {
   min-width: 190px;
 }
@@ -220,10 +226,24 @@ button {
 .segmented,
 .chip-grid,
 .ability-filter-list,
+.defense-filter-list,
+.evolution-filter-list,
 .role-list {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
+}
+
+.filter-subheading {
+  margin: 4px 0 7px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.filter-subheading.spaced {
+  margin-top: 12px;
 }
 
 .availability-source-filters {
@@ -279,6 +299,40 @@ button {
 
 .checkpoint-chip.active small {
   color: rgba(255, 255, 255, 0.82);
+}
+
+.checkpoint-chip.include {
+  color: #fff;
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.checkpoint-chip.exclude {
+  color: #fff;
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.checkpoint-chip.include small,
+.checkpoint-chip.exclude small {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.checkpoint-mode-marker {
+  display: none;
+  place-items: center;
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 999px;
+  color: inherit;
+  font-size: 0.82rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.checkpoint-chip.include .checkpoint-mode-marker,
+.checkpoint-chip.exclude .checkpoint-mode-marker {
+  display: inline-grid;
 }
 
 .source-chip {
