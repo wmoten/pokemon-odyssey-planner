@@ -624,6 +624,22 @@ button {
   background: #fff;
 }
 
+.inline-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+  background: #fbfcfe;
+}
+
+.inline-detail-header h3 {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.16;
+}
+
 .small-button {
   min-height: 30px;
   border: 1px solid rgba(11, 116, 104, 0.24);
@@ -1154,6 +1170,10 @@ details summary {
 
   .inline-detail .detail-stat-bars .stat-bar {
     grid-template-columns: 46px minmax(0, 1fr) 38px;
+  }
+
+  .inline-detail-header {
+    align-items: center;
   }
 
   .dex-panel {

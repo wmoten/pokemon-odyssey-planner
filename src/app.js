@@ -73,6 +73,7 @@ const state = {
   guideById: new Map(),
   abilityDefinitions: new Map(),
   selectedId: "",
+  inlineAnchorId: "",
   search: "",
   checkpointId: "",
   sources: new Set(),
@@ -434,7 +435,9 @@ function activeFilterCopy() {
 function pokemonCard(mon) {
   const delta = mon.statDelta?.total ?? 0;
   const deltaChip = delta ? `<span class="stat-badge role-badge">${delta > 0 ? "+" : ""}${delta} BST</span>` : "";
-  const selected = state.selectedId === mon.id ? "selected" : "";
+  const inlineDetailMon = getSelected();
+  const selected = selectedCardId() === mon.id ? "selected" : "";
+  const showInlineHeader = selected && inlineDetailMon?.id !== mon.id;
   return `
     <article class="pokemon-card ${selected}" data-id="${escapeHtml(mon.id)}">
       <div class="card-main">
@@ -460,7 +463,7 @@ function pokemonCard(mon) {
         <span class="ability-row">${abilityBadges(mon.abilities, 2)}</span>
         <button class="small-button" data-add="${escapeHtml(mon.id)}" type="button">Add</button>
       </div>
-      ${selected ? `<div class="inline-detail">${pokemonDetailMarkup(mon, { includeHero: false })}</div>` : ""}
+      ${selected ? `<div class="inline-detail">${pokemonDetailMarkup(inlineDetailMon, { includeHero: false, includeInlineHeader: showInlineHeader })}</div>` : ""}
     </article>
   `;
 }
@@ -510,7 +513,7 @@ function renderDetail() {
 }
 
 function pokemonDetailMarkup(mon, options = {}) {
-  const { includeHero = true } = options;
+  const { includeHero = true, includeInlineHeader = false } = options;
   const guideEntries = mon.guideEntryIds.map((id) => state.guideById.get(id)).filter(Boolean);
   const hero = includeHero ? `
     <div class="detail-hero">
@@ -526,8 +529,19 @@ function pokemonDetailMarkup(mon, options = {}) {
       </div>
     </div>
   ` : "";
+  const inlineHeader = includeInlineHeader ? `
+    <div class="inline-detail-header">
+      <div>
+        <p class="eyebrow">Inspecting</p>
+        <h3>${escapeHtml(mon.displayName)}</h3>
+        <div class="type-row">${mon.types.map(typeBadge).join("")}</div>
+      </div>
+      <button class="small-button" data-add="${escapeHtml(mon.id)}" type="button">Add</button>
+    </div>
+  ` : "";
   return `
     ${hero}
+    ${inlineHeader}
     <section class="detail-section">
       <h3>Core Data</h3>
       <div class="badge-row">
@@ -566,6 +580,10 @@ function pokemonDetailMarkup(mon, options = {}) {
 
 function isInlineDetailLayout() {
   return window.matchMedia("(max-width: 860px)").matches;
+}
+
+function selectedCardId() {
+  return isInlineDetailLayout() ? (state.inlineAnchorId || state.selectedId) : state.selectedId;
 }
 
 function scrollSelectedCardIntoView() {
@@ -1002,7 +1020,16 @@ function wireEvents() {
     }
     const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
     if (familyId) {
+      if (isInlineDetailLayout() && event.target.closest(".inline-detail")) {
+        const anchorCard = event.target.closest(".pokemon-card");
+        state.inlineAnchorId = anchorCard?.dataset.id || state.inlineAnchorId || state.selectedId;
+        state.selectedId = familyId;
+        renderGrid();
+        renderDetail();
+        return;
+      }
       state.selectedId = familyId;
+      state.inlineAnchorId = familyId;
       renderGrid();
       renderDetail();
       scrollSelectedCardIntoView();
@@ -1012,6 +1039,7 @@ function wireEvents() {
     const card = event.target.closest("[data-id]");
     if (!card) return;
     state.selectedId = card.dataset.id;
+    state.inlineAnchorId = card.dataset.id;
     renderGrid();
     renderDetail();
     scrollSelectedCardIntoView();
@@ -1025,6 +1053,7 @@ function wireEvents() {
     const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
     if (!familyId) return;
     state.selectedId = familyId;
+    state.inlineAnchorId = familyId;
     renderGrid();
     renderDetail();
   });
@@ -1083,6 +1112,7 @@ async function init() {
   state.guideById = new Map(state.data.guideEntries.map((entry) => [entry.id, entry]));
   state.abilityDefinitions = new Map((state.data.abilityDefinitions || []).map((entry) => [entry.id, entry]));
   state.selectedId = state.pokemon.find((mon) => mon.id === "plusle")?.id || state.pokemon[0]?.id;
+  state.inlineAnchorId = state.selectedId;
   loadTeams();
   renderFilters();
   renderGrid();
