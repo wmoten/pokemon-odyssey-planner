@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokemon Odyssey Team Planner</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="src/styles.css?v=ability-click-popover" />
+    <link rel="stylesheet" href="src/styles.css?v=collapsible-ability-filters" />
   </head>
   <body>
     <div class="app-shell">
@@ -47,26 +47,31 @@
             <input id="search-input" class="search-input" type="search" placeholder="Name, move, ability, role, location" />
           </section>
 
-          <section class="panel-section">
-            <div class="section-heading">Available by</div>
+          <details class="panel-section filter-details" open>
+            <summary>Available by</summary>
             <div id="phase-filters" class="segmented"></div>
             <div id="source-filters" class="segmented availability-source-filters"></div>
-          </section>
+          </details>
 
-          <section class="panel-section">
-            <div class="section-heading">Types</div>
+          <details class="panel-section filter-details" open>
+            <summary>Types</summary>
             <div id="type-filters" class="chip-grid"></div>
-          </section>
+          </details>
 
-          <section class="panel-section">
-            <div class="section-heading">Roles</div>
+          <details class="panel-section filter-details">
+            <summary>Abilities</summary>
+            <div id="ability-filters" class="ability-filter-list"></div>
+          </details>
+
+          <details class="panel-section filter-details" open>
+            <summary>Roles</summary>
             <div id="role-filters" class="role-list"></div>
-          </section>
+          </details>
 
-          <section class="panel-section">
-            <label class="field-label" for="archetype-filter">Stat profile</label>
+          <details class="panel-section filter-details" open>
+            <summary>Stat profile</summary>
             <select id="archetype-filter" class="select-input"></select>
-          </section>
+          </details>
 
         </aside>
 
@@ -134,6 +139,6 @@
       </section>
     </div>
 
-    <script type="module" src="src/app.js?v=ability-click-popover"></script>
+    <script type="module" src="src/app.js?v=collapsible-ability-filters"></script>
   </body>
 </html>

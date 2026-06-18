@@ -79,6 +79,7 @@ const state = {
   checkpointId: "",
   sources: new Set(),
   types: new Set(),
+  abilities: new Set(),
   roles: new Set(),
   archetype: "All",
   sort: "availability",
@@ -94,6 +95,7 @@ const elements = {
   phaseFilters: $("#phase-filters"),
   sourceFilters: $("#source-filters"),
   typeFilters: $("#type-filters"),
+  abilityFilters: $("#ability-filters"),
   roleFilters: $("#role-filters"),
   archetype: $("#archetype-filter"),
   sort: $("#sort-select"),
@@ -164,17 +166,25 @@ function abilityDefinition(name) {
   return state.abilityDefinitions.get(abilityKey(name));
 }
 
+function abilityList() {
+  return [...new Set(state.pokemon.flatMap((mon) => mon.abilities || []))]
+    .filter(Boolean)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function abilityTooltipAttrs(ability) {
+  const definition = abilityDefinition(ability);
+  if (!definition) return "";
+  const tooltip = `${definition.effect} (${definition.section})`;
+  return ` data-tooltip="${escapeHtml(tooltip)}" title="${escapeHtml(tooltip)}"`;
+}
+
 function abilityBadges(abilities, limit = Infinity) {
   const visible = (abilities || []).slice(0, limit);
   const extra = (abilities || []).length - visible.length;
   const badges = visible.map((ability) => {
     const definition = abilityDefinition(ability);
-    const tooltip = definition
-      ? `${definition.effect} (${definition.section})`
-      : "";
-    const tooltipAttrs = tooltip
-      ? ` data-tooltip="${escapeHtml(tooltip)}" title="${escapeHtml(tooltip)}"`
-      : "";
+    const tooltipAttrs = abilityTooltipAttrs(ability);
     return definition
       ? `<button class="ability-badge has-tooltip" type="button"${tooltipAttrs}>${escapeHtml(ability)}</button>`
       : `<span class="ability-badge">${escapeHtml(ability)}</span>`;
@@ -350,6 +360,7 @@ function filterPokemon() {
     if (selectedCheckpoint && pokemonCheckpoint(mon).sort > selectedCheckpoint.sort) return false;
     if (state.sources.has("wonderTrade") && !hasWonderTradeAvailability(mon)) return false;
     if (state.types.size && !mon.types.some((type) => state.types.has(type))) return false;
+    if (state.abilities.size && !mon.abilities?.some((ability) => state.abilities.has(ability))) return false;
     if (state.roles.size && !mon.roles.some((role) => state.roles.has(role))) return false;
     if (state.archetype !== "All" && mon.archetype !== state.archetype) return false;
     return true;
@@ -409,6 +420,17 @@ function renderFilters() {
     <button class="type-chip ${state.types.has(type) ? "active" : ""}" data-type="${escapeHtml(type)}" type="button" style="${state.types.has(type) ? "" : `border-color:${TYPE_COLORS[type] || "#d7dee8"}55`}">${escapeHtml(type)}</button>
   `).join("");
 
+  elements.abilityFilters.innerHTML = abilityList().map((ability) => {
+    const hasDefinition = Boolean(abilityDefinition(ability));
+    const classes = [
+      "filter-chip",
+      "ability-filter-chip",
+      hasDefinition ? "has-tooltip" : "",
+      state.abilities.has(ability) ? "active" : "",
+    ].filter(Boolean).join(" ");
+    return `<button class="${classes}" data-ability="${escapeHtml(ability)}" type="button"${abilityTooltipAttrs(ability)}>${escapeHtml(ability)}</button>`;
+  }).join("");
+
   elements.roleFilters.innerHTML = state.data.facets.roles.map((role) => `
     <button class="filter-chip ${state.roles.has(role) ? "active" : ""}" data-role="${escapeHtml(role)}" type="button">${escapeHtml(role)}</button>
   `).join("");
@@ -438,6 +460,7 @@ function activeFilterCopy() {
   if (selectedCheckpoint) parts.push(`available by ${checkpointLabel(selectedCheckpoint)}`);
   if (state.sources.has("wonderTrade")) parts.push("Wonder Trade");
   if (state.types.size) parts.push([...state.types].join(", "));
+  if (state.abilities.size) parts.push([...state.abilities].join(", "));
   if (state.roles.size) parts.push([...state.roles].join(", "));
   if (state.archetype !== "All") parts.push(state.archetype);
   return parts.length ? parts.join(" · ") : "Showing the full Odyssey dex with parsed documentation.";
@@ -1022,6 +1045,7 @@ function wireEvents() {
     state.checkpointId = "";
     state.sources.clear();
     state.types.clear();
+    state.abilities.clear();
     state.roles.clear();
     state.archetype = "All";
     state.sort = "availability";
@@ -1048,6 +1072,15 @@ function wireEvents() {
     const type = event.target.closest("[data-type]")?.dataset.type;
     if (!type) return;
     toggleSet(state.types, type);
+    renderFilters();
+    renderGrid();
+  });
+  elements.abilityFilters.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-ability]");
+    const ability = button?.dataset.ability;
+    if (!ability) return;
+    if (isMobileDetailLayout()) showAbilityPopover(button);
+    toggleSet(state.abilities, ability);
     renderFilters();
     renderGrid();
   });
@@ -1112,7 +1145,7 @@ function wireEvents() {
   elements.abilityPopoverClose.addEventListener("click", closeAbilityPopover);
   document.addEventListener("click", (event) => {
     if (!state.abilityPopoverOpen) return;
-    if (event.target.closest("#ability-popover") || event.target.closest(".ability-badge.has-tooltip")) return;
+    if (event.target.closest("#ability-popover") || event.target.closest(".ability-badge.has-tooltip, .ability-filter-chip.has-tooltip")) return;
     closeAbilityPopover();
   });
   window.addEventListener("keydown", (event) => {

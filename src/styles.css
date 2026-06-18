@@ -146,6 +146,45 @@ button {
   border-bottom: 0;
 }
 
+.filter-details {
+  display: block;
+}
+
+.filter-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.filter-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.filter-details summary::after {
+  content: "+";
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--teal);
+  background: #f7fafc;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.filter-details[open] summary::after {
+  content: "−";
+}
+
 .field-label,
 .section-heading {
   display: block;
@@ -180,6 +219,7 @@ button {
 
 .segmented,
 .chip-grid,
+.ability-filter-list,
 .role-list {
   display: flex;
   flex-wrap: wrap;
@@ -196,6 +236,10 @@ button {
   max-height: 230px;
   overflow: auto;
   padding-right: 3px;
+}
+
+.ability-filter-list {
+  align-content: flex-start;
 }
 
 .filter-chip,
@@ -499,7 +543,19 @@ button {
   background: #d8f2ec;
 }
 
-.ability-badge.has-tooltip::after {
+.ability-filter-chip.has-tooltip {
+  position: relative;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.ability-filter-chip.has-tooltip[aria-expanded="true"] {
+  border-color: rgba(11, 116, 104, 0.45);
+}
+
+.ability-badge.has-tooltip::after,
+.ability-filter-chip.has-tooltip::after {
   content: attr(data-tooltip);
   position: absolute;
   left: 0;
@@ -524,7 +580,9 @@ button {
 }
 
 .ability-badge.has-tooltip:hover::after,
-.ability-badge.has-tooltip:focus-visible::after {
+.ability-badge.has-tooltip:focus-visible::after,
+.ability-filter-chip.has-tooltip:hover::after,
+.ability-filter-chip.has-tooltip:focus-visible::after {
   opacity: 1;
   transform: translateY(0);
 }
@@ -1231,6 +1289,12 @@ details summary {
     position: static;
     max-height: none;
     margin-bottom: 12px;
+  }
+
+  .ability-filter-list {
+    max-height: 260px;
+    overflow: auto;
+    padding-right: 3px;
   }
 
   .detail-panel {
