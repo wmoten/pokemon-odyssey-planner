@@ -460,6 +460,7 @@ function pokemonCard(mon) {
         <span class="ability-row">${abilityBadges(mon.abilities, 2)}</span>
         <button class="small-button" data-add="${escapeHtml(mon.id)}" type="button">Add</button>
       </div>
+      ${selected ? `<div class="inline-detail">${pokemonDetailMarkup(mon, { includeHero: false })}</div>` : ""}
     </article>
   `;
 }
@@ -505,8 +506,13 @@ function renderDetail() {
     elements.detail.innerHTML = `<div class="empty-detail">Select a Pokemon to inspect stats, learnset, availability evidence, and guide roles.</div>`;
     return;
   }
+  elements.detail.innerHTML = pokemonDetailMarkup(mon);
+}
+
+function pokemonDetailMarkup(mon, options = {}) {
+  const { includeHero = true } = options;
   const guideEntries = mon.guideEntryIds.map((id) => state.guideById.get(id)).filter(Boolean);
-  elements.detail.innerHTML = `
+  const hero = includeHero ? `
     <div class="detail-hero">
       ${spriteFrame(mon)}
       <div class="detail-title">
@@ -519,6 +525,9 @@ function renderDetail() {
         </div>
       </div>
     </div>
+  ` : "";
+  return `
+    ${hero}
     <section class="detail-section">
       <h3>Core Data</h3>
       <div class="badge-row">
@@ -553,6 +562,17 @@ function renderDetail() {
       ${learnsetSection(mon)}
     </section>
   `;
+}
+
+function isInlineDetailLayout() {
+  return window.matchMedia("(max-width: 860px)").matches;
+}
+
+function scrollSelectedCardIntoView() {
+  if (!isInlineDetailLayout()) return;
+  requestAnimationFrame(() => {
+    elements.grid.querySelector(".pokemon-card.selected")?.scrollIntoView({ block: "start", behavior: "smooth" });
+  });
 }
 
 function familySection(mon) {
@@ -980,11 +1000,21 @@ function wireEvents() {
       addToTeam(addId);
       return;
     }
+    const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
+    if (familyId) {
+      state.selectedId = familyId;
+      renderGrid();
+      renderDetail();
+      scrollSelectedCardIntoView();
+      return;
+    }
+    if (event.target.closest(".inline-detail")) return;
     const card = event.target.closest("[data-id]");
     if (!card) return;
     state.selectedId = card.dataset.id;
     renderGrid();
     renderDetail();
+    scrollSelectedCardIntoView();
   });
   elements.detail.addEventListener("click", (event) => {
     const addId = event.target.closest("[data-add]")?.dataset.add;

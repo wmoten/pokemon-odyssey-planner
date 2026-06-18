@@ -618,6 +618,12 @@ button {
   overflow: visible;
 }
 
+.inline-detail {
+  display: none;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
 .small-button {
   min-height: 30px;
   border: 1px solid rgba(11, 116, 104, 0.24);
@@ -1120,6 +1126,34 @@ details summary {
     position: static;
     max-height: none;
     margin-bottom: 12px;
+  }
+
+  .detail-panel {
+    display: none;
+  }
+
+  .pokemon-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pokemon-card {
+    min-height: 0;
+  }
+
+  .pokemon-card.selected {
+    transform: none;
+  }
+
+  .pokemon-card.selected .inline-detail {
+    display: block;
+  }
+
+  .inline-detail .detail-section {
+    padding: 14px 12px;
+  }
+
+  .inline-detail .detail-stat-bars .stat-bar {
+    grid-template-columns: 46px minmax(0, 1fr) 38px;
   }
 
   .dex-panel {
