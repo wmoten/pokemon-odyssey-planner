@@ -488,10 +488,15 @@ button {
 }
 
 .ability-badge.has-tooltip {
-  cursor: help;
+  cursor: pointer;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 3px;
+}
+
+.ability-badge.has-tooltip[aria-expanded="true"] {
+  border-color: rgba(11, 116, 104, 0.45);
+  background: #d8f2ec;
 }
 
 .ability-badge.has-tooltip::after {
@@ -522,6 +527,48 @@ button {
 .ability-badge.has-tooltip:focus-visible::after {
   opacity: 1;
   transform: translateY(0);
+}
+
+.ability-popover {
+  position: fixed;
+  inset: auto 12px 14px;
+  z-index: 130;
+  display: none;
+  pointer-events: none;
+}
+
+.ability-popover.open {
+  display: block;
+  pointer-events: auto;
+}
+
+.ability-popover-card {
+  width: min(100%, 460px);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 1px solid rgba(11, 116, 104, 0.26);
+  border-radius: 10px;
+  color: var(--ink);
+  background: #ffffff;
+  box-shadow: 0 22px 58px rgba(17, 26, 38, 0.24);
+}
+
+.ability-popover-card strong {
+  display: block;
+  font-size: 0.98rem;
+  line-height: 1.2;
+}
+
+.ability-popover-card p:last-child {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.38;
 }
 
 .checkpoint-badge {
@@ -1276,6 +1323,15 @@ details summary {
 
   .ability-badge.has-tooltip::after {
     display: none;
+  }
+
+  .ability-popover {
+    inset: auto 8px calc(8px + env(safe-area-inset-bottom));
+  }
+
+  .ability-popover-card {
+    border-radius: 10px;
+    padding: 12px;
   }
 
   .detail-hero {

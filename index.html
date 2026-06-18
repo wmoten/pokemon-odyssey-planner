@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokemon Odyssey Team Planner</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="src/styles.css?v=mobile-detail-modal" />
+    <link rel="stylesheet" href="src/styles.css?v=ability-click-popover" />
   </head>
   <body>
     <div class="app-shell">
@@ -123,6 +123,17 @@
       </section>
     </div>
 
-    <script type="module" src="src/app.js?v=mobile-detail-modal"></script>
+    <div id="ability-popover" class="ability-popover" aria-hidden="true">
+      <section class="ability-popover-card" role="dialog" aria-label="Ability details">
+        <div>
+          <p class="eyebrow">Ability</p>
+          <strong id="ability-popover-title"></strong>
+          <p id="ability-popover-text"></p>
+        </div>
+        <button id="ability-popover-close" class="icon-button" type="button" title="Close ability details">×</button>
+      </section>
+    </div>
+
+    <script type="module" src="src/app.js?v=ability-click-popover"></script>
   </body>
 </html>

@@ -74,6 +74,7 @@ const state = {
   abilityDefinitions: new Map(),
   selectedId: "",
   mobileDetailOpen: false,
+  abilityPopoverOpen: false,
   search: "",
   checkpointId: "",
   sources: new Set(),
@@ -114,6 +115,10 @@ const elements = {
   mobileDetailContent: $("#mobile-detail-content"),
   mobileDetailTitle: $("#mobile-detail-title"),
   mobileDetailClose: $("#mobile-detail-close"),
+  abilityPopover: $("#ability-popover"),
+  abilityPopoverTitle: $("#ability-popover-title"),
+  abilityPopoverText: $("#ability-popover-text"),
+  abilityPopoverClose: $("#ability-popover-close"),
 };
 
 function escapeHtml(value = "") {
@@ -170,7 +175,9 @@ function abilityBadges(abilities, limit = Infinity) {
     const tooltipAttrs = tooltip
       ? ` data-tooltip="${escapeHtml(tooltip)}" title="${escapeHtml(tooltip)}"`
       : "";
-    return `<span class="ability-badge${definition ? " has-tooltip" : ""}"${tooltipAttrs}>${escapeHtml(ability)}</span>`;
+    return definition
+      ? `<button class="ability-badge has-tooltip" type="button"${tooltipAttrs}>${escapeHtml(ability)}</button>`
+      : `<span class="ability-badge">${escapeHtml(ability)}</span>`;
   });
   if (extra > 0) badges.push(`<span class="ability-badge">+${extra}</span>`);
   return badges.join("") || `<span class="muted">Ability unknown</span>`;
@@ -583,6 +590,7 @@ function renderMobileDetail() {
 function openMobileDetail(id) {
   state.selectedId = id;
   state.mobileDetailOpen = true;
+  closeAbilityPopover();
   renderMobileDetail();
   renderDetail();
   elements.mobileDetailModal.classList.add("open");
@@ -592,9 +600,41 @@ function openMobileDetail(id) {
 
 function closeMobileDetail() {
   state.mobileDetailOpen = false;
+  closeAbilityPopover();
   elements.mobileDetailModal.classList.remove("open");
   elements.mobileDetailModal.setAttribute("aria-hidden", "true");
   document.body.classList.remove("mobile-detail-open");
+}
+
+function showAbilityPopover(badge) {
+  const tooltip = badge?.dataset.tooltip || badge?.getAttribute("title") || "";
+  if (!tooltip) return;
+  document.querySelectorAll(".ability-badge[aria-expanded='true']").forEach((item) => {
+    item.setAttribute("aria-expanded", "false");
+  });
+  badge.setAttribute("aria-expanded", "true");
+  elements.abilityPopoverTitle.textContent = badge.textContent.trim();
+  elements.abilityPopoverText.textContent = tooltip;
+  elements.abilityPopover.classList.add("open");
+  elements.abilityPopover.setAttribute("aria-hidden", "false");
+  state.abilityPopoverOpen = true;
+}
+
+function closeAbilityPopover() {
+  if (!elements.abilityPopover) return;
+  state.abilityPopoverOpen = false;
+  elements.abilityPopover.classList.remove("open");
+  elements.abilityPopover.setAttribute("aria-hidden", "true");
+  document.querySelectorAll(".ability-badge[aria-expanded='true']").forEach((item) => {
+    item.setAttribute("aria-expanded", "false");
+  });
+}
+
+function handleAbilityClick(event) {
+  const badge = event.target.closest(".ability-badge.has-tooltip");
+  if (!badge) return false;
+  showAbilityPopover(badge);
+  return true;
 }
 
 function familySection(mon) {
@@ -971,6 +1011,7 @@ function wireEvents() {
     renderGrid();
   });
   elements.spoilerToggle.addEventListener("change", () => {
+    closeAbilityPopover();
     state.spoilerSafe = elements.spoilerToggle.checked;
     renderGrid();
     renderDetail();
@@ -1018,6 +1059,7 @@ function wireEvents() {
     renderGrid();
   });
   elements.grid.addEventListener("click", (event) => {
+    if (handleAbilityClick(event)) return;
     const addId = event.target.closest("[data-add]")?.dataset.add;
     if (addId) {
       addToTeam(addId);
@@ -1025,6 +1067,7 @@ function wireEvents() {
     }
     const card = event.target.closest("[data-id]");
     if (!card) return;
+    closeAbilityPopover();
     if (isMobileDetailLayout()) {
       openMobileDetail(card.dataset.id);
       return;
@@ -1034,6 +1077,7 @@ function wireEvents() {
     renderDetail();
   });
   elements.detail.addEventListener("click", (event) => {
+    if (handleAbilityClick(event)) return;
     const addId = event.target.closest("[data-add]")?.dataset.add;
     if (addId) {
       addToTeam(addId);
@@ -1041,11 +1085,13 @@ function wireEvents() {
     }
     const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
     if (!familyId) return;
+    closeAbilityPopover();
     state.selectedId = familyId;
     renderGrid();
     renderDetail();
   });
   elements.mobileDetailModal.addEventListener("click", (event) => {
+    if (handleAbilityClick(event)) return;
     if (event.target.closest("[data-mobile-detail-close]")) {
       closeMobileDetail();
       return;
@@ -1057,13 +1103,25 @@ function wireEvents() {
     }
     const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
     if (!familyId) return;
+    closeAbilityPopover();
     state.selectedId = familyId;
     renderMobileDetail();
     renderDetail();
   });
   elements.mobileDetailClose.addEventListener("click", closeMobileDetail);
+  elements.abilityPopoverClose.addEventListener("click", closeAbilityPopover);
+  document.addEventListener("click", (event) => {
+    if (!state.abilityPopoverOpen) return;
+    if (event.target.closest("#ability-popover") || event.target.closest(".ability-badge.has-tooltip")) return;
+    closeAbilityPopover();
+  });
   window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && state.mobileDetailOpen) closeMobileDetail();
+    if (event.key !== "Escape") return;
+    if (state.abilityPopoverOpen) {
+      closeAbilityPopover();
+      return;
+    }
+    if (state.mobileDetailOpen) closeMobileDetail();
   });
   window.addEventListener("resize", () => {
     if (!isMobileDetailLayout() && state.mobileDetailOpen) closeMobileDetail();
