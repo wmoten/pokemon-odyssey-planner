@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pokemon Odyssey Team Planner</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="src/styles.css?v=mobile-inline-family" />
+    <link rel="stylesheet" href="src/styles.css?v=mobile-detail-modal" />
   </head>
   <body>
     <div class="app-shell">
@@ -109,6 +109,20 @@
 
     </div>
 
-    <script type="module" src="src/app.js?v=mobile-inline-family"></script>
+    <div id="mobile-detail-modal" class="mobile-detail-modal" aria-hidden="true">
+      <div class="mobile-detail-backdrop" data-mobile-detail-close></div>
+      <section class="mobile-detail-frame" role="dialog" aria-modal="true" aria-label="Pokemon details">
+        <header class="mobile-detail-topbar">
+          <div>
+            <p class="eyebrow">Inspect</p>
+            <strong id="mobile-detail-title">Pokemon details</strong>
+          </div>
+          <button id="mobile-detail-close" class="icon-button" type="button" title="Close details">×</button>
+        </header>
+        <div id="mobile-detail-content" class="mobile-detail-content detail-content"></div>
+      </section>
+    </div>
+
+    <script type="module" src="src/app.js?v=mobile-detail-modal"></script>
   </body>
 </html>

@@ -618,28 +618,6 @@ button {
   overflow: visible;
 }
 
-.inline-detail {
-  display: none;
-  border-top: 1px solid var(--line);
-  background: #fff;
-}
-
-.inline-detail-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 14px 12px;
-  border-bottom: 1px solid var(--line);
-  background: #fbfcfe;
-}
-
-.inline-detail-header h3 {
-  margin: 0;
-  font-size: 1.02rem;
-  line-height: 1.16;
-}
-
 .small-button {
   min-height: 30px;
   border: 1px solid rgba(11, 116, 104, 0.24);
@@ -657,6 +635,70 @@ button {
 
 .detail-content {
   min-height: 420px;
+}
+
+.mobile-detail-modal {
+  display: none;
+}
+
+.mobile-detail-open {
+  overflow: hidden;
+}
+
+.mobile-detail-modal.open {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  align-items: end;
+  padding: 12px;
+}
+
+.mobile-detail-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 35, 47, 0.42);
+}
+
+.mobile-detail-frame {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 720px);
+  max-height: min(86vh, 760px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(215, 222, 232, 0.92);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: 0 28px 70px rgba(17, 26, 38, 0.32);
+}
+
+.mobile-detail-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.mobile-detail-topbar .eyebrow {
+  margin-bottom: 2px;
+}
+
+.mobile-detail-topbar strong {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.mobile-detail-content {
+  min-height: 0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .empty-detail {
@@ -1160,22 +1202,6 @@ details summary {
     transform: none;
   }
 
-  .pokemon-card.selected .inline-detail {
-    display: block;
-  }
-
-  .inline-detail .detail-section {
-    padding: 14px 12px;
-  }
-
-  .inline-detail .detail-stat-bars .stat-bar {
-    grid-template-columns: 46px minmax(0, 1fr) 38px;
-  }
-
-  .inline-detail-header {
-    align-items: center;
-  }
-
   .dex-panel {
     margin-bottom: 12px;
   }
@@ -1279,6 +1305,15 @@ details summary {
 
   .detail-section {
     padding: 14px;
+  }
+
+  .mobile-detail-modal.open {
+    padding: 8px;
+  }
+
+  .mobile-detail-frame {
+    max-height: 90vh;
+    border-radius: 10px;
   }
 
   .stat-table {

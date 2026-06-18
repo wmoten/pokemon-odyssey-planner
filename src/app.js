@@ -73,7 +73,7 @@ const state = {
   guideById: new Map(),
   abilityDefinitions: new Map(),
   selectedId: "",
-  inlineAnchorId: "",
+  mobileDetailOpen: false,
   search: "",
   checkpointId: "",
   sources: new Set(),
@@ -110,6 +110,10 @@ const elements = {
   teamSlots: $("#team-slots"),
   teamAnalysis: $("#team-analysis"),
   teamDefense: $("#team-defense"),
+  mobileDetailModal: $("#mobile-detail-modal"),
+  mobileDetailContent: $("#mobile-detail-content"),
+  mobileDetailTitle: $("#mobile-detail-title"),
+  mobileDetailClose: $("#mobile-detail-close"),
 };
 
 function escapeHtml(value = "") {
@@ -435,9 +439,7 @@ function activeFilterCopy() {
 function pokemonCard(mon) {
   const delta = mon.statDelta?.total ?? 0;
   const deltaChip = delta ? `<span class="stat-badge role-badge">${delta > 0 ? "+" : ""}${delta} BST</span>` : "";
-  const inlineDetailMon = getSelected();
-  const selected = selectedCardId() === mon.id ? "selected" : "";
-  const showInlineHeader = selected && inlineDetailMon?.id !== mon.id;
+  const selected = state.selectedId === mon.id ? "selected" : "";
   return `
     <article class="pokemon-card ${selected}" data-id="${escapeHtml(mon.id)}">
       <div class="card-main">
@@ -463,7 +465,6 @@ function pokemonCard(mon) {
         <span class="ability-row">${abilityBadges(mon.abilities, 2)}</span>
         <button class="small-button" data-add="${escapeHtml(mon.id)}" type="button">Add</button>
       </div>
-      ${selected ? `<div class="inline-detail">${pokemonDetailMarkup(inlineDetailMon, { includeHero: false, includeInlineHeader: showInlineHeader })}</div>` : ""}
     </article>
   `;
 }
@@ -513,7 +514,7 @@ function renderDetail() {
 }
 
 function pokemonDetailMarkup(mon, options = {}) {
-  const { includeHero = true, includeInlineHeader = false } = options;
+  const { includeHero = true } = options;
   const guideEntries = mon.guideEntryIds.map((id) => state.guideById.get(id)).filter(Boolean);
   const hero = includeHero ? `
     <div class="detail-hero">
@@ -529,19 +530,8 @@ function pokemonDetailMarkup(mon, options = {}) {
       </div>
     </div>
   ` : "";
-  const inlineHeader = includeInlineHeader ? `
-    <div class="inline-detail-header">
-      <div>
-        <p class="eyebrow">Inspecting</p>
-        <h3>${escapeHtml(mon.displayName)}</h3>
-        <div class="type-row">${mon.types.map(typeBadge).join("")}</div>
-      </div>
-      <button class="small-button" data-add="${escapeHtml(mon.id)}" type="button">Add</button>
-    </div>
-  ` : "";
   return `
     ${hero}
-    ${inlineHeader}
     <section class="detail-section">
       <h3>Core Data</h3>
       <div class="badge-row">
@@ -578,19 +568,33 @@ function pokemonDetailMarkup(mon, options = {}) {
   `;
 }
 
-function isInlineDetailLayout() {
+function isMobileDetailLayout() {
   return window.matchMedia("(max-width: 860px)").matches;
 }
 
-function selectedCardId() {
-  return isInlineDetailLayout() ? (state.inlineAnchorId || state.selectedId) : state.selectedId;
+function renderMobileDetail() {
+  if (!elements.mobileDetailContent) return;
+  const mon = getSelected();
+  if (!mon) return;
+  elements.mobileDetailTitle.textContent = mon.displayName;
+  elements.mobileDetailContent.innerHTML = pokemonDetailMarkup(mon);
 }
 
-function scrollSelectedCardIntoView() {
-  if (!isInlineDetailLayout()) return;
-  requestAnimationFrame(() => {
-    elements.grid.querySelector(".pokemon-card.selected")?.scrollIntoView({ block: "start", behavior: "smooth" });
-  });
+function openMobileDetail(id) {
+  state.selectedId = id;
+  state.mobileDetailOpen = true;
+  renderMobileDetail();
+  renderDetail();
+  elements.mobileDetailModal.classList.add("open");
+  elements.mobileDetailModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("mobile-detail-open");
+}
+
+function closeMobileDetail() {
+  state.mobileDetailOpen = false;
+  elements.mobileDetailModal.classList.remove("open");
+  elements.mobileDetailModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("mobile-detail-open");
 }
 
 function familySection(mon) {
@@ -970,6 +974,7 @@ function wireEvents() {
     state.spoilerSafe = elements.spoilerToggle.checked;
     renderGrid();
     renderDetail();
+    if (state.mobileDetailOpen) renderMobileDetail();
   });
   elements.reset.addEventListener("click", () => {
     state.search = "";
@@ -1018,31 +1023,15 @@ function wireEvents() {
       addToTeam(addId);
       return;
     }
-    const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
-    if (familyId) {
-      if (isInlineDetailLayout() && event.target.closest(".inline-detail")) {
-        const anchorCard = event.target.closest(".pokemon-card");
-        state.inlineAnchorId = anchorCard?.dataset.id || state.inlineAnchorId || state.selectedId;
-        state.selectedId = familyId;
-        renderGrid();
-        renderDetail();
-        return;
-      }
-      state.selectedId = familyId;
-      state.inlineAnchorId = familyId;
-      renderGrid();
-      renderDetail();
-      scrollSelectedCardIntoView();
-      return;
-    }
-    if (event.target.closest(".inline-detail")) return;
     const card = event.target.closest("[data-id]");
     if (!card) return;
+    if (isMobileDetailLayout()) {
+      openMobileDetail(card.dataset.id);
+      return;
+    }
     state.selectedId = card.dataset.id;
-    state.inlineAnchorId = card.dataset.id;
     renderGrid();
     renderDetail();
-    scrollSelectedCardIntoView();
   });
   elements.detail.addEventListener("click", (event) => {
     const addId = event.target.closest("[data-add]")?.dataset.add;
@@ -1053,9 +1042,31 @@ function wireEvents() {
     const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
     if (!familyId) return;
     state.selectedId = familyId;
-    state.inlineAnchorId = familyId;
     renderGrid();
     renderDetail();
+  });
+  elements.mobileDetailModal.addEventListener("click", (event) => {
+    if (event.target.closest("[data-mobile-detail-close]")) {
+      closeMobileDetail();
+      return;
+    }
+    const addId = event.target.closest("[data-add]")?.dataset.add;
+    if (addId) {
+      addToTeam(addId);
+      return;
+    }
+    const familyId = event.target.closest("[data-family-id]")?.dataset.familyId;
+    if (!familyId) return;
+    state.selectedId = familyId;
+    renderMobileDetail();
+    renderDetail();
+  });
+  elements.mobileDetailClose.addEventListener("click", closeMobileDetail);
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && state.mobileDetailOpen) closeMobileDetail();
+  });
+  window.addEventListener("resize", () => {
+    if (!isMobileDetailLayout() && state.mobileDetailOpen) closeMobileDetail();
   });
   elements.addSelected.addEventListener("click", () => {
     const selected = getSelected();
@@ -1112,7 +1123,6 @@ async function init() {
   state.guideById = new Map(state.data.guideEntries.map((entry) => [entry.id, entry]));
   state.abilityDefinitions = new Map((state.data.abilityDefinitions || []).map((entry) => [entry.id, entry]));
   state.selectedId = state.pokemon.find((mon) => mon.id === "plusle")?.id || state.pokemon[0]?.id;
-  state.inlineAnchorId = state.selectedId;
   loadTeams();
   renderFilters();
   renderGrid();
